@@ -1,14 +1,13 @@
 # Initial Setup
 
-* Extend app/hello.rb
-    * Switch to a template (erb?)
-    * Embed a replay video
-
-* Consider switching to Salt (or Ansible?) because Chef seems overcomplicated
-
 * Setup for deployment on Digital Ocean
     * Change base image?
-    * Add Vagrant omnibus so that chef version is specified (and to support Digital Ocean)?
+    * Make a note of the steps I took to setup Droplet
+        * Consider automating these via shell
+    * Investigate scaling options on Digital Ocean.
 
-* Make a note of the steps I took to setup Droplet
-    * Consider automating these via shell or Salt (Ansible?)
+
+# Video playback
+
+* Speak to Matt about embedding Replay video. I've tried using the links delivered to iPhone / iPad links but the resulting video is very low resolution on a laptop / PC.
+* What is the video quality like on an iPad -- is the code as readable as on desktop?

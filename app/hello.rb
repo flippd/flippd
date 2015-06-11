@@ -1,7 +1,7 @@
-require 'sinatra'
+require 'sinatra/base'
 
-set :bind, '0.0.0.0'
-
-get '/' do
-  'Hello world!'
+class Hello < Sinatra::Base
+  get '/' do
+    erb :index
+  end
 end
