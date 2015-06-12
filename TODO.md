@@ -1,10 +1,8 @@
 # Initial Setup
 
-* Setup for deployment on Digital Ocean
-    * Change base image?
-    * Make a note of the steps I took to setup Droplet
-        * Consider automating these via shell
-    * Investigate scaling options on Digital Ocean.
+* Provisioning for production
+  * Follow Linode (and Digital Ocean) setup and security steps
+  * Automate these using shell provisioner
 
 
 # Video playback
