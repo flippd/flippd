@@ -34,8 +34,8 @@ bower.json
 # Ignore pow environment settings
 .powenv
 
-# Ignore vagrant and chef files
+# Ignore vagrant files
 .vagrant
-/cookbooks
-.kitchen/
-.kitchen.local.yml
+
+# Ignore credentials
+config/production/api_key.txt

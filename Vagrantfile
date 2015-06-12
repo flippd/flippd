@@ -39,21 +39,6 @@ Vagrant.configure(2) do |config|
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
 
-  # Provider-specific configuration so you can fine-tune various
-  # backing providers for Vagrant. These expose provider-specific options.
-  # Example for VirtualBox:
-  #
-  config.vm.provider "virtualbox" do |vb|
-    # Display the VirtualBox GUI when booting the machine
-    # vb.gui = true
-
-    # Customize the amount of memory on the VM:
-    vb.memory = "2048"
-  end
-  #
-  # View the documentation for the provider you are using for more
-  # information on available options.
-
   # Define a Vagrant Push strategy for pushing to Atlas. Other push strategies
   # such as FTP and Heroku are also available. See the documentation at
   # https://docs.vagrantup.com/v2/push/atlas.html for more information.
@@ -65,4 +50,31 @@ Vagrant.configure(2) do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", path: "config/provision.sh", privileged: false
+
+  # Development and testing VM
+  config.vm.define "development", primary: true do |development|
+    development.vm.provider "virtualbox" do |vb|
+      # Display the VirtualBox GUI when booting the machine
+      # vb.gui = true
+
+      # Customize the amount of memory on the VM:
+      vb.memory = "1024"
+    end
+  end
+
+  # Production VM
+  if File.file?('config/production/api_key.txt')
+    config.vm.define "production", autostart: false do |production|
+      production.vm.provider :linode do |provider, override|
+        override.ssh.private_key_path = '~/.ssh/id_dsa'
+        override.vm.box = 'linode'
+        override.vm.box_url = "https://github.com/displague/vagrant-linode/raw/master/box/linode.box"
+
+        provider.distribution = 'Ubuntu 14.04 LTS'
+        provider.datacenter = 'london'
+        provider.plan = 'Linode 1024'
+        provider.token = File.read('config/production/api_key.txt')
+      end
+    end
+  end
 end
