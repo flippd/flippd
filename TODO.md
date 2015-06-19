@@ -1,7 +1,8 @@
 # Initial Setup
 
 * Provisioning for production
-  * Don't use webrick!
+  * Setup linode load balancing (and automate?)
+  * Point a domain name at linode load balancer
 
 # Video playback
 

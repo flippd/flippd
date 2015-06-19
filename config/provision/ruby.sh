@@ -6,7 +6,7 @@ sudo apt-add-repository --yes ppa:brightbox/ruby-ng &> /dev/null
 sudo apt-get update --yes > /dev/null
 
 echo "Installing Ruby 2.2"
-sudo apt-get install --yes ruby2.2 &> /dev/null
+sudo apt-get install --yes ruby2.2 ruby2.2-dev build-essential &> /dev/null
 
 echo "Installing ruby-switch"
 sudo apt-get install --yes ruby-switch &> /dev/null
