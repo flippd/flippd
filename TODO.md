@@ -1,8 +1,7 @@
 # Initial Setup
 
 * Provisioning for production
-  * Setup linode load balancing (and automate?)
-  * Point a domain name at linode load balancer
+  * Point a domain name at linode instance
 
 # Video playback
 
