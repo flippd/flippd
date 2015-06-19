@@ -1,8 +1,5 @@
 #!/bin/bash
 
-echo "Updating apt-get cache"
-sudo apt-get update --yes > /dev/null
-
 echo "Adding extra apt repositories for Ruby binaries"
 sudo apt-get install --yes software-properties-common > /dev/null
 sudo apt-add-repository --yes ppa:brightbox/ruby-ng &> /dev/null

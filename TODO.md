@@ -1,9 +1,7 @@
 # Initial Setup
 
 * Provisioning for production
-  * Follow Linode (and Digital Ocean) setup and security steps
-  * Automate these using shell provisioner
-
+  * Don't use webrick!
 
 # Video playback
 
