@@ -1,7 +1,7 @@
-<h1>Complexity Part 2: Metrics</h1>
-<p class="lead">The McCabe Cyclomatic and ABC metrics for quantifying complexity.</p>
+<h1><%= @video["title"] %></h1>
+<p class="lead"><%= @video["description"] %></p>
 
-<div id="video" data-flippd-phase="2">
+<div id="video" data-flippd-phase="<%= @video["phase"] %>">
   <div id="player"></div>
 </div>
 
@@ -20,7 +20,7 @@
     player = new YT.Player('player', {
       height: '390',
       width: '640',
-      videoId: 'M7lc1UVf-VE',
+      videoId: '<%= @video["youtube"] %>',
       events: {
         'onReady': onPlayerReady,
         'onStateChange': onPlayerStateChange

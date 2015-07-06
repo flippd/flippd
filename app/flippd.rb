@@ -1,11 +1,17 @@
 require 'sinatra/base'
+require 'json'
 
 class Flippd < Sinatra::Base
   get '/' do
     erb :index
   end
 
-  get '/video' do
+  get '/video/:id' do
+    videos_data_file = File.join(File.dirname(__FILE__), 'data', 'videos.json')
+    videos_data = JSON.parse(File.read(videos_data_file))
+    @video = videos_data[params['id']]
+
+    pass unless @video
     erb :video
   end
 end
