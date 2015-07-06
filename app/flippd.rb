@@ -2,6 +2,11 @@ require 'sinatra/base'
 require 'json'
 
 class Flippd < Sinatra::Base
+  before do
+    module_data_file = File.join(File.dirname(__FILE__), 'data', 'module.json')
+    @module = JSON.parse(File.read(module_data_file))
+  end
+
   get '/' do
     erb :index
   end
