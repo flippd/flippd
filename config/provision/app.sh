@@ -11,9 +11,9 @@ echo "Use foreman to export upstart configuration"
 # https://github.com/ddollar/foreman/wiki/Exporting-for-production
 echo "PATH=$PATH" > /tmp/foreman.env
 echo "GEM_PATH=$GEM_PATH" >> /tmp/foreman.env
-bundle exec foreman export upstart --env=/tmp/foreman.env --app=hello --user=root /tmp
+bundle exec foreman export upstart --env=/tmp/foreman.env --app=flippd --user=root /tmp
 
 echo "Use upstart to ensure web server restarts on boot"
-sudo mv /tmp/hello*.conf /etc/init
+sudo mv /tmp/flippd*.conf /etc/init
 
-sudo start hello
+sudo start flippd

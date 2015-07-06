@@ -1,6 +1,6 @@
 require 'sinatra/base'
 
-class Hello < Sinatra::Base
+class Flippd < Sinatra::Base
   get '/' do
     erb :index
   end

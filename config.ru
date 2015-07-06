@@ -1,2 +1,2 @@
-require './app/hello'
-run Hello
+require './app/flippd'
+run Flippd
