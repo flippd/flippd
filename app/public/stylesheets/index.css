@@ -5,3 +5,11 @@ body {
   padding: 40px 15px;
   text-align: center;
 }
+#video {
+  -moz-box-shadow: 10px 10px 5px #888;
+  -webkit-box-shadow: 10px 10px 5px #888;
+  box-shadow: 10px 10px 5px #888;
+}
+#player {
+  border: 1px solid black;
+}

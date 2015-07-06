@@ -1,7 +1,7 @@
 <h1><%= @video["title"] %></h1>
 <p class="lead"><%= @video["description"] %></p>
 
-<div id="video" data-flippd-phase="<%= @video["phase"] %>">
+<div id="video" data-flippd-phase="<%= @video["phase"] %>" class="embed-responsive embed-responsive-16by9">
   <div id="player"></div>
 </div>
 
@@ -18,31 +18,8 @@
   var player;
   function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
-      height: '390',
-      width: '640',
-      videoId: '<%= @video["youtube"] %>',
-      events: {
-        'onReady': onPlayerReady,
-        'onStateChange': onPlayerStateChange
-      }
+      videoId: '<%= @video["youtube"] %>'
     });
-  }
-
-  // 4. The API will call this function when the video player is ready.
-  function onPlayerReady(event) {
-    // event.target.seekTo(100);
-    // event.target.playVideo();
-  }
-
-  // 5. The API calls this function when the player's state changes.
-  //    The function indicates that when playing a video (state=1),
-  //    the player should play for six seconds and then stop.
-  var done = false;
-  function onPlayerStateChange(event) {
-    if (event.data == YT.PlayerState.PLAYING && !done) {
-      setTimeout(stopVideo, 6000);
-      done = true;
-    }
   }
   function stopVideo() {
     player.stopVideo();
