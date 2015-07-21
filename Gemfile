@@ -8,3 +8,8 @@ group :development do
   gem "rake", "~> 10.4.2"
   gem "rerun", "~> 0.10.0"
 end
+
+group :test do
+  gem "capybara", "~> 2.4.4"
+  gem "rspec", "~> 3.3.0"
+end
