@@ -1,6 +1,7 @@
 source "https://rubygems.org"
 
 gem "sinatra", "~> 1.4.6"
+gem "rack-flash3", "~> 1.0.5"
 gem "thin", "~> 1.6.3"
 gem "foreman", "~> 0.78.0"
 gem "omniauth", "~> 1.2.2"

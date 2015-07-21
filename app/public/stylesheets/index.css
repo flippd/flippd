@@ -5,6 +5,9 @@ body {
   padding: 40px 15px;
   text-align: center;
 }
+#main .flash {
+  text-align: left;
+}
 #video {
   -moz-box-shadow: 10px 10px 5px #888;
   -webkit-box-shadow: 10px 10px 5px #888;

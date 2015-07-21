@@ -1,7 +1,7 @@
 require 'omniauth'
+require 'json'
 
 class Flippd < Sinatra::Application
-  use Rack::Session::Cookie, secret: 'change_me'
   use OmniAuth::Strategies::Developer
   
   before do
@@ -13,6 +13,16 @@ class Flippd < Sinatra::Application
     name = auth_hash.info.name
     user_id = auth_hash.uid
     session[:user] = { name: name, id: user_id }
+    redirect to('/')
+  end
+  
+  get '/auth/failure' do
+    flash[:error] = "Could not sign you in due to: #{params[:message]}"
+    redirect to('/')
+  end
+  
+  get '/auth/destroy' do
+    session[:user] = nil
     redirect to('/')
   end
 end

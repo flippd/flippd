@@ -41,11 +41,11 @@
                   <%=@user[:name]%> <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-                 <li><a href="#">Sign out</a></li>
+                 <li><a href="/auth/destroy">Sign Out</a></li>
                </ul>
               </li>
             <% else %>
-              <li><a href="/auth/developer">Sign in</a></li>
+              <li><a href="/auth/developer">Sign In</a></li>
             <% end %>
           </ul>
         </div>
@@ -55,6 +55,12 @@
     <div class="container">
       <div class="row">
         <div id="main" class="col-md-8 col-md-offset-2">
+          <% if flash[:error] %>
+            <div id="error" class="flash alert alert-danger alert-dismissable" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <%= flash[:error] %>
+            </div>
+          <% end %>
           <%= yield %>
       </div>
     </div>

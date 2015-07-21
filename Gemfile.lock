@@ -47,6 +47,8 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     rack (1.6.4)
+    rack-flash3 (1.0.5)
+      rack
     rack-protection (1.5.3)
       rack
     rack-test (0.6.3)
@@ -93,6 +95,7 @@ DEPENDENCIES
   foreman (~> 0.78.0)
   omniauth (~> 1.2.2)
   omniauth-google-oauth2 (~> 0.2.6)
+  rack-flash3 (~> 1.0.5)
   rake (~> 10.4.2)
   rerun (~> 0.10.0)
   rspec (~> 3.3.0)
