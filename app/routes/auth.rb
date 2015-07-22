@@ -1,5 +1,4 @@
 require 'omniauth'
-require 'json'
 
 class Flippd < Sinatra::Application
   use OmniAuth::Strategies::Developer
@@ -10,19 +9,21 @@ class Flippd < Sinatra::Application
 
   post '/auth/developer/callback' do
     auth_hash = env['omniauth.auth']
-    name = auth_hash.info.name
-    user_id = auth_hash.uid
-    session[:user] = { name: name, id: user_id }
-    redirect to('/')
+    session[:user] = { name: auth_hash.info.name, id: auth_hash.uid}
+    
+    origin = env['omniauth.origin'] || '/'
+    redirect to(origin)
   end
   
   get '/auth/failure' do
     flash[:error] = "Could not sign you in due to: #{params[:message]}"
-    redirect to('/')
+    origin = env["HTTP_REFERER"] || '/'
+    redirect to(origin)
   end
   
   get '/auth/destroy' do
     session[:user] = nil
-    redirect to('/')
+    origin = env["HTTP_REFERER"] || '/'
+    redirect to(origin)
   end
 end

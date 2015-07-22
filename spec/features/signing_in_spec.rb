@@ -1,24 +1,6 @@
 feature "Signing in" do
-  context "as a visitor" do
-    it "shows a sign in link" do
-      visit '/'
-      expect(page).to have_content 'Sign In'
-    end
-  end
-  
-  context "when signed in" do
-    before(:each) do
-      visit '/'
-      click_on 'Sign In'
-      
-      fill_in 'Name', with: 'Joe Bloggs'
-      fill_in 'Email', with: 'joe@bloggs.com'
-      click_on 'Sign In'
-    end
-
-    it "redirects to root" do
-      expect(current_path).to eq('/')
-    end
+  context "with valid credentals" do
+    before(:each) { sign_in }
   
     it "displays the user's name" do
       expect(page).to have_content 'Joe Bloggs'
@@ -36,17 +18,7 @@ feature "Signing in" do
   end
   
   context "when signing in with invalid credentials" do
-    before(:each) do
-      OmniAuth.config.test_mode = true
-      OmniAuth.config.mock_auth[:developer] = 'Invalid credentials'.to_sym
-      
-      visit '/'
-      click_on 'Sign In'
-    end
-    
-    it "redirects to root" do
-      expect(current_path).to eq('/')
-    end
+    before(:each) { fail_to_sign_in }
     
     it "displays the error" do
       expect(page).to have_content 'Invalid credentials'
@@ -57,6 +29,25 @@ feature "Signing in" do
     end
   end
   
-  xit "should redirect to current page after signing in (with valid or invalid credentials)"
-  xit "should redirect to current page after signing out"
+  context "redirects" do
+    it "to the current page after signing in" do
+      sign_in from: '/video/complexity_2'
+      expect(current_path).to eq('/video/complexity_2')
+    end
+    
+    it "to the current page after failing to sign in" do
+      fail_to_sign_in from: '/video/complexity_2'
+      expect(current_path).to eq('/video/complexity_2')
+    end
+    
+    it "to the root page after signing in directly" do
+      sign_in from: '/auth/developer'
+      expect(current_path).to eq('/')
+    end
+    
+    it "to the root page after failing to sign in directly" do
+      fail_to_sign_in from: '/auth/developer'
+      expect(current_path).to eq('/')
+    end
+  end
 end
