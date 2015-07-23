@@ -10,7 +10,7 @@ class Flippd < Sinatra::Application
     erb :index
   end
 
-  get '/video/:id' do
+  get '/videos/:id' do
     videos_data_file = File.join(File.dirname(__FILE__), '..', 'data', 'videos.json')
     videos_data = JSON.parse(File.read(videos_data_file))
     @video = videos_data[params['id']]
