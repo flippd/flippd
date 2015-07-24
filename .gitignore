@@ -38,3 +38,4 @@ bower.json
 
 # Ignore credentials
 config/production/api_key.txt
+.env
