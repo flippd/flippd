@@ -34,19 +34,19 @@ feature "Signing in" do
       sign_in from: '/videos/complexity_2'
       expect(current_path).to eq('/videos/complexity_2')
     end
-    
+
     it "to the current page after failing to sign in" do
       fail_to_sign_in from: '/videos/complexity_2'
       expect(current_path).to eq('/videos/complexity_2')
     end
 
     it "to the root page after signing in directly" do
-      sign_in from: '/auth/developer'
+      sign_in from: '/auth/new'
       expect(current_path).to eq('/')
     end
 
     it "to the root page after failing to sign in directly" do
-      fail_to_sign_in from: '/auth/developer'
+      fail_to_sign_in from: '/auth/new'
       expect(current_path).to eq('/')
     end
   end

@@ -1,6 +1,7 @@
 source "https://rubygems.org"
 
 gem "sinatra", "~> 1.4.6"
+gem "sinatra-contrib", "~> 1.4.6"
 gem "rack-flash3", "~> 1.0.5"
 gem "thin", "~> 1.6.3"
 gem "foreman", "~> 0.78.0"
@@ -15,4 +16,5 @@ end
 group :test do
   gem "capybara", "~> 2.4.4"
   gem "rspec", "~> 3.3.0"
+  gem "dotenv", "~> 2.0.2"
 end
