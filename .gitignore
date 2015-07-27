@@ -36,6 +36,5 @@ bower.json
 # Ignore vagrant files
 .vagrant
 
-# Ignore credentials
-config/production/api_key.txt
+# Ignore environment-specific configuration
 *.env

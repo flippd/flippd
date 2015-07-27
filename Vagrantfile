@@ -63,7 +63,7 @@ Vagrant.configure(2) do |config|
   end
 
   # Production VM
-  if File.file?('config/production/api_key.txt')
+  if ENV["LINODE_API_KEY"]
     config.vm.define "production", autostart: false do |production|
       production.vm.provider :linode do |provider, override|
         override.ssh.private_key_path = '~/.ssh/id_dsa'
@@ -73,7 +73,7 @@ Vagrant.configure(2) do |config|
         provider.distribution = 'Ubuntu 14.04 LTS'
         provider.datacenter = 'london'
         provider.plan = 'Linode 1024'
-        provider.token = File.read('config/production/api_key.txt')
+        provider.token = ENV["LINODE_API_KEY"]
       end
     end
   end
