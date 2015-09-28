@@ -5,11 +5,7 @@
 * Next and previous links on video pages.
 * Add resources (e.g., slides, recommended reading) to video page.
 * Better landing page
-
-
-## Development environment
-
-* Fix bug in `rake server:monitor` that seems to cause log tailing to cumulate.
+* Tests for phases and videos pages.
 
 
 ## Production environment
