@@ -11,3 +11,8 @@ namespace :server do
     exec "rerun rake server:restart"
   end
 end
+
+desc "Run the tests"
+task :test do
+  exec 'vagrant ssh -c "cd /vagrant && bundle exec rspec"'
+end
