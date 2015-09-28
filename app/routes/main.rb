@@ -25,7 +25,7 @@ class Flippd < Sinatra::Application
   end
 
   get '/' do
-    erb :index
+    redirect to("/phases/#{@phases.first['title'].downcase.gsub(" ", "_")}")
   end
 
   get '/phases/:title' do
