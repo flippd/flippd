@@ -1,3 +1,6 @@
+require 'dotenv'
+Dotenv.load
+
 require 'sinatra'
 require 'sinatra/multi_route'
 require 'rack-flash'

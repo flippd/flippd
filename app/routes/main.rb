@@ -1,11 +1,13 @@
+require 'open-uri'
 require 'json'
 
 class Flippd < Sinatra::Application
   before do
-    module_data_file = File.join(File.dirname(__FILE__), '..', 'data', 'module.json')
-    @module = JSON.parse(File.read(module_data_file))
+    # Load in the configuration (at the URL in the project's .env file)
+    @module = JSON.load(open(ENV['CONFIG_URL']))
     @phases = @module['phases']
 
+    # The configuration doesn't have to include identifiers, so we
     # add an identifier to each phase and video
     phase_id = 1
     video_id = 1
