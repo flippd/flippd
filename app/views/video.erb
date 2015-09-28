@@ -1,27 +1,40 @@
+<div class="row">
+  <div class="col-xs-6 col-md-6">
+    <% if @previous_video %>
+      <h5><a href="/videos/<%=@previous_video["id"]%>">&lt;&lt; <%=@previous_video["title"]%></a></h5>
+    <% end %>
+  </div>
+  <div class="col-xs-6 col-md-6" style="text-align: right;">
+    <% if @next_video %>
+      <h5><a href="/videos/<%=@next_video["id"]%>"><%=@next_video["title"]%> &gt;&gt;</a></h5>
+    <% end %>
+  </div>
+</div>
+
 <h1><%= @video["title"] %></h1>
 <p class="lead"><%= @video["description"] %></p>
 
-<div id="video" data-flippd-phase="<%= @phase["id"] %>" class="embed-responsive embed-responsive-16by9">
-  <div id="player"></div>
-</div>
+  <div id="video" data-flippd-phase="<%= @phase["id"] %>" class="embed-responsive embed-responsive-16by9">
+    <div id="player"></div>
+  </div>
 
-<script>
-  // 2. This code loads the IFrame Player API code asynchronously.
-  var tag = document.createElement('script');
+  <script>
+    // 2. This code loads the IFrame Player API code asynchronously.
+    var tag = document.createElement('script');
 
-  tag.src = "https://www.youtube.com/iframe_api";
-  var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-  // 3. This function creates an <iframe> (and YouTube player)
-  //    after the API code downloads.
-  var player;
-  function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', {
-      videoId: '<%= @video["youtube"] %>'
-    });
-  }
-  function stopVideo() {
-    player.stopVideo();
-  }
-</script>
+    // 3. This function creates an <iframe> (and YouTube player)
+    //    after the API code downloads.
+    var player;
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        videoId: '<%= @video["youtube"] %>'
+      });
+    }
+    function stopVideo() {
+      player.stopVideo();
+    }
+  </script>
