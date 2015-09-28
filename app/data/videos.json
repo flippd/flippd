@@ -1,8 +1,0 @@
-{
-  "complexity_2" : {
-    "phase" : 2,
-    "youtube" : "EBfNDMc204k",
-    "title" : "Complexity Metrics",
-    "description" : "The McCabe Cyclomatic and ABC metrics for quantifying complexity."
-  }
-}

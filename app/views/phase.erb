@@ -1,0 +1,11 @@
+<h1><%= @phase["title"] %></h1>
+
+<% @phase["topics"].each do |topic| %>
+  <h3><%=topic["title"]%></h3>
+
+  <% topic["videos"].each do |video| %>
+    <ul style="list-style-type: none; padding: 0;">
+      <li><a href="/videos/<%=video["id"]%>"><%=video["title"]%></a></li>
+    </ul>
+  <% end %>
+<% end %>

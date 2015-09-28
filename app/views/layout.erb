@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><%= @module["name"] %> | Flippd</title>
+    <title><%= @module["title"] %> | Flippd</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="/stylesheets/index.css">
@@ -26,13 +26,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/"><%= @module["name"] %></a>
+          <a class="navbar-brand" href="/"><%= @module["title"] %></a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="#">Fundamentals</a></li>
-            <li><a href="#">Programs</a></li>
-            <li><a href="#">Systems</a></li>
+            <% @phases.each do |phase| %>
+              <li><a href="/phases/<%=phase["title"].downcase.gsub(" ", "_")%>"><%=phase["title"]%></a></li>
+            <% end %>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <% if @user %>
