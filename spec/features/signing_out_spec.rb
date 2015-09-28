@@ -8,14 +8,14 @@ feature "Signing out" do
 
   context "redirects" do
     it "to the current page after signing out" do
-      visit '/videos/complexity_2'
+      visit '/videos/1'
       sign_out
-      expect(current_path).to eq('/videos/complexity_2')
+      expect(current_path).to eq('/videos/1')
     end
 
     it "to the root page after signing out directly" do
       visit '/auth/destroy'
-      expect(current_path).to eq('/')
+      expect(current_path).to eq('/phases/fundamentals')
     end
   end
 end
