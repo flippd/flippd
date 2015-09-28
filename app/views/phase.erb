@@ -1,11 +1,22 @@
 <h1><%= @phase["title"] %></h1>
+<p class="lead"><%= @phase["summary"] %></p>
 
-<% @phase["topics"].each do |topic| %>
-  <h3><%=topic["title"]%></h3>
+<div class="row">
+  <% @phase["topics"].each_with_index do |topic, index| %>
+  <div class="col-md-6" style="padding-top: 15px;">
+    <h4><%=index+1%>. <%=topic["title"]%></h4>
 
-  <% topic["videos"].each do |video| %>
-    <ul style="list-style-type: none; padding: 0;">
-      <li><a href="/videos/<%=video["id"]%>"><%=video["title"]%></a></li>
+    <p>
+      <%= topic["summary"] %>
+    </p>
+
+    <ul>
+    <% topic["videos"].each do |video| %>
+        <li>
+          <a href="/videos/<%=video["id"]%>"><%=video["title"]%></a>
+        </li>
+    <% end %>
     </ul>
+  </div>
   <% end %>
-<% end %>
+</div>
