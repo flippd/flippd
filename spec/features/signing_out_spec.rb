@@ -15,7 +15,7 @@ feature "Signing out" do
 
     it "to the root page after signing out directly" do
       visit '/auth/destroy'
-      expect(current_path).to eq('/phases/fundamentals')
+      expect(current_path).to eq('/')
     end
   end
 end

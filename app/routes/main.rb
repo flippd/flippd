@@ -4,7 +4,7 @@ require 'json'
 class Flippd < Sinatra::Application
   before do
     # Load in the configuration (at the URL in the project's .env file)
-    @module = JSON.load(open(ENV['CONFIG_URL']))
+    @module = JSON.load(open(ENV['CONFIG_URL'] + "module.json"))
     @phases = @module['phases']
 
     # The configuration doesn't have to include identifiers, so we
@@ -25,7 +25,7 @@ class Flippd < Sinatra::Application
   end
 
   get '/' do
-    redirect to("/phases/#{@phases.first['title'].downcase.gsub(" ", "_")}")
+    erb open(ENV['CONFIG_URL'] + "index.erb").read
   end
 
   get '/phases/:title' do

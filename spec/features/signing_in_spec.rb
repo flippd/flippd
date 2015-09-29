@@ -42,12 +42,12 @@ feature "Signing in" do
 
     it "to the root page after signing in directly" do
       sign_in from: '/auth/new'
-      expect(current_path).to eq('/phases/fundamentals')
+      expect(current_path).to eq('/')
     end
 
     it "to the root page after failing to sign in directly" do
       fail_to_sign_in from: '/auth/new'
-      expect(current_path).to eq('/phases/fundamentals')
+      expect(current_path).to eq('/')
     end
   end
 end
