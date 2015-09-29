@@ -28,6 +28,22 @@
   <div id="player"></div>
 </div>
 
+<% if @video["resources"] %>
+<div id="resources" class="row" style="margin-top: 1.5em;">
+  <div class="col-xs-6 col-md-6">
+    <h4>Additional Material</h4>
+    <ul class="list-unstyled" style="padding-left: 15px; font-size: 120%;">
+    <% @video["resources"].each do |resource| %>
+      <li style="padding: 3px 0">
+        <span class="glyphicon glyphicon-<%=resource["icon"]%>" aria-hidden="true"></span>
+        &nbsp; <a href="<%=resource["url"]%>"><%=resource["title"]%></a>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+</div>
+<% end %>
+
 <script>
   // 2. This code loads the IFrame Player API code asynchronously.
   var tag = document.createElement('script');
