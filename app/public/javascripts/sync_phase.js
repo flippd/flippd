@@ -1,8 +1,8 @@
 $(function() {
-  if ($('#video').length) {
-    var phase = $('#video').data('flippd-phase');
+  if ($('*[data-flippd-phase]').length) {
+    var phase = $('*[data-flippd-phase]').data('flippd-phase');
+    console.log(phase);
     var currentPhaseNavLink = $('#navbar li:nth-child(' + phase + ')');
-    console.log(currentPhaseNavLink);
     currentPhaseNavLink.addClass('active');
   }
 });

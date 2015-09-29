@@ -21,12 +21,12 @@
   </div>
 </div>
 
-<h1><%= @video["title"] %></h1>
+<h1 data-flippd-phase="<%= @phase["id"]%>"><%= @video["title"] %></h1>
 <p class="lead"><%= @video["description"] %></p>
 
-  <div id="video" data-flippd-phase="<%= @phase["id"] %>" class="embed-responsive embed-responsive-16by9">
-    <div id="player"></div>
-  </div>
+<div id="video" class="embed-responsive embed-responsive-16by9">
+  <div id="player"></div>
+</div>
 
 <script>
   // 2. This code loads the IFrame Player API code asynchronously.
