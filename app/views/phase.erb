@@ -1,7 +1,7 @@
 <h1 data-flippd-phase="<%= @phase["id"]%>"><%= @phase["title"] %></h1>
 <p class="lead"><%= @phase["summary"] %></p>
 
-<div class="row">
+<div id="topics" class="row">
   <% @phase["topics"].each_with_index do |topic, index| %>
   <div class="col-md-6" style="padding-top: 15px;">
     <h4><%=index+1%>. <%=topic["title"]%></h4>
