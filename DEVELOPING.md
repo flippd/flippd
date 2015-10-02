@@ -31,7 +31,7 @@ Test that the installation has worked by navigating to [http://localhost:4567](h
 Let's try making a really simple change to Flippd, so that we can see what the process looks like:
 
 1. Open `app/flippd.rb` and change the value of the `@version` variable.
-2. Run `vado rake restart`. (If this step fails because `vado` cannot be found, you should complete the DAMS Vagrant tutorial and try again).
+2. Run `vado rake restart`. (If this step fails because `vado` cannot be found, you should complete the [DAMS Vagrant tutorial](https://github.com/york-cs-dams/practicals/blob/master/tutorials/tools/vagrant.md) and try again).
 3. Reload the webpage at [http://localhost:4567](http://localhost:4567). You should see the new version number in the footer of the page.
 
 
@@ -77,7 +77,7 @@ class Flippd < Sinatra::Application
   end
 ```
 
-The purpose of every `get` block is ultimately to render some HTML to send back to the user. More often than not, HTML is rendered via ERB...
+The purpose of every `get` block is ultimately to render some HTML to send back to the user. More often than not, HTML is rendered via ERB (e.g., `erb :phase` will render the file at `/app/views/phase.erb`).
 
 ERB is a template-based code generation language built into Ruby. It allows us to parameterise plaintext documents (such as HTML) with Ruby code. For example:
 
@@ -85,10 +85,12 @@ ERB is a template-based code generation language built into Ruby. It allows us t
 Hello <%=@name%>!
 
 Your friends are:
-<% friends.each do |friend| %>
+<% @friends.each do |friend| %>
 * <%=friend.name%>
 <% end %>
 ```
+
+Any instance variables declared in a Sinatra `get` block are passed to the ERB template that is being rendered.
 
 Note that the sections of the text that are enclosed in `<%` and `%>` are Ruby code.
 
