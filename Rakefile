@@ -1,20 +1,13 @@
-task default: "server:monitor"
+task default: "test"
 
-namespace :server do
-  desc "Restart the web server"
-  task :restart do
-    exec 'sudo restart flippd'
-  end
+desc "Restart the web server"
+task :restart do
+  exec 'sudo restart flippd'
+end
 
-  desc "Automatically restart the web server when a source file changes"
-  task :monitor do
-    exec 'rerun rake server:restart'
-  end
-
-  desc "Dumps the last 100 lines of the server's log file"
-  task :logs do
-    exec 'sudo tail -n 100 /var/log/upstart/flippd-web-1.log'
-  end
+desc "Print the last 100 lines of the web server's log file"
+task :log do
+  exec 'sudo tail -n 100 /var/log/upstart/flippd-web-1.log'
 end
 
 desc "Run the tests"
