@@ -6,4 +6,4 @@ The following files contain more information:
 
 * [RELEASES.md](RELEASES.md) - lists changes made to Flippd
 * [PROBLEMS.md](PROBLEMS.md) - describes the process for reporting bugs or asking questions about Flippd
-* [DEVELOPING.md](DEVELOPING.md) - describes how to configure your environment
+* [DEVELOPING.md](DEVELOPING.md) - describes how to setup your development environment for modifying Flippd
