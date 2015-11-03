@@ -1,0 +1,725 @@
+{
+  "title" : "DAMS",
+  "phases" : [
+    {
+      "title" : "Fundamentals",
+      "summary" : "This part of the module covers all of the essential concepts, tools and techniques that you'll need to be build habitable software in Ruby.",
+      "topics" : [
+        {
+          "title" : "Ruby",
+          "summary" : "An introduction to Ruby, which is the - purely object-oriented and somewhat functional - programming language used in DAMS.",
+          "videos" : [
+            {
+              "title" : "Ruby",
+              "description" : "Briefly introduces Ruby, comparing it to Java and Python.",
+              "youtube" : "NTGSi6kBrlU",
+              "resources" : [
+                {
+                  "title" : "Slides",
+                  "url" : "https://raw.githubusercontent.com/york-cs-dams/flippd-dams/master/slides/fundamentals/ruby.pdf",
+                  "icon" : "print"
+                },
+                {
+                  "title" : "A Ruby Tutorial",
+                  "url" : "https://github.com/york-cs-dams/practicals/blob/master/fundamentals/ruby/1_introduction.md",
+                  "icon" : "pencil"
+                },
+                {
+                  "title" : "Ruby's official website",
+                  "url" : "https://www.ruby-lang.org/",
+                  "icon" : "book"
+                },
+                {
+                  "title" : "Poignant Guide to Ruby",
+                  "url" : "http://mislav.uniqpath.com/poignant-guide/",
+                  "icon" : "book"
+                }
+              ]
+            },
+            {
+              "title" : "Ruby Gems",
+              "description" : "Introduces RubyGems and Bundler for managing Ruby dependencies.",
+              "youtube" : "bn6ZIdJxysg",
+              "resources" : [
+                {
+                  "title" : "Slides",
+                  "url" : "https://raw.githubusercontent.com/york-cs-dams/flippd-dams/master/slides/fundamentals/package_management.pdf",
+                  "icon" : "print"
+                },
+                {
+                  "title" : "Ruby Gems Documentation",
+                  "url" : "http://guides.rubygems.org",
+                  "icon" : "book"
+                },
+                {
+                  "title" : "Bundler",
+                  "url" : "http://bundler.io",
+                  "icon" : "book"
+                },
+                {
+                  "title" : "Ruby Toolbox",
+                  "url" : "https://www.ruby-toolbox.com",
+                  "icon" : "book"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title" : "Approach",
+          "summary" : "A very light introduction to software engineering processes, and a look at some of the challenges you might face when using a reactive (Agile) approach.",
+          "videos" : [
+            {
+              "title" : "Planning vs. reacting",
+              "description" : "An argument for combining plan-driven and reactionary software engineering.",
+              "youtube" : "ciU9en3yHpo",
+              "resources" : [
+                {
+                  "title" : "Slides",
+                  "url" : "https://raw.githubusercontent.com/york-cs-dams/flippd-dams/master/slides/fundamentals/planning_vs_reacting.pdf",
+                  "icon" : "print"
+                },
+                {
+                  "title" : "Design tutorial",
+                  "url" : "https://github.com/york-cs-dams/practicals/blob/master/fundamentals/approach/planning_vs_reacting.md",
+                  "icon" : "pencil"
+                },
+                {
+                  "title" : "Software Engineering Processes, SEPR Lecture",
+                  "url" : "http://www-module.cs.york.ac.uk/sepr/2013-14FACPLectures/SEPR3.pdf",
+                  "icon" : "book"
+                }
+              ]
+            },
+            {
+              "title" : "TDD and RSpec",
+              "description" : "A recap of TDD and an overview of the RSpec testing framework.",
+              "youtube" : "iRan2IniRmU",
+              "resources" : [
+                {
+                  "title" : "Slides",
+                  "url" : "https://raw.githubusercontent.com/york-cs-dams/flippd-dams/master/slides/fundamentals/tdd_recap.pdf",
+                  "icon" : "print"
+                },
+                {
+                  "title" : "RSpec tutorial",
+                  "url" : "https://github.com/york-cs-dams/practicals/blob/master/fundamentals/rspec/1_basics.md",
+                  "icon" : "pencil"
+                },
+                {
+                  "title" : "TDD: Write better code in less time",
+                  "url" : "https://www.youtube.com/watch?v=HhwElTL-mdI",
+                  "icon" : "film"
+                },
+                {
+                  "title" : "RSpec Core Documentation",
+                  "url" : "http://rspec.info/documentation/3.3/rspec-core/",
+                  "icon" : "book"
+                },
+                {
+                  "title" : "RSpec Expectations Documentation",
+                  "url" : "http://rspec.info/documentation/3.3/rspec-expectations/",
+                  "icon" : "book"
+                }
+              ]
+            },
+            {
+              "title" : "Test doubles",
+              "description" : "A set of techniques that can be used bring almost any code under test.",
+              "youtube" : "nduUjMbJ5to",
+              "resources" : [
+                {
+                  "title" : "Slides",
+                  "url" : "https://raw.githubusercontent.com/york-cs-dams/flippd-dams/master/slides/fundamentals/test_doubles.pdf",
+                  "icon" : "print"
+                },
+                {
+                  "title" : "RSpec test doubles tutorial",
+                  "url" : "https://github.com/york-cs-dams/practicals/blob/master/fundamentals/rspec/2_doubles.md",
+                  "icon" : "pencil"
+                },
+                {
+                  "title" : "RSpec integration testing tutorial",
+                  "url" : "https://github.com/york-cs-dams/practicals/blob/master/fundamentals/rspec/3_integration.md",
+                  "icon" : "pencil"
+                },
+                {
+                  "title" : "The magic tricks of testing",
+                  "url" : "https://www.youtube.com/watch?v=URSWYvyc42M",
+                  "icon" : "film"
+                },
+                {
+                  "title" : "Mocks aren't stubs",
+                  "url" : "http://martinfowler.com/articles/mocksArentStubs.html",
+                  "icon" : "book"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title" : "Tools",
+          "summary" : "A brief introduction to three of the key tools used in DAMS.",
+          "videos" : [
+            {
+              "title" : "Ruby Parser",
+              "description" : "An overview of the fundamentals of program analysis in Ruby.",
+              "youtube" : "OWGYj_KEhvY",
+              "resources" : [
+                {
+                  "title" : "Slides",
+                  "url" : "https://raw.githubusercontent.com/york-cs-dams/flippd-dams/master/slides/fundamentals/ruby_parser.pdf",
+                  "icon" : "print"
+                },
+                {
+                  "title" : "Ruby Parser tutorial",
+                  "url" : "https://github.com/york-cs-dams/practicals/blob/master/fundamentals/tools/ruby_parser.md",
+                  "icon" : "pencil"
+                },
+                {
+                  "title" : "Ruby Parser on Github",
+                  "url" : "https://github.com/whitequark/parser",
+                  "icon" : "wrench"
+                }
+              ]
+            },
+            {
+              "title" : "Vagrant",
+              "description" : "A solution to the \"It works on my machine\" problem.",
+              "youtube" : "UzYyPG6LuKc",
+              "resources" : [
+                {
+                  "title" : "Slides",
+                  "url" : "https://raw.githubusercontent.com/york-cs-dams/flippd-dams/master/slides/fundamentals/vagrant.pdf",
+                  "icon" : "print"
+                },
+                {
+                  "title" : "Vagrant tutorial",
+                  "url" : "https://github.com/york-cs-dams/practicals/blob/master/fundamentals/tools/vagrant.md",
+                  "icon" : "pencil"
+                },
+                {
+                  "title" : "Vagrant documentation",
+                  "url" : "https://docs.vagrantup.com/v2/",
+                  "icon" : "book"
+                }
+              ]
+            },
+            {
+              "title" : "Git",
+              "description" : "A recap of version control, and a brief introduction to Git.",
+              "youtube" : "MmpbE9B6F8Q",
+              "resources" : [
+                {
+                  "title" : "Slides",
+                  "url" : "https://raw.githubusercontent.com/york-cs-dams/flippd-dams/master/slides/fundamentals/git.pdf",
+                  "icon" : "print"
+                },
+                {
+                  "title" : "Pro Git",
+                  "url" : "http://www.git-scm.com/book/en/v2",
+                  "icon" : "book"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title" : "Habitable Programs",
+      "summary" : "This is the core of the module. You'll learn about seven factors that increase the habitability of software, often by taking appropriate measurements and applying suitable refactorings.",
+      "topics" : [
+        {
+          "title" : "Leaner",
+          "summary" : "Lean software has no extra parts. Every part is factored into small pieces.",
+          "videos" : [
+            {
+              "title" : "Why lean?",
+              "description" : "Lean software solves a single problem well.",
+              "youtube" : "szYPXN7lLe4",
+              "resources" : [
+                {
+                  "title" : "Slides",
+                  "url" : "https://raw.githubusercontent.com/york-cs-dams/flippd-dams/master/slides/habitable_programs/lean/why_lean.pdf",
+                  "icon" : "print"
+                },
+                {
+                  "title" : "Practical",
+                  "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/size",
+                  "icon" : "pencil"
+                }
+              ]
+            },
+            {
+              "title" : "Size metrics",
+              "description" : "The Lines of Code metric, and alternatives to it.",
+              "youtube" : "es6vLYKLvbs",
+              "resources" : [
+                {
+                  "title" : "Slides",
+                  "url" : "https://raw.githubusercontent.com/york-cs-dams/flippd-dams/master/slides/habitable_programs/lean/size_metrics.pdf",
+                  "icon" : "print"
+                },
+                {
+                  "title" : "Practical",
+                  "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/size",
+                  "icon" : "pencil"
+                }
+              ]
+            },
+            {
+              "title" : "Getting lean",
+              "description" : "The Extract Method and Extract Class refactorings.",
+              "youtube" : "IWOY1diAGlE",
+              "resources" : [
+                {
+                  "title" : "Slides",
+                  "url" : "https://raw.githubusercontent.com/york-cs-dams/flippd-dams/master/slides/habitable_programs/lean/getting_lean.pdf",
+                  "icon" : "print"
+                },
+                {
+                  "title" : "Practical",
+                  "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/size",
+                  "icon" : "pencil"
+                },
+                {
+                  "title" : "Extract Method @ SourceMaking",
+                  "url" : "https://sourcemaking.com/refactoring/extract-method",
+                  "icon" : "book"
+                },
+                {
+                  "title" : "Extract Class @ SourceMaking",
+                  "url" : "https://sourcemaking.com/refactoring/extract-class",
+                  "icon" : "book"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title" : "Less Complex",
+          "summary" : "Methods that have fewer control-flow paths are easier to reason about, and hence easier to maintain.",
+          "videos" : [
+            {
+              "title" : "Why simplicity?",
+              "description" : "An exploration of complexity in software, and how simplicity can win.",
+              "youtube" : "XmCiCjwoLy0",
+              "resources" : [
+                {
+                  "title" : "Slides",
+                  "url" : "https://raw.githubusercontent.com/york-cs-dams/flippd-dams/master/slides/habitable_programs/complexity/why_simplicity.pdf",
+                  "icon" : "print"
+                },
+                {
+                  "title" : "Practical",
+                  "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/complexity",
+                  "icon" : "pencil"
+                }
+              ]
+            },
+            {
+              "title" : "Complexity metrics",
+              "description" : "The McCabe Cyclomatic and ABC metrics for quantifying complexity.",
+              "youtube" : "tTMFpKpjM1k",
+              "resources" : [
+                {
+                  "title" : "Slides",
+                  "url" : "https://raw.githubusercontent.com/york-cs-dams/flippd-dams/master/slides/habitable_programs/complexity/complexity_metrics.pdf",
+                  "icon" : "print"
+                },
+                {
+                  "title" : "Practical",
+                  "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/complexity",
+                  "icon" : "pencil"
+                }
+              ]
+            },
+            {
+              "title" : "Getting simple",
+              "description" : "Tactics for avoiding loops and conditionals.",
+              "youtube" : "gZuNXq0Ty-c",
+              "resources" : [
+                {
+                  "title" : "Slides",
+                  "url" : "https://raw.githubusercontent.com/york-cs-dams/flippd-dams/master/slides/habitable_programs/complexity/getting_rid_of_complexity.pdf",
+                  "icon" : "print"
+                },
+                {
+                  "title" : "Practical",
+                  "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/complexity",
+                  "icon" : "pencil"
+                },
+                {
+                  "title" : "Replace Conditional with Polymorphism",
+                  "url" : "https://sourcemaking.com/refactoring/replace-conditional-with-polymorphism",
+                  "icon" : "book"
+                },
+                {
+                  "title" : "Strategy Pattern @ SourceMaking",
+                  "url" : "https://sourcemaking.com/design_patterns/strategy",
+                  "icon" : "book"
+                },
+                {
+                  "title" : "Unconditional Programming",
+                  "url" : "http://michaelfeathers.typepad.com/michael_feathers_blog/2013/11/unconditional-programming.html",
+                  "icon" : "book"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title" : "Avoiding Duplication",
+          "summary" : "Changes are easier to make when every piece of knowledge is specified once and only once.",
+          "videos" : [
+            {
+              "title" : "Why not duplicate?",
+              "description" : "Avoiding duplication of knowledge is key to habitable software.",
+              "youtube" : "EQDTkZwSHz0",
+              "resources" : [
+                {
+                  "title" : "Slides",
+                  "url" : "https://raw.githubusercontent.com/york-cs-dams/flippd-dams/master/slides/habitable_programs/duplication/why_not_duplicate.pdf",
+                  "icon" : "print"
+                },
+                {
+                  "title" : "Practical",
+                  "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/clones",
+                  "icon" : "pencil"
+                }
+              ]
+            },
+            {
+              "title" : "Clone detection",
+              "description" : "Baker's algorithm for detecting similar fragments of code.",
+              "youtube" : "Up6qznduO6o",
+              "resources" : [
+                {
+                  "title" : "Slides",
+                  "url" : "https://raw.githubusercontent.com/york-cs-dams/flippd-dams/master/slides/habitable_programs/duplication/clone_detection.pdf",
+                  "icon" : "print"
+                },
+                {
+                  "title" : "Practical",
+                  "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/clones",
+                  "icon" : "pencil"
+                }
+              ]
+            },
+            {
+              "title" : "Reducing duplication",
+              "description" : "Making clones more alike, template methods, and strategies.",
+              "youtube" : "-sf2zPnHBOw",
+              "resources" : [
+                {
+                  "title" : "Slides",
+                  "url" : "https://raw.githubusercontent.com/york-cs-dams/flippd-dams/master/slides/habitable_programs/duplication/reducing_duplication.pdf",
+                  "icon" : "print"
+                },
+                {
+                  "title" : "Practical",
+                  "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/clones",
+                  "icon" : "pencil"
+                },
+                {
+                  "title" : "Template Method Pattern @ SourceMaking",
+                  "url" : "https://sourcemaking.com/design_patterns/template_method",
+                  "icon" : "book"
+                },
+                {
+                  "title" : "Strategy Pattern @ SourceMaking",
+                  "url" : "https://sourcemaking.com/design_patterns/strategy",
+                  "icon" : "book"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title" : "Loose Coupling",
+          "summary" : "Loosely coupled software can be altered without affecting its collaborators, and re-used in new contexts.",
+          "videos" : [
+            {
+              "title" : "Why loose coupling?",
+              "description" : "Explains how dependencies are powerful yet perilious.",
+              "youtube" : "hWyeKs0LZGA",
+              "resources" : [
+                {
+                  "title" : "Slides",
+                  "url" : "https://raw.githubusercontent.com/york-cs-dams/flippd-dams/master/slides/habitable_programs/coupling/why_loose_coupling.pdf",
+                  "icon" : "print"
+                },
+                {
+                  "title" : "Practical",
+                  "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/coupling",
+                  "icon" : "pencil"
+                }
+              ]
+            },
+            {
+              "title" : "Coupling metrics",
+              "description" : "The MPC and CBO metrics for quantifying coupling.",
+              "youtube" : "xuGxHsvDwpw",
+              "resources" : [
+                {
+                  "title" : "Slides",
+                  "url" : "https://raw.githubusercontent.com/york-cs-dams/flippd-dams/master/slides/habitable_programs/coupling/coupling_metrics.pdf",
+                  "icon" : "print"
+                },
+                {
+                  "title" : "Practical",
+                  "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/coupling",
+                  "icon" : "pencil"
+                }
+              ]
+            },
+            {
+              "title" : "Getting loose coupling",
+              "description" : "Dependency injection, inversion of control, tell don't ask and gateways.",
+              "youtube" : "XlQfMGsVr_0",
+              "resources" : [
+                {
+                  "title" : "Slides",
+                  "url" : "https://raw.githubusercontent.com/york-cs-dams/flippd-dams/master/slides/habitable_programs/coupling/getting_loose_coupling.pdf",
+                  "icon" : "print"
+                },
+                {
+                  "title" : "Practical",
+                  "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/coupling",
+                  "icon" : "pencil"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title" : "More Cohesive",
+          "summary" : "When software is arranged such that similar parts are close to each other, it is easier to maintain because changes are localised.",
+          "videos" : [
+            {
+              "title" : "Why cohesion?",
+              "description" : "Some parts of our software simply belong together.",
+              "youtube" : "BEm2ki8iZrA",
+              "resources" : [
+                {
+                  "title" : "Slides",
+                  "url" : "https://raw.githubusercontent.com/york-cs-dams/flippd-dams/master/slides/habitable_programs/cohesion/why_cohesion.pdf",
+                  "icon" : "print"
+                },
+                {
+                  "title" : "Practical",
+                  "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/cohesion",
+                  "icon" : "pencil"
+                }
+              ]
+            },
+            {
+              "title" : "Cohesion metrics",
+              "description" : "The LCOM4 cohesion metric for identifying classes with many responsibilities.",
+              "youtube" : "hL_TpzwCjiE",
+              "resources" : [
+                {
+                  "title" : "Slides",
+                  "url" : "https://raw.githubusercontent.com/york-cs-dams/flippd-dams/master/slides/habitable_programs/cohesion/cohesion_metrics.pdf",
+                  "icon" : "print"
+                },
+                {
+                  "title" : "Practical",
+                  "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/cohesion",
+                  "icon" : "pencil"
+                }
+              ]
+            },
+            {
+              "title" : "Getting cohesion",
+              "description" : "Extacting classes, moving methods, and using wrappers.",
+              "youtube" : "BEm2ki8iZrA",
+              "resources" : [
+                {
+                  "title" : "Slides",
+                  "url" : "https://raw.githubusercontent.com/york-cs-dams/flippd-dams/master/slides/habitable_programs/cohesion/getting_cohesion.pdf",
+                  "icon" : "print"
+                },
+                {
+                  "title" : "Practical",
+                  "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/cohesion",
+                  "icon" : "pencil"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title" : "Clarity",
+          "summary" : "Code is read much more often than it is written. Therefore, habitable software reads like a good story well told.",
+          "videos" : [
+            {
+              "title" : "Why clarity?",
+              "description" : "Clarity is crucial because code is read more often than it is written.",
+              "youtube" : "Qsx8U9aCISI",
+              "resources" : [
+                {
+                  "title" : "Slides",
+                  "url" : "https://raw.githubusercontent.com/york-cs-dams/flippd-dams/master/slides/habitable_programs/clarity/why_clarity.pdf",
+                  "icon" : "print"
+                },
+                {
+                  "title" : "Practical",
+                  "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/clarity",
+                  "icon" : "pencil"
+                },
+                {
+                  "title" : "Ruby Style Guide",
+                  "url" : "https://github.com/bbatsov/ruby-style-guide",
+                  "icon" : "book"
+                }
+              ]
+            },
+            {
+              "title" : "Clear names",
+              "description" : "Naming is one of the hardest problems in computer science.",
+              "youtube" : "F728xwWZVZ4",
+              "resources" : [
+                {
+                  "title" : "Slides",
+                  "url" : "https://raw.githubusercontent.com/york-cs-dams/flippd-dams/master/slides/habitable_programs/clarity/clear_names.pdf",
+                  "icon" : "print"
+                },
+                {
+                  "title" : "Practical",
+                  "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/clarity",
+                  "icon" : "pencil"
+                },
+                {
+                  "title" : "A Model for Improving Names",
+                  "url" : "http://blog.thecodewhisperer.com/2011/06/15/a-model-for-improving-names/",
+                  "icon" : "book"
+                }
+              ]
+            },
+            {
+              "title" : "Clear documentation",
+              "description" : "Bad documentation can seed doubt, confusion and despair!",
+              "youtube" : "VzDHGD7486o",
+              "resources" : [
+                {
+                  "title" : "Slides",
+                  "url" : "https://raw.githubusercontent.com/york-cs-dams/flippd-dams/master/slides/habitable_programs/clarity/clear_documentation.pdf",
+                  "icon" : "print"
+                },
+                {
+                  "title" : "Practical",
+                  "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/clarity",
+                  "icon" : "pencil"
+                }
+              ]
+            },
+            {
+              "title" : "Clear narratives",
+              "description" : "Habitable software reads like a good story well told.",
+              "youtube" : "OhDFCYNbGMY",
+              "resources" : [
+                {
+                  "title" : "Slides",
+                  "url" : "https://raw.githubusercontent.com/york-cs-dams/flippd-dams/master/slides/habitable_programs/clarity/clear_narrative.pdf",
+                  "icon" : "print"
+                },
+                {
+                  "title" : "Practical",
+                  "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/clarity",
+                  "icon" : "pencil"
+                },
+                {
+                  "title" : "Confident Code",
+                  "url" : "https://www.youtube.com/watch?v=T8J0j2xJFgQ",
+                  "icon" : "film"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title" : "Extensibility",
+          "summary" : "Extensible software allows its core functionality to be enriched at runtime without altering its code.",
+          "videos" : [
+            {
+              "title" : "Why extensibility?",
+              "description" : "Enhancing a system's functionality without re-opening components.",
+              "youtube" : "3EhDVsH0KkE",
+              "resources" : [
+                {
+                  "title" : "Slides",
+                  "url" : "https://raw.githubusercontent.com/york-cs-dams/flippd-dams/master/slides/habitable_programs/extensibility/why_extensibility.pdf",
+                  "icon" : "print"
+                },
+                {
+                  "title" : "Practical",
+                  "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/extensibility",
+                  "icon" : "pencil"
+                }
+              ]
+            },
+            {
+              "title" : "Observers",
+              "description" : "Decoupling components by using observers to communicate events.",
+              "youtube" : "-sf2zPnHBOw",
+              "resources" : [
+                {
+                  "title" : "Slides",
+                  "url" : "https://raw.githubusercontent.com/york-cs-dams/flippd-dams/master/slides/habitable_programs/extensibility/observers.pdf",
+                  "icon" : "print"
+                },
+                {
+                  "title" : "Practical",
+                  "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/extensibility",
+                  "icon" : "pencil"
+                }
+              ]
+            },
+            {
+              "title" : "Middleware",
+              "description" : "Decomposing message-processing applications with middleware.",
+              "youtube" : "sY-e6DCf55Q",
+              "resources" : [
+                {
+                  "title" : "Slides",
+                  "url" : "https://raw.githubusercontent.com/york-cs-dams/flippd-dams/master/slides/habitable_programs/extensibility/middleware.pdf",
+                  "icon" : "print"
+                },
+                {
+                  "title" : "Practical",
+                  "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/extensibility",
+                  "icon" : "pencil"
+                }
+              ]
+            },
+            {
+              "title" : "Plug-ins",
+              "description" : "How to implement a plug-in architecture with Ruby modules.",
+              "youtube" : "scuVGe48XXA",
+              "resources" : [
+                {
+                  "title" : "Slides",
+                  "url" : "https://raw.githubusercontent.com/york-cs-dams/flippd-dams/master/slides/habitable_programs/extensibility/plugins.pdf",
+                  "icon" : "print"
+                },
+                {
+                  "title" : "Practical",
+                  "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/extensibility",
+                  "icon" : "pencil"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title" : "Habitable Systems",
+      "summary" : "This is the bonus material for the module: it covers some recent trends in software engineering that can be applied to increase habitability. This phase isn't finished yet, and I'll be adding the videos, additional material, and practicals by Fri/10 (4th December).",
+      "topics" : []
+    }
+  ]
+}
+
