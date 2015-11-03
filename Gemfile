@@ -11,6 +11,7 @@ gem "omniauth-google-oauth2", "~> 0.2.6"
 group :development do
   gem "rake", "~> 10.4.2"
   gem "rerun", "~> 0.10.0"
+  gem 'quality'
 end
 
 group :test do
