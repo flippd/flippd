@@ -17,4 +17,5 @@ group :test do
   gem "capybara", "~> 2.4.4"
   gem "rspec", "~> 3.3.0"
   gem "dotenv", "~> 2.0.2"
+  gem 'coveralls', require: false
 end
