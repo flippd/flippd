@@ -3,6 +3,7 @@
 cd /vagrant
 
 echo "Install project-specific dependencies"
+sudo apt-get --yes install libmysqlclient-dev
 bundle install > /dev/null
 
 if [ ! -f .env ]; then

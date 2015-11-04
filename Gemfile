@@ -7,6 +7,8 @@ gem "thin", "~> 1.6.3"
 gem "foreman", "~> 0.78.0"
 gem "omniauth", "~> 1.2.2"
 gem "omniauth-google-oauth2", "~> 0.2.6"
+gem "data_mapper", "~> 1.2.0"
+gem "dm-mysql-adapter", "~> 1.2.0"
 
 group :development do
   gem "rake", "~> 10.4.2"
