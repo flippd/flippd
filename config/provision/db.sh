@@ -14,3 +14,4 @@ mysql -u root --password=$PASSWORD --execute="FLUSH PRIVILEGES"
 
 echo "Creating databases"
 mysql -u root --password=$PASSWORD --execute="CREATE DATABASE flippd"
+mysql -u root --password=$PASSWORD --execute="CREATE DATABASE flippd_test"

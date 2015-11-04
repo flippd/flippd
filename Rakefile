@@ -12,7 +12,7 @@ end
 
 desc "Run the tests"
 task :test do
-  exec 'bundle exec rspec'
+  exec 'mysql --user=root --password=root --database=flippd --execute="DROP DATABASE flippd_test; CREATE DATABASE flippd_test" && MODE=test bundle exec rspec'
 end
 
 desc "Start an interactive session with the database"
