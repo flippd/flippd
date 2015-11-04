@@ -1,6 +1,8 @@
 require 'dotenv'
 Dotenv.load
 
+require_relative 'db/init'
+
 require 'sinatra'
 require 'sinatra/multi_route'
 require 'rack-flash'
