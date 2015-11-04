@@ -27,6 +27,7 @@ GEM
       dm-validations (~> 1.2.0)
     data_objects (0.10.16)
       addressable (~> 2.1)
+    database_cleaner (1.5.1)
     diff-lcs (1.2.5)
     dm-aggregates (1.2.0)
       dm-core (~> 1.2.0)
@@ -159,6 +160,7 @@ PLATFORMS
 DEPENDENCIES
   capybara (~> 2.4.4)
   data_mapper (~> 1.2.0)
+  database_cleaner (~> 1.5.1)
   dm-mysql-adapter (~> 1.2.0)
   dotenv (~> 2.0.2)
   foreman (~> 0.78.0)
