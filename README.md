@@ -1,7 +1,6 @@
 # Flippd
 
 [![Build Status](https://travis-ci.org/sean-duffy/flippd.svg?branch=master)](https://travis-ci.org/sean-duffy/flippd)
-[![Coverage Status](https://coveralls.io/repos/sean-duffy/flippd/badge.svg?branch=master&service=github)](https://coveralls.io/github/sean-duffy/flippd?branch=master)
 
 
 
