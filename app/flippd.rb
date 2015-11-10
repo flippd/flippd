@@ -1,6 +1,8 @@
 require 'dotenv'
 Dotenv.load
 
+require_relative 'db/init'
+
 require 'sinatra'
 require 'sinatra/multi_route'
 require 'rack-flash'
@@ -11,7 +13,7 @@ class Flippd < Sinatra::Application
   use Rack::Flash
 
   before do
-    @version = "0.0.3"
+    @version = "0.0.4"
   end
 end
 

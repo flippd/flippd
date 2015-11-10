@@ -7,6 +7,9 @@ gem "thin", "~> 1.6.3"
 gem "foreman", "~> 0.78.0"
 gem "omniauth", "~> 1.2.2"
 gem "omniauth-google-oauth2", "~> 0.2.6"
+gem "data_mapper", "~> 1.2.0"
+gem "dm-mysql-adapter", "~> 1.2.0"
+gem "dotenv", "~> 2.0.2"
 
 group :development do
   gem "rake", "~> 10.4.2"
@@ -17,6 +20,6 @@ end
 group :test do
   gem "capybara", "~> 2.4.4"
   gem "rspec", "~> 3.3.0"
-  gem "dotenv", "~> 2.0.2"
   gem 'coveralls', require: false
+  gem "database_cleaner", "~> 1.5.1"
 end

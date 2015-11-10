@@ -3,7 +3,7 @@ feature "Signing in" do
     before(:each) { sign_in }
 
     it "displays the user's name" do
-      expect(page).to have_content 'Joe Bloggs'
+      expect(page).to have_content 'joe@bloggs.com'
     end
 
     it "displays a sign out link" do
