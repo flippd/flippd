@@ -26,4 +26,35 @@ feature "A multiple choice test page" do
 		expect(page).to have_content 'input type="submit"'
 		#expect(page).to have_input?
 	end
+
+    it "rewards marks a correct answer" do
+        expect(quiz.mark("expected_answer", "expected_answer") to eq(True)
+    end
+
+    it "punishes an incorrect answer" do
+        expect(quiz.mark("given_answer", "expected_answer") to eq(False)
+    end
+
+    it "returns the sum total of given marks over total marks" do
+        expect(quiz.score() to eq ("1/2")
+    end
+
+    it "updates the view to show the score" do
+        expect(page).to have_content ("Marks")
+    end
+
+    it "has links to review the lecture" do
+        expect(page).to have_link "lecture", href: "/videos/lecture"
+    end
+
+    it "has links to the next lecture" do
+        expect(page).to have_link "next", href: "/videos/next"
+    end
+
+    it "has a button to restart the test" do
+        #reset button?
+        expect(page).to have_content "input type=submit"
+    end
+
+
 end
