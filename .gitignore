@@ -37,4 +37,4 @@ bower.json
 .vagrant
 
 # Ignore environment-specific configuration
-*.env
+#*.env
