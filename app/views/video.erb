@@ -28,6 +28,37 @@
   <div id="player"></div>
 </div>
 
+<div id="comments" class="row">
+  <div class="col-md-8 col-md-offset2">
+
+    <% @comments.each do |comment| %>
+      <div class="row" style="padding: 5px; border: 1px gray solid; border-radius: 3px; margin-bottom: 5px;">
+
+        <button style="btn btn-xs btn-primary pull-right">
+          Reply to this comment
+        </button>
+
+        <strong><%=comment.user.name%></strong>
+
+        <p><%=comment.text%></p>
+
+        <p class="text-muted">
+          <%comment.commentTime%>
+
+          <% if comment.lastEditTime %>
+            <strong>
+              Last edited at <%=comment.lastEditTime%>
+              by <%=comment.lastEditUser.name%>
+            </strong>
+          <% end %>
+        </p>
+
+      </div>
+    <% end %>
+
+  </div>
+</div>
+
 <% if @video["resources"] %>
 <div id="resources" class="row" style="margin-top: 1.5em;">
   <div class="col-xs-6 col-md-6">

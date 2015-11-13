@@ -5,16 +5,16 @@ feature "A video page" do
       :name    => "John",
       :email   => "j.doe@york.ac.uk",
     )
+
     @bob = User::create(
       :name    => "Bob",
       :email   => "b.smith@york.ac.uk",
     )
 
     @original = Comment::create(
-      :videoId      => 2,
-      :user         => @john,
-      :text         => "Hello world.",
-      :videoTime    => 90,
+      :user => @john,
+      :text => "Hello world.",
+      :videoId => 2,
     )
 
     @reply = @original.add_reply @bob, "Hi to u"
@@ -43,14 +43,14 @@ feature "A video page" do
   context "after some modifications to the comments" do
 
     before(:each) do
-      @reply.edit_comment @john, "Hi to you"
+      @result = @reply.edit_comment @john, "Hi to you"
       @original.edit_video_time 120
       visit('/videos/2')
     end
 
-    it "contains the reply to the comment" do
+    it "contains the reply to the comment (database)" do
       within('body') do
-        expect(page).to have_content 'Hi to you'
+        expect(@reply.text).to eq "Hi to you"
       end
     end
 
