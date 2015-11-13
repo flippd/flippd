@@ -38,6 +38,22 @@ class Flippd < Sinatra::Application
     erb :phase
   end
 
+  before '/comment/new' do
+    unless @user
+      halt 401, "Error 401, Unauthorised"
+    end
+  end
+
+  before '/comment/edit/:id' do
+    unless @user
+      halt 401, "Error 401, Unauthorised"
+    end
+    #@todo Allow the author of comment to edit
+    unless @user.is_lecturer #or the auther
+      halt 403, "Error 403, Forbidden"
+    end
+  end
+
   get '/videos/:id' do
     @phases.each do |phase|
       phase['topics'].each do |topic|

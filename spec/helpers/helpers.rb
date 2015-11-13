@@ -3,9 +3,19 @@ module Helpers
     OmniAuth.config.test_mode = false
     visit from
     click_on 'Sign In' if page.has_link?('Sign In')
-          
+
     fill_in 'Name', with: 'Joe Bloggs'
     fill_in 'Email', with: 'joe@bloggs.com'
+    click_on 'Sign In'
+  end
+
+  def sign_in_lecturer(from: '/')
+    OmniAuth.config.test_mode = false
+    visit from
+    click_on 'Sign In' if page.has_link?('Sign In')
+
+    fill_in 'Name', with: 'Joe Bloggs'
+    fill_in 'Email', with: 'joe.bloggs@york.ac.uk'
     click_on 'Sign In'
   end
 
@@ -15,10 +25,11 @@ module Helpers
     visit from
     click_on 'Sign In' if page.has_link?('Sign In')
   end
-  
+
   def sign_out
     click_on 'Sign Out'
   end
+
 end
 
 OmniAuth.config.logger.level = Logger::UNKNOWN
