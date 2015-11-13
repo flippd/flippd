@@ -35,6 +35,13 @@ Let's try making a really simple change to Flippd, so that we can see what the p
 3. Reload the webpage at [http://localhost:4567](http://localhost:4567). You should see the new version number in the footer of the page.
 
 
+## Working with a different configuration
+
+Flippd displays information about a specific module (e.g., DAMS), and this information is taken from the Github repository at location specified by CONFIG_URL in your `.env` file. If you've followed the instructions above, your `.env` file will use a Github repository that contains information about DAMS. You can also change Flippd to use your own Github repository (perhaps a clone of the [DAMS repository](https://github.com/york-cs-dams/flippd-dams), for example).
+
+You can also change Flippd to use local files, by setting `CONFIG_URL` equal to some path relative to the base directory of the application. So for example, you could create a directory `module` (in the same directory as `app`, `config`, etc) and set `CONFIG_URL=module/` in your `.env` file. Do make sure that `module` contains both a `template.json` file and an `index.erb` file.
+
+
 ## Running the integration tests
 
 Flippd has a small number of high-level (integration) tests that check its basic functionality. You can run these with `vado rake test`. It's helpful to run these often to increase confidence that any changes that have been made have not introduced a bug.
