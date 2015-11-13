@@ -5,7 +5,17 @@ module Helpers
     click_on 'Sign In' if page.has_link?('Sign In')
 
     fill_in 'Name', with: 'Joe Bloggs'
-    fill_in 'Email', with: 'joe@bloggs.com'
+    fill_in 'Email', with: 'joe543@york.ac.uk'
+    click_on 'Sign In'
+  end
+
+  def sign_in_lecture(from: '/')
+    OmniAuth.config.test_mode = false
+    visit from
+    click_on 'Sign In' if page.has_link?('Sign In')
+
+    fill_in 'Name', with: 'Joe Bloggs'
+    fill_in 'Email', with: 'joe.bloggs@byork.ac.uk'
     click_on 'Sign In'
   end
 

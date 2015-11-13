@@ -38,8 +38,16 @@ class Flippd < Sinatra::Application
     erb :phase
   end
 
-  get '/comment/new' do
-    halt 401, "Error 401, Not authorized"
+  before '/comment/new' do
+    unless @user
+      halt 401, "Error 401, Not authorized"
+    end
+  end
+
+  before '/comment/edit/:id' do
+    unless @user
+      halt 403, "Error 401, Not authorized"
+    end
   end
 
   get '/videos/:id' do

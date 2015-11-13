@@ -8,6 +8,48 @@ feature "Not authorized for student pages" do
 
 end
 
+feature "New comment user privilages" do
+  before(:each) {
+    sign_in
+    visit('comment/new') }
+
+  it "Checks the page for adding comments shows up" do
+    expect(page).to_not have_content 'Error 401'
+  end
+end
+
+feature "Editing comment user privilages" do
+  context ' if not signed in' do
+    it ' ' do
+      expect(page).to have_content 'Error 401, Not authorized'
+    end
+  end
+  context ' with student credentials' do
+    before(:each) {
+      sign_in
+      visit('comment/edit/1')
+    }
+    it "being allowed to edit their own comment" do
+      expect(page).to_not have_content 'Error 403'
+    end
+
+    it "checks if student is not allowed to edit somebody else's comment" do
+      expect(page).to have_content 'Error 403'
+    end
+  end
+  context 'with lecturer credentials' do
+    before(:each) {
+      sign_in_lecturer
+      visit('comment/edit/1')
+    }
+    it "check if lecture is allowed to edit any comment" do
+      expect(page).to_not have_content 'Error 403'
+    end
+  end
+
+
+end
+
 feature "User email tests" do
   before(:each) { sign_in }
 
