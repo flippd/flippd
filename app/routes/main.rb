@@ -40,13 +40,17 @@ class Flippd < Sinatra::Application
 
   before '/comment/new' do
     unless @user
-      halt 401, "Error 401, Not authorized"
+      halt 401, "Error 401, Unauthorised"
     end
   end
 
   before '/comment/edit/:id' do
     unless @user
-      halt 403, "Error 401, Not authorized"
+      halt 401, "Error 401, Unauthorised"
+    end
+    #@todo Allow the author of comment to edit
+    unless @user.is_lecturer #or the auther
+      halt 403, "Error 403, Forbidden"
     end
   end
 
