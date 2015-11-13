@@ -33,18 +33,18 @@ feature "A video page" do
     end
   end
 
-  # context "after some modification"
-  #
-  #   before(:each) do
-  #     @reply.edit_comment @john "Hi to you"
-  #     visit('/videos/2')
-  #   end
-  #
-  #   it "contains the reply to the comment" do
-  #     within('body') do
-  #       expect(page).to have_content 'Hi to you'
-  #     end
-  #   end
-  #
-  # end
+  context "after some modification" do
+
+    before(:each) do
+      @reply.edit_comment @john, "Hi to you"
+      visit('/videos/2')
+    end
+
+    it "contains the reply to the comment" do
+      within('body') do
+        expect(page).to have_content 'Hi to you'
+      end
+    end
+
+  end
 end
