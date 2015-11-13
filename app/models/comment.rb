@@ -31,4 +31,10 @@ class Comment
     save
   end
 
+  # Edits the video timestamp of the comment
+  def edit_video_time new_video_time
+    @videoTime = new_video_time
+    save
+  end
+
 end
