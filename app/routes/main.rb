@@ -38,6 +38,10 @@ class Flippd < Sinatra::Application
     erb :phase
   end
 
+  get '/comment/new' do
+    halt 401, "Error 401, Not authorized"
+  end
+
   get '/videos/:id' do
     @phases.each do |phase|
       phase['topics'].each do |topic|
