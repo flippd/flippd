@@ -7,16 +7,6 @@ class Flippd < Sinatra::Application
     @module = JSON.load(open(ENV['CONFIG_URL'] + "module.json"))
     @phases = @module['phases']
 
-    # The configuration doesn't have to include quizzes for every topic,
-    # so we add an empty list of quizzes to the ones that don't
-    @phases.each do |phase|
-      phase['topics'].each do |topic|
-        if topic['quizzes'] == nil
-          topic['quizzes'] = []
-        end
-      end
-    end
-
     # The configuration doesn't have to include identifiers, so we
     # add an identifier to each phase and video
     phase_id = 1
@@ -24,8 +14,12 @@ class Flippd < Sinatra::Application
     @phases.each do |phase|
       phase["id"] = phase_id
       phase_id += 1
-
       phase['topics'].each do |topic|
+        # The configuration doesn't have to include quizzes for every topic,
+        # so we add an empty list of quizzes to the ones that don't
+        if topic['quizzes'] == nil
+          topic['quizzes'] = []
+        end
         topic['videos'].each do |video|
           video["id"] = video_id
           video_id += 1
@@ -52,29 +46,18 @@ class Flippd < Sinatra::Application
     @phases.each do |phase|
       phase['topics'].each do |topic|
         topic['videos'].each do |video|
+          #Set the previous video
+          if video["id"] == params['id'].to_i - 1
+            @previous_video = video
+          end
+          #Set the current video
           if video["id"] == params['id'].to_i
             @phase = phase
             @video = video
           end
-        end
-      end
-    end
-
-    @phases.each do |phase|
-      phase['topics'].each do |topic|
-        topic['videos'].each do |video|
+          #Set the next video
           if video["id"] == params['id'].to_i + 1
             @next_video = video
-          end
-        end
-      end
-    end
-
-    @phases.each do |phase|
-      phase['topics'].each do |topic|
-        topic['videos'].each do |video|
-          if video["id"] == params['id'].to_i - 1
-            @previous_video = video
           end
         end
       end
