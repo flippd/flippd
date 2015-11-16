@@ -7,6 +7,16 @@ class Flippd < Sinatra::Application
     @module = JSON.load(open(ENV['CONFIG_URL'] + "module.json"))
     @phases = @module['phases']
 
+    # The configuration doesn't have to include quizzes for every topic,
+    # so we add an empty list of quizzes to the ones that don't
+    @phases.each do |phase|
+      phase['topics'].each do |topic|
+        if topic['quizzes'] == nil
+          topic['quizzes'] = []
+        end
+      end
+    end
+
     # The configuration doesn't have to include identifiers, so we
     # add an identifier to each phase and video
     phase_id = 1

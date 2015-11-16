@@ -16,6 +16,11 @@
           <a href="/videos/<%=video["id"]%>"><%=video["title"]%></a>
         </li>
     <% end %>
+    <% topic["quizzes"].each do |quiz| %>
+        <li>
+          <a href="/quizzes/<%=0%>"><%=quiz["title"]%></a>
+        </li>
+    <% end %>
     </ul>
   </div>
   <% end %>
