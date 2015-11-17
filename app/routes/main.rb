@@ -89,4 +89,14 @@ class Flippd < Sinatra::Application
     pass unless @video
     erb :video
   end
+
+  get '/quizzes/:id' do
+    @phase = @phases.first # FIXME
+    erb :quiz
+  end
+
+  get '/quiz_result/:id' do
+    @phase = @phases.first # FIXME
+    erb :quiz_result
+  end
 end
