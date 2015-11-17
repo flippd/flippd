@@ -26,10 +26,11 @@ class Comment
 
   # Edits this comment and updates last editor and last edit timestamp
   def edit_comment user, new_text
-    @lastEditUser = user
-    @lastEditTime = DateTime.now
-    @text = new_text
-    save
+    update(
+      :lastEditUser => user,
+      :lastEditTime => DateTime.now,
+      :text => new_text,
+    )
   end
 
   # Edits the video timestamp of the comment

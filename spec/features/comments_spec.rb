@@ -50,7 +50,7 @@ feature "A video page" do
 
     it "contains the reply to the comment (database)" do
       within('body') do
-        expect(@reply.text).to eq "Hi to you"
+        expect(page).to have_content 'Hi to you'
       end
     end
 
