@@ -15,3 +15,7 @@ body {
 #player {
   border: 1px solid black;
 }
+
+.hidden {
+  display: none;
+}

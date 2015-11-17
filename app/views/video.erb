@@ -37,7 +37,10 @@
     <% if @user %>
     <form action="/comment/new" method="POST">
       <input type="hidden" name="videoId" value="<%= @video["id"] %>" />
-      Video Time: <input type="number" min="0" max="9999" name="videoTime" /><br />
+      Video Time:
+        <input type="number" min="0" max="59" value="0" required name="videoTimeMinutes" />m 
+        <input type="number" min="0" max="59" value="0" required name="videoTimeSeconds" />s
+      <br />
       <textarea name="text" rows="2" placeholder="Write a comment"
         class="form-control" required></textarea>
       <button type="submit" class="btn btn-standard btn-block">
@@ -47,7 +50,7 @@
 
     <% else %>
       <div class="alert alert-info">
-        <i class="fa fa-fw fa-info-sign"></i>
+        <i class="fa fa-fw fa-info"></i>
         Please log in to add a comment to this video.
       </div>
 
@@ -60,16 +63,41 @@
           Reply to this comment
         </button>
 
-        <strong><%=comment.user.name%></strong>, <%= comment.video_time_display%>
+        <strong><%=comment.user.name%></strong> &nbsp; <%= comment.video_time_display%>
 
-        <p><%=comment.text%></p>
+        <div data-comment="<%=comment.id%>">
+          <p><%=comment.text%></p>
+          <% if true %>
+            <p>
+              <button class="btn btn-primary btn-xs"
+                      onclick="
+                          $('[data-comment=<%=comment.id%>]').hide();
+                          $('[data-comment-form=<%=comment.id%>]').removeClass('hidden');
+                      "
+              >
+                <i class="fa fa-fw fa-pencil"></i>
+                edit this comment
+              </button>
+            </p>
+          <% end %>
+        </div>
+
+        <form action="/comment/edit/<%=comment.id%>" method="POST"
+          class="hidden" data-comment-form="<%=comment.id%>">
+          <textarea name="new_text" required rows="2"
+            class="form-control"><%=comment.text%></textarea>
+          <button type="submit" class="btn btn-primary btn-block">
+            <i class="fa fa-fw fa-pencil"></i>
+            Edit comment
+          </button>
+        </form>
 
         <p class="text-muted">
-          <%comment.commentTime%>
+          <%= comment.commentTime.strftime "%d-%m-%Y at %H:%M"%>
 
           <% if comment.lastEditTime %>
             <strong>
-              Last edited at <%=comment.lastEditTime%>
+              Last edited on <%=comment.lastEditTime.strftime "%d-%m-%Y at %H:%M" %>
               by <%=comment.lastEditUser.name%>
             </strong>
           <% end %>
