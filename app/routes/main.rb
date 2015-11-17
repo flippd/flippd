@@ -91,7 +91,19 @@ class Flippd < Sinatra::Application
   end
 
   get '/quizzes/:id' do
-    @phase = @phases.first # FIXME
+    @phases.each do |phase|
+      phase['topics'].each do |topic|
+        topic['quizzes'].each do |quiz|
+          #Set the current quiz
+          if quiz["id"] == params['id'].to_i
+            @phase = phase
+            @quiz = quiz
+          end
+        end
+      end
+    end
+
+    pass unless @quiz
     erb :quiz
   end
 

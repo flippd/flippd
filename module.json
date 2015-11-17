@@ -564,7 +564,7 @@
                   "reason" : "Dictionary definitions of “cohesion” talks of unity, togetherness and bonds: cohesion is about things that belong together."
                 },
                 {
-                  "question" : "What is the LCOM4 score for the following Ruby class?\nclass Person\n  attr_reader :forename, :surname, :dob\n\n  def name\n    forename + \" \" + surname\n  end\n\n  def age\n    now = Time.now.utc.to_date\n    now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)\n  end\nend\n",
+                  "question" : "What is the LCOM4 score for the following Ruby class? <pre>\nclass Person\n  attr_reader :forename, :surname, :dob\n\n  def name\n    forename + \" \" + surname\n  end\n\n  def age\n    now = Time.now.utc.to_date\n    now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)\n  end\nend\n</pre>",
                   "answers" : [
                     {"A" : "2"},
                     {"B" : "3"},
