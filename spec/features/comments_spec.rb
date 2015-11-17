@@ -15,6 +15,7 @@ feature "A video page" do
       :user => @john,
       :text => "Hello world.",
       :videoId => 2,
+      :videoTime => 90,
     )
 
     @reply = @original.add_reply @bob, "Hi to u"

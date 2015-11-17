@@ -35,8 +35,26 @@ class Comment
 
   # Edits the video timestamp of the comment
   def edit_video_time new_video_time
-    @videoTime = new_video_time
-    save
+    update(
+      :videoTime => new_video_time
+    )
+  end
+
+  # Gets the time of the video in the format "12m40s"
+  def video_time_display
+    if @videoTime.nil?
+      return ""
+    end
+
+    seconds = @videoTime.modulo(60)
+    if seconds < 10
+      seconds = "0" + seconds.to_s
+    end
+
+    minutes = @videoTime / 60
+    minutes = minutes.round
+
+    minutes.to_s + "m" + seconds.to_s + "s"
   end
 
 end

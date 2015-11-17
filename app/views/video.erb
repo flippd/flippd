@@ -33,12 +33,13 @@
   <div class="col-md-8 col-md-offset-2">
 
     <p>&nbsp;</p>
-    
+
     <% if @user %>
     <form action="/comment/new" method="POST">
       <input type="hidden" name="videoId" value="<%= @video["id"] %>" />
+      Video Time: <input type="number" min="0" max="9999" name="videoTime" /><br />
       <textarea name="text" rows="2" placeholder="Write a comment"
-        class="form-control"></textarea>
+        class="form-control" required></textarea>
       <button type="submit" class="btn btn-standard btn-block">
           Comment
       </button>
@@ -59,7 +60,7 @@
           Reply to this comment
         </button>
 
-        <strong><%=comment.user.name%></strong>
+        <strong><%=comment.user.name%></strong>, <%= comment.video_time_display%>
 
         <p><%=comment.text%></p>
 

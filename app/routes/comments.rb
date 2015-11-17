@@ -9,11 +9,17 @@ class Flippd < Sinatra::Application
     @text = params[:text]
     @videoId = params[:videoId]
 
+    @videoTime = nil
+    if params[:videoTime]
+      @videoTime = params[:videoTime]
+    end
+
     # Create the new comment
     Comment.create(
       :videoId => @videoId,
       :user => @user,
       :text => @text,
+      :videoTime => @videoTime
     )
 
     # Redirect the user back to the video page
