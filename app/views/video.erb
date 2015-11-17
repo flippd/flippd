@@ -29,7 +29,28 @@
 </div>
 
 <div id="comments" class="row">
-  <div class="col-md-8 col-md-offset2">
+
+  <div class="col-md-8 col-md-offset-2">
+
+    <p>&nbsp;</p>
+    
+    <% if @user %>
+    <form action="/comment/new" method="POST">
+      <input type="hidden" name="videoId" value="<%= @video["id"] %>" />
+      <textarea name="text" rows="2" placeholder="Write a comment"
+        class="form-control"></textarea>
+      <button type="submit" class="btn btn-standard btn-block">
+          Comment
+      </button>
+    </form>
+
+    <% else %>
+      <div class="alert alert-info">
+        <i class="fa fa-fw fa-info-sign"></i>
+        Please log in to add a comment to this video.
+      </div>
+
+    <% end %>
 
     <% @comments.each do |comment| %>
       <div class="row" style="padding: 5px; border: 1px gray solid; border-radius: 3px; margin-bottom: 5px;">
