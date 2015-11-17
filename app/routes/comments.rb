@@ -1,9 +1,23 @@
 class Flippd < Sinatra::Application
 
-  post '/comment/new' do
+  before '/comment/new' do
     unless @user
       halt 401, "Error 401, Unauthorised"
     end
+  end
+
+  before '/comment/edit/:id' do
+    unless @user
+      halt 401, "Error 401, Unauthorised"
+    end
+    #@todo Allow the author of comment to edit
+    comment = Comment.get(params['id'])
+    unless @user.is_lecturer || (comment.user.email == @user.email)
+      halt 403, "Error 403, Forbidden"
+    end
+  end
+
+  post '/comment/new' do
 
     # Get the parameters from the form
     @text = params[:text]
@@ -26,15 +40,6 @@ class Flippd < Sinatra::Application
     redirect('/videos/' + @videoId)
   end
 
-  post '/comment/edit/:id' do
-    unless @user
-      halt 401, "Error 401, Unauthorised"
-    end
 
-    #@todo Allow the author of comment to edit
-    unless @user.is_lecturer #or the auther
-      halt 403, "Error 403, Forbidden"
-    end
-  end
 
 end
