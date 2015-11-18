@@ -5,11 +5,11 @@
     <div class="form-group">
       <p><%= question["question"] %></p>
 
-      <% question["answers"].each do |answer| %>
+      <% question["options"].each_with_index do |option, question_num| %>
         <div class="radio">
           <label>
-            <input type="radio" name="q1" value="1">
-            Option 1
+            <input type="radio" name="<%= question_num %>" value="<%= option["letter"] %>">
+            <%= option["text"] %>
           </label>
         </div>
       <% end %>
