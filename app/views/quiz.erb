@@ -1,5 +1,26 @@
 <h1 data-flippd-phase="<%= @phase["id"]%>"><%= @quiz["title"] %></h1>
-
+<div class="row">
+    <div class="col-xs-6 col-md-6">
+        <%if @previous %>
+            <h5>
+                <a href="/<%=@previous["type"]%>/<%=@previous["id"]%>">
+                    <span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>
+                    <%=@previous["title"]%>
+                </a>
+            </h5>
+        <% end %>
+    </div>
+    <div class="col-xs-6 col-md-6" style="text-align: right;">
+        <% if @next %>
+            <h5>
+                <a href="/<%=@next["type"]%>/<%=@next["id"]%>">
+                    <%=@next["title"]%>
+                    <span class="glyphicon glyphicon-step-forward" aria-hidden="true"</span>
+                </a>
+            </h5>
+        <% end %>
+    </div>
+</div>
 <form>
   <% @quiz["questions"].each do |question| %>
     <div class="form-group">
