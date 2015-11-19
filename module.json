@@ -248,11 +248,6 @@
                   "title" : "Practical",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/size",
                   "icon" : "pencil"
-                },
-                {
-                  "title" : "Leaner Formative",
-                  "url" : "../quizzes/24",
-                  "icon" : "pencil"
                 }
               ]
             },
@@ -270,11 +265,6 @@
                   "title" : "Practical",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/size",
                   "icon" : "pencil"
-                },
-                {
-                  "title" : "Leaner Formative",
-                  "url" : "../formative/leaner",
-                  "icon" : "pencil"
                 }
               ]
             },
@@ -291,11 +281,6 @@
                 {
                   "title" : "Practical",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/size",
-                  "icon" : "pencil"
-                },
-                {
-                  "title" : "Leaner Formative",
-                  "url" : "../formative/leaner",
                   "icon" : "pencil"
                 },
                 {
@@ -330,11 +315,6 @@
                   "title" : "Practical",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/complexity",
                   "icon" : "pencil"
-                },
-                {
-                  "title" : "Complexity Formative",
-                  "url" : "../formative/complexity",
-                  "icon" : "pencil"
                 }
               ]
             },
@@ -352,11 +332,6 @@
                   "title" : "Practical",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/complexity",
                   "icon" : "pencil"
-                },
-                {
-                  "title" : "Complexity Formative",
-                  "url" : "../formative/complexity",
-                  "icon" : "pencil"
                 }
               ]
             },
@@ -373,11 +348,6 @@
                 {
                   "title" : "Practical",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/complexity",
-                  "icon" : "pencil"
-                },
-                {
-                  "title" : "Complexity Formative",
-                  "url" : "../formative/complexity",
                   "icon" : "pencil"
                 },
                 {
@@ -417,11 +387,6 @@
                   "title" : "Practical",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/clones",
                   "icon" : "pencil"
-                },
-                {
-                  "title" : "Duplication Formative",
-                  "url" : "../formative/duplication",
-                  "icon" : "pencil"
                 }
               ]
             },
@@ -439,11 +404,6 @@
                   "title" : "Practical",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/clones",
                   "icon" : "pencil"
-                },
-                {
-                  "title" : "Duplication Formative",
-                  "url" : "../formative/duplication",
-                  "icon" : "pencil"
                 }
               ]
             },
@@ -460,11 +420,6 @@
                 {
                   "title" : "Practical",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/clones",
-                  "icon" : "pencil"
-                },
-                {
-                  "title" : "Duplication Formative",
-                  "url" : "../formative/duplication",
                   "icon" : "pencil"
                 },
                 {
@@ -499,11 +454,6 @@
                   "title" : "Practical",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/coupling",
                   "icon" : "pencil"
-                },
-                {
-                  "title" : "Coupling Formative",
-                  "url" : "../formative/coupling",
-                  "icon" : "pencil"
                 }
               ]
             },
@@ -521,11 +471,6 @@
                   "title" : "Practical",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/coupling",
                   "icon" : "pencil"
-                },
-                {
-                  "title" : "Coupling Formative",
-                  "url" : "../formative/coupling",
-                  "icon" : "pencil"
                 }
               ]
             },
@@ -542,11 +487,6 @@
                 {
                   "title" : "Practical",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/coupling",
-                  "icon" : "pencil"
-                },
-                {
-                  "title" : "Coupling Formative",
-                  "url" : "../formative/coupling",
                   "icon" : "pencil"
                 }
               ]
@@ -574,7 +514,7 @@
                 },
                 {
                   "title" : "Cohesion Formative",
-                  "url" : "../formative/cohesion",
+                  "url" : "../quizzes/24",
                   "icon" : "pencil"
                 }
               ]
@@ -596,7 +536,7 @@
                 },
                 {
                   "title" : "Cohesion Formative",
-                  "url" : "../formative/cohesion",
+                  "url" : "../quizzes/24",
                   "icon" : "pencil"
                 }
               ]
@@ -618,7 +558,7 @@
                 },
                 {
                   "title" : "Cohesion Formative",
-                  "url" : "../formative/cohesion",
+                  "url" : "../quizzes/24",
                   "icon" : "pencil"
                 }
               ]
@@ -690,11 +630,6 @@
                   "icon" : "pencil"
                 },
                 {
-                  "title" : "Clarity Formative",
-                  "url" : "../formative/clarity",
-                  "icon" : "pencil"
-                },
-                {
                   "title" : "Ruby Style Guide",
                   "url" : "https://github.com/bbatsov/ruby-style-guide",
                   "icon" : "book"
@@ -714,11 +649,6 @@
                 {
                   "title" : "Practical",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/clarity",
-                  "icon" : "pencil"
-                },
-                {
-                  "title" : "Clarity Formative",
-                  "url" : "../formative/clarity",
                   "icon" : "pencil"
                 },
                 {
@@ -742,11 +672,6 @@
                   "title" : "Practical",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/clarity",
                   "icon" : "pencil"
-                },
-                {
-                  "title" : "Clarity Formative",
-                  "url" : "../formative/clarity",
-                  "icon" : "pencil"
                 }
               ]
             },
@@ -763,11 +688,6 @@
                 {
                   "title" : "Practical",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/clarity",
-                  "icon" : "pencil"
-                },
-                {
-                  "title" : "Clarity Formative",
-                  "url" : "../formative/clarity",
                   "icon" : "pencil"
                 },
                 {
@@ -797,11 +717,6 @@
                   "title" : "Practical",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/extensibility",
                   "icon" : "pencil"
-                },
-                {
-                  "title" : "Extensibility Formative",
-                  "url" : "../formative/extensibility",
-                  "icon" : "pencil"
                 }
               ]
             },
@@ -818,11 +733,6 @@
                 {
                   "title" : "Practical",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/extensibility",
-                  "icon" : "pencil"
-                },
-                {
-                  "title" : "Extensibility Formative",
-                  "url" : "../formative/extensibility",
                   "icon" : "pencil"
                 }
               ]
@@ -841,11 +751,6 @@
                   "title" : "Practical",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/extensibility",
                   "icon" : "pencil"
-                },
-                {
-                  "title" : "Extensibility Formative",
-                  "url" : "../formative/extensibility",
-                  "icon" : "pencil"
                 }
               ]
             },
@@ -862,11 +767,6 @@
                 {
                   "title" : "Practical",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/extensibility",
-                  "icon" : "pencil"
-                },
-                {
-                  "title" : "Extensibility Formative",
-                  "url" : "../formative/extensibility",
                   "icon" : "pencil"
                 }
               ]
