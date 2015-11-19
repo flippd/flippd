@@ -615,6 +615,11 @@
                   "title" : "Practical",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/cohesion",
                   "icon" : "pencil"
+                },
+                {
+                  "title" : "Cohesion Formative",
+                  "url" : "../formative/cohesion",
+                  "icon" : "pencil"
                 }
               ]
             }
@@ -660,11 +665,6 @@
                   ],
                   "correct answer" : "A",
                   "reason" : "Name depends on forename and surname, whilst age depends on dob. There are therefore two distinct dependency subgraphs and hence an LCOM4 score of 2."
-                },
-                {
-                  "title" : "Cohesion Formative",
-                  "url" : "../formative/cohesion",
-                  "icon" : "pencil"
                 }
               ]
             }
