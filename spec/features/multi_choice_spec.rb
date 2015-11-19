@@ -1,3 +1,4 @@
+# Req. 1 - support formative mini-quiz assignments
 feature "A multiple choice test page" do
 	#checks code at url/test/1
 	before(:each) { visit('/test/1') }
@@ -27,22 +28,30 @@ feature "A multiple choice test page" do
 		#expect(page).to have_input?
 	end
 
+# Req 2. Flippd self marks the quizzes by comparing
+# Selected answers to correct answers
     it "rewards marks a correct answer" do
         expect(quiz.mark("expected_answer", "expected_answer") to eq(True)
     end
 
-    it "punishes an incorrect answer" do
+    # Req 3. Flippd provides justification when an answer is incorrect
+    it "punishes and justifies an incorrect answer" do
         expect(quiz.mark("given_answer", "expected_answer") to eq(False)
+        expect(quiz.justify("given answer", "expected answer" to eq("content")
+        quiz.update_page()
+        expect(page).to have_content("justification")
     end
-
+# Req 5. Returns a score upon submission
     it "returns the sum total of given marks over total marks" do
         expect(quiz.score() to eq ("1/2")
     end
 
     it "updates the view to show the score" do
+        quiz.update_page()
         expect(page).to have_content ("Marks")
     end
 
+# Req 4. Provide links to the previous/ next topic
     it "has links to review the lecture" do
         expect(page).to have_link "lecture", href: "/videos/lecture"
     end
@@ -55,6 +64,10 @@ feature "A multiple choice test page" do
         #reset button?
         expect(page).to have_content "input type=submit"
     end
-
-
+    
+# Req 6. 
+    it "renders HTML from the quiz template" do
+        expect(page).to_have css 'h1'
+    end
+    
 end
