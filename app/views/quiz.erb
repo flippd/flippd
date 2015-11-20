@@ -21,7 +21,7 @@
     </div>
 </div>
 <h1 data-flippd-phase="<%= @phase["id"]%>"><%= @quiz["title"] %></h1>
-<form>
+<form action="/quiz_result/<%= @quiz["id"] %>" method="post">
   <% @quiz["questions"].each do |question| %>
     <div class="form-group">
       <p><%= question["question"] %></p>
