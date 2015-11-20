@@ -22,6 +22,8 @@ class Flippd < Sinatra::Application
 
       end
     end
+
+    return nil
   end
 
   before do
