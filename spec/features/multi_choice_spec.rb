@@ -17,11 +17,11 @@ feature "A multiple choice test page" do
 	end
 
 	it "contains at least one radio input" do
-		expect(page).to have_content 'input type="radio"'
+		expect(page).to have_xpath '//input[@type="radio"]'
 	end
 
 	it "contains a submit button" do
-		expect(page).to have_content 'button type="submit"'
+		expect(page).to have_xpath '//button[@type="submit"]'
 	end
 
 # Req 2. Flippd self marks the quizzes by comparing
