@@ -69,7 +69,7 @@ feature "A multiple choice test page" do
     
 # Req 6. 
     it "renders HTML from the quiz template" do
-        expect(page).to_have css 'h1'
+        expect(page).to have_xpath '/html'
     end
     
 end
