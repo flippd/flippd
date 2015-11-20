@@ -62,11 +62,6 @@ feature "A multiple choice test page" do
         expect(page).to have_link "Why clarity?", href: "/videos/25"
     end
 
-    it "has a button to restart the test" do
-        #visit("/quiz_result/24")
-        expect(page).to have_content "button type=submit"
-    end
-    
 # Req 6. 
     it "renders HTML from the quiz template" do
         expect(page).to have_xpath '/html'
