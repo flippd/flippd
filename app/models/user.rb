@@ -10,4 +10,8 @@ class User
     return email.partition("@").first.include? '.'
   end
 
+  def can_edit_comment comment
+    return is_lecturer || comment.user == self
+  end
+
 end

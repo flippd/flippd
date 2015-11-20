@@ -11,8 +11,8 @@ class Flippd < Sinatra::Application
       halt 401, "Error 401, Unauthorised"
     end
     #@todo Allow the author of comment to edit
-    comment = Comment.get(params['id'])
-    unless @user.is_lecturer || (comment.user.email == @user.email)
+    comment = Comment.get params[:id]
+    unless @user.can_edit_comment comment
       halt 403, "Error 403, Forbidden"
     end
   end
