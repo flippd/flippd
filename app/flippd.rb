@@ -15,6 +15,12 @@ class Flippd < Sinatra::Application
   before do
     @version = "0.0.4"
   end
+
+  helpers do
+    def h(text)
+      Rack::Utils.escape_html(text)
+    end
+  end
 end
 
 require_relative 'routes/init'

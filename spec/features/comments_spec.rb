@@ -60,6 +60,20 @@ feature "A video page" do
     expect(page).to have_content "This is my new text"
   end
 
+  it "allows deleteing a comment (ui)" do
+    sign_in_lecturer
+    visit('/videos/2')
+    within('#comment-' + @original.id.to_s) do
+      click_on "delete"
+    end
+    within('#comment-' + @original.id.to_s) do
+      expect(page).not_to have_content "This is my new text"
+      expect(page).not_to have_content "This is my comment"
+      expect(page).to have_content "Comment deleted"
+    end
+
+  end
+
   context "after some modifications to the comments" do
 
     before(:each) do

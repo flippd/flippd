@@ -7,7 +7,7 @@ class Comment
   # Using a Lambda to make sure this gets evaluated at creation time
   property :commentTime, DateTime, required: true, default: lambda{ |p,s| DateTime.now }
   property :lastEditTime, DateTime, required: false
-  property :text, String, required: true
+  property :text, String, length: 1024, required: false
 
   # Association to the author (user), last editor (user) and parent comment
   belongs_to :user
@@ -31,6 +31,11 @@ class Comment
       :lastEditTime => DateTime.now,
       :text => new_text,
     )
+  end
+
+  # Deletes the comment (updating the text to an empty string)
+  def delete_comment user
+    edit_comment user, nil
   end
 
   # Edits the video timestamp of the comment

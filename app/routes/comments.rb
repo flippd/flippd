@@ -1,19 +1,17 @@
 class Flippd < Sinatra::Application
 
-  before '/comment/new' do
-    unless @user
-      halt 401, "Error 401, Unauthorised"
-    end
-  end
+  ["/comment/new", "/comment/edit/:id", "/comment/delete/:id"].each do |path|
+    before path do
+      unless @user
+        halt 401, "Error 401, Unauthorised"
+      end
 
-  before '/comment/edit/:id' do
-    unless @user
-      halt 401, "Error 401, Unauthorised"
-    end
-    #@todo Allow the author of comment to edit
-    comment = Comment.get params[:id]
-    unless @user.can_edit_comment comment
-      halt 403, "Error 403, Forbidden"
+      if params[:id]
+        comment = Comment.get params[:id]
+        unless @user.can_edit_comment comment
+          halt 403, "Error 403, Forbidden"
+        end
+      end
     end
   end
 
@@ -48,6 +46,19 @@ class Flippd < Sinatra::Application
 
     # Edits the comment
     comment.edit_comment @user, text
+
+    # Redirects to the video page
+    redirect('/videos/' + comment.videoId.to_s)
+
+  end
+
+  post '/comment/delete/:id' do
+
+    # Collects the POST params
+    comment = Comment.get(params[:id])
+
+    # Deletes the comment
+    comment.delete_comment @user
 
     # Redirects to the video page
     redirect('/videos/' + comment.videoId.to_s)
