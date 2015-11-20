@@ -31,8 +31,8 @@ feature "A video page" do
 
   context "for the last video" do
     it "contains a backward navigation link" do
-      visit('/videos/31')
-      expect(page).to have_link 'Middleware', href: "/videos/30"
+      visit('/videos/32')
+      expect(page).to have_link 'Middleware', href: "/videos/31"
     end
   end
 end
