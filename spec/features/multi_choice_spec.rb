@@ -6,7 +6,7 @@ feature "A multiple choice test page" do
 	#checks the page has the expected title
 	it "contains the test's title" do
 		within ('h1') do
-			expect(page).to have_content 'Cohesion Formation Quiz'
+			expect(page).to have_content 'Cohesion Formative Quiz'
 		end
 	end
 
