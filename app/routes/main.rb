@@ -2,6 +2,28 @@ require 'open-uri'
 require 'json'
 
 class Flippd < Sinatra::Application
+  def get_by_id(phases, id)
+    phases.each do |phase|
+      phase['topics'].each do |topic|
+
+        topic['videos'].each do |video|
+          if video["id"] == id
+            return video
+          end
+        end
+
+        # If a video with the matching ID was not found,
+        # the ID must correspond to a quiz
+        topic['quizzes'].each do |quiz|
+          if quiz["id"] == id
+            return quiz
+          end
+        end
+
+      end
+    end
+  end
+
   before do
     # Load in the configuration (at the URL in the project's .env file)
     @module = JSON.load(open(ENV['CONFIG_URL'] + "module.json"))
@@ -54,37 +76,19 @@ class Flippd < Sinatra::Application
   get '/videos/:id' do
     @phases.each do |phase|
       phase['topics'].each do |topic|
-
         topic['videos'].each do |video|
-          #Set the previous video
-          if video["id"] == params['id'].to_i - 1
-            @previous = video
-          end
           #Set the current video
           if video["id"] == params['id'].to_i
             @phase = phase
             @video = video
           end
-          #Set the next video
-          if video["id"] == params['id'].to_i + 1
-            @next = video
-          end
         end
-
-        topic['quizzes'].each do |quiz|
-          #Set the previous quiz if there is one
-          if quiz["id"] == params['id'].to_i - 1
-            @previous = quiz
-          end
-
-          #Set the next quiz if there is one
-          if quiz["id"] == params['id'].to_i + 1
-            @next = quiz
-          end
-        end
-
       end
     end
+
+    # Get the next and previous video/quiz to link to
+    @previous = get_by_id(@phases, params["id"].to_i - 1)
+    @next = get_by_id(@phases, params["id"].to_i + 1)
 
     pass unless @video
     erb :video
@@ -102,6 +106,11 @@ class Flippd < Sinatra::Application
         end
       end
     end
+
+
+    # Get the next and previous video/quiz to link to
+    @previous = get_by_id(@phases, params["id"].to_i - 1)
+    @next = get_by_id(@phases, params["id"].to_i + 1)
 
     pass unless @quiz
     erb :quiz
