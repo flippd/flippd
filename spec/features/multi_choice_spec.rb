@@ -27,13 +27,13 @@ feature "A multiple choice test page" do
 # Req 2. Flippd self marks the quizzes by comparing
 # Selected answers to correct answers
     it "rewards marks a correct answer" do
-        expect(quiz.mark("expected_answer", "expected_answer") to eq(True)
+        expect(quiz.mark("expected_answer", "expected_answer")).to eq(True)
     end
 
     # Req 3. Flippd provides justification when an answer is incorrect
     it "punishes and justifies an incorrect answer" do
-        expect(quiz.mark("given_answer", "expected_answer") to eq(False)
-        expect(quiz.justify("given answer", "expected answer" to eq("content")
+        expect(quiz.mark("given_answer", "expected_answer")).to eq(False)
+        expect(quiz.justify("given answer", "expected answer")).to eq("content")
         #visit("/quiz_result/24")
         quiz.update_page()
         expect(page).to have_content("justification")
@@ -44,7 +44,7 @@ feature "A multiple choice test page" do
         # Or else account for other tests changing the state
         quiz.mark("expected_answer", "expected_answer")
         quiz.mark("given_answer", "expected_answer")
-        expect(quiz.score() to eq ("1/2")
+        expect(quiz.score()).to eq ("1/2")
     end
 
     it "updates the view to show the score" do
