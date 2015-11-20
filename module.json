@@ -544,7 +544,7 @@
             {
               "title" : "Getting cohesion",
               "description" : "Extacting classes, moving methods, and using wrappers.",
-              "youtube" : "BEm2ki8iZrA",
+              "youtube" : "MEgtLRLNp8w",
               "resources" : [
                 {
                   "title" : "Slides",
@@ -723,7 +723,7 @@
             {
               "title" : "Observers",
               "description" : "Decoupling components by using observers to communicate events.",
-              "youtube" : "-sf2zPnHBOw",
+              "youtube" : "huY7ReO8HHs",
               "resources" : [
                 {
                   "title" : "Slides",
@@ -757,7 +757,7 @@
             {
               "title" : "Plug-ins",
               "description" : "How to implement a plug-in architecture with Ruby modules.",
-              "youtube" : "scuVGe48XXA",
+              "youtube" : "x5zwMxqLUx4",
               "resources" : [
                 {
                   "title" : "Slides",
