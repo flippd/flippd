@@ -40,6 +40,20 @@ class Flippd < Sinatra::Application
     redirect('/videos/' + @videoId)
   end
 
+  post '/comment/edit/:id' do
+
+    # Collects the POST params
+    text = params[:new_text]
+    comment = Comment.get(params[:id])
+
+    # Edits the comment
+    comment.edit_comment @user, text
+
+    # Redirects to the video page
+    redirect('/videos/' + comment.videoId.to_s)
+
+  end
+
 
 
 end

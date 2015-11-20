@@ -38,10 +38,12 @@
     <form action="/comment/new" method="POST">
       <input type="hidden" name="videoId" value="<%= @video["id"] %>" />
       Video Time:
-        <input type="number" min="0" max="59" value="0" required name="videoTimeMinutes" />m 
+        <input type="number" min="0" max="59" value="0" required name="videoTimeMinutes" />m
         <input type="number" min="0" max="59" value="0" required name="videoTimeSeconds" />s
       <br />
-      <textarea name="text" rows="2" placeholder="Write a comment"
+      <label for="add_text">Add a comment</label>
+      <textarea id="add_text" name="text" rows="2"
+        placeholder="Write a comment"
         class="form-control" required></textarea>
       <button type="submit" class="btn btn-standard btn-block">
           Comment
@@ -56,52 +58,60 @@
 
     <% end %>
 
+    <p>&nbsp;</p>
+
     <% @comments.each do |comment| %>
-      <div class="row" style="padding: 5px; border: 1px gray solid; border-radius: 3px; margin-bottom: 5px;">
+      <div id="comment-<%= comment.id %>"
+          class="row panel panel-default">
+        <div class="panel-body">
 
-        <button style="btn btn-xs btn-primary pull-right">
-          Reply to this comment
-        </button>
-
-        <strong><%=comment.user.name%></strong> &nbsp; <%= comment.video_time_display%>
-
-        <div data-comment="<%=comment.id%>">
-          <p><%=comment.text%></p>
           <% if true %>
-            <p>
-              <button class="btn btn-primary btn-xs"
-                      onclick="
-                          $('[data-comment=<%=comment.id%>]').hide();
-                          $('[data-comment-form=<%=comment.id%>]').removeClass('hidden');
-                      "
-              >
-                <i class="fa fa-fw fa-pencil"></i>
-                edit this comment
-              </button>
-            </p>
+            <button class="btn btn-primary btn-xs pull-right"
+                    onclick="
+                        $('[data-comment=<%=comment.id%>]').hide();
+                        $('[data-comment-form=<%=comment.id%>]').removeClass('hidden');
+                    "
+            >
+              <i class="fa fa-fw fa-pencil"></i>
+              edit this comment
+            </button>
           <% end %>
+
+          <strong><%=comment.user.name%></strong> &nbsp; <%= comment.video_time_display%>
+
+          <div data-comment="<%=comment.id%>">
+            <p><%=comment.text%></p>
+          </div>
+
+          <form action="/comment/edit/<%=comment.id%>" method="POST"
+            class="hidden" data-comment-form="<%=comment.id%>">
+            <label for="new_text">Edit this comment</label>
+            <textarea id="new_text" name="new_text" required rows="2"
+              class="form-control"><%=comment.text%></textarea>
+            <button type="submit" class="btn btn-primary btn-block">
+              <i class="fa fa-fw fa-pencil"></i>
+              Save changes
+            </button>
+          </form>
+
         </div>
 
-        <form action="/comment/edit/<%=comment.id%>" method="POST"
-          class="hidden" data-comment-form="<%=comment.id%>">
-          <textarea name="new_text" required rows="2"
-            class="form-control"><%=comment.text%></textarea>
-          <button type="submit" class="btn btn-primary btn-block">
-            <i class="fa fa-fw fa-pencil"></i>
-            Edit comment
-          </button>
-        </form>
+        <div class="panel-footer">
 
-        <p class="text-muted">
-          <%= comment.commentTime.strftime "%d-%m-%Y at %H:%M"%>
+          <p class="text-muted">
+            <i class="fa fa-fw fa-clock-o"></i>
+            Created <%= comment.commentTime.strftime "%d-%m-%Y at %H:%M"%>
 
-          <% if comment.lastEditTime %>
-            <strong>
-              Last edited on <%=comment.lastEditTime.strftime "%d-%m-%Y at %H:%M" %>
-              by <%=comment.lastEditUser.name%>
-            </strong>
-          <% end %>
-        </p>
+            <% if comment.lastEditTime %>
+              <span class="pull-right">
+                <i class="fa fa-fw fa-pencil"></i>
+                Last edited on <%=comment.lastEditTime.strftime "%d-%m-%Y at %H:%M" %>
+                by <%=comment.lastEditUser.name%>
+              </span>
+            <% end %>
+          </p>
+
+        </div>
 
       </div>
     <% end %>

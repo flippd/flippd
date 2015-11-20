@@ -41,6 +41,25 @@ feature "A video page" do
     end
   end
 
+  it "allows adding comments (ui)" do
+    sign_in_lecturer
+    visit('/videos/2')
+    fill_in "Add a comment", with: "This is my comment"
+    click_on "Comment"
+    expect(page).to have_content "This is my comment"
+  end
+
+  it "allows editing a comment (ui)", :javascript => true do
+    sign_in_lecturer
+    visit('/videos/2')
+    within('#comment-' + @original.id.to_s) do
+      click_on "edit"
+      fill_in "Edit this comment", with: "This is my new text"
+      click_on "Save changes"
+    end
+    expect(page).to have_content "This is my new text"
+  end
+
   context "after some modifications to the comments" do
 
     before(:each) do
