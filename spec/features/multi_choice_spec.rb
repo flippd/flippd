@@ -54,12 +54,12 @@ feature "A multiple choice test page" do
     end
 
 # Req 4. Provide links to the previous/ next topic (quiz? FIXME)
-    it "has links to review the lecture" do
-        expect(page).to have_link "lecture", href: "/videos/lecture"
+    it "has link to the previous video" do
+        expect(page).to have_link "Getting cohesion", href: "/videos/23"
     end
 
-    it "has links to the next lecture" do
-        expect(page).to have_link "next", href: "/videos/next"
+    it "has links to the next video" do
+        expect(page).to have_link "Why clarity?", href: "/videos/25"
     end
 
     it "has a button to restart the test" do
