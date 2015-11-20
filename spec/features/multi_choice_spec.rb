@@ -13,7 +13,7 @@ feature "A multiple choice test page" do
 	#check the various elements expected on the page
 	#there may be more appropriate methods, as suggested below
 	it "contains a form" do
-		expect(page).to have_content '<form>'
+		expect(page).to have_xpath '//form'
 	end
 
 	it "contains at least one radio input" do
