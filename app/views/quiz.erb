@@ -29,7 +29,7 @@
       <% question["options"].each_with_index do |option, question_num| %>
         <div class="radio">
           <label>
-            <input type="radio" name="<%= question_num %>" value="<%= option["letter"] %>">
+            <input type="radio" name="post[<%= question_num %>]" value="<%= option["letter"] %>">
             <%= option["text"] %>
           </label>
         </div>
