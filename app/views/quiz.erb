@@ -22,11 +22,11 @@
 </div>
 <h1 data-flippd-phase="<%= @phase["id"]%>"><%= @quiz["title"] %></h1>
 <form action="/quiz_result/<%= @quiz["id"] %>" method="post">
-  <% @quiz["questions"].each do |question| %>
+  <% @quiz["questions"].each_with_index do |question, question_num| %>
     <div class="form-group">
       <p><%= question["question"] %></p>
 
-      <% question["options"].each_with_index do |option, question_num| %>
+      <% question["options"].each do |option| %>
         <div class="radio">
           <label>
             <input type="radio" name="<%= question_num %>" value="<%= option["letter"] %>">
