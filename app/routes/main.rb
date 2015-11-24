@@ -120,7 +120,14 @@ class Flippd < Sinatra::Application
 
   post '/quiz_result/:id' do
     @phase = @phases.first # FIXME
-    @post = params
+    @post  = params[:post]
+    @quiz  = get_by_id(@phases, params["id"].to_i)
+    @score = 0
+    @post.each do |question_no, answer|
+        if @quiz["questions"][question_no.to_i]["correct answer"] == answer
+            @score += 1
+        end
+    end
     erb :quiz_result
   end
 end
