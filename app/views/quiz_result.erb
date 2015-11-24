@@ -1,11 +1,70 @@
-<h1 data-flippd-phase="<%= @phase["id"]%>">Habitability Factors</h1>
+<div class="row">
+    <div class="col-xs-6 col-md-6">
+        <%if @previous %>
+            <h5>
+                <a href="/<%=@previous["type"]%>/<%=@previous["id"]%>">
+                    <span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>
+                    <%=@previous["title"]%>
+                </a>
+            </h5>
+        <% end %>
+    </div>
+    <div class="col-xs-6 col-md-6" style="text-align: right;">
+        <% if @next %>
+            <h5>
+                <a href="/<%=@next["type"]%>/<%=@next["id"]%>">
+                    <%=@next["title"]%>
+                    <span class="glyphicon glyphicon-step-forward" aria-hidden="true"</span>
+                </a>
+            </h5>
+        <% end %>
+    </div>
+</div>
 
+<h1 data-flippd-phase="<%= @phase["id"]%>"><%=@quiz["title"] %></h1>
 <div>
     <%=@post%>
+</div>
+<br>
+<div>
+    <%=@quiz%>
+</div>
+<br>
+<div>
+    <%=@score%>
 </div>
 
 <form>
   <div class="form-group">
+    <% @quiz["questions"].each_with_index do |question, question_num| %>
+        <div class="form-group">
+            <p><%=question["question"]%></p>
+
+            <% question["options"].each do |option| %>
+                <% describedby = nil %>
+                <% if @post["question_num"] == option["letter"] %>
+                    <% if (option["letter"] == question["correct answer"]) %>
+                        <div class="radio has-success">
+                    <% else %>
+                        <div class="radio has-error">
+                    <% end %>
+                <% else %>
+                    <div class="radio">
+                <% end %>
+                        <label>
+                            <input type="radio" name="<%question_num %>" value="<%= option["letter"] %>">
+                            <%=option["text"]%>
+                        </label>
+                    </div>
+            <% end %>
+        </div>
+    <% end %>
+
+
+    <br>
+    <br>
+
+
     <p>Questions are likely to be fairly long, so this example text should also be long enough to show the layout of a longer question.</p>
     <div class="radio has-success">
       <label>
