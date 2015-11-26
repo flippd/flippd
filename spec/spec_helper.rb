@@ -1,4 +1,6 @@
 require 'dotenv'
+require 'rack/test'
+require 'sinatra/base'
 Dotenv.load
 
 require_relative '../app/flippd'

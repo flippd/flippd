@@ -1,5 +1,11 @@
 # Req. 1 - support formative mini-quiz assignments
 feature "A multiple choice test page" do
+    include Rack::Test::Methods
+
+    def app
+        Flippd
+    end
+
     #Checking the cohesion quiz page
 	before(:each) { visit('/quizzes/24') }
 
@@ -26,31 +32,25 @@ feature "A multiple choice test page" do
 
 # Req 2. Flippd self marks the quizzes by comparing
 # Selected answers to correct answers
+# Req 5. Flippd returns the sum total of correct answers over total questions
     it "rewards marks a correct answer" do
-        expect(quiz.mark("expected_answer", "expected_answer")).to eq(True)
+        post "/quizzes/24", params={:id=>"24", :post=>{"0"=>"C", "1"=>"A"}}
+        expect(last_response.ok?).to eq(true)
+        within("h2") do
+            expect(page).to have_content("Score: 2/2")
+        end
     end
 
     # Req 3. Flippd provides justification when an answer is incorrect
     it "punishes and justifies an incorrect answer" do
-        expect(quiz.mark("given_answer", "expected_answer")).to eq(False)
-        expect(quiz.justify("given answer", "expected answer")).to eq("content")
-        #visit("/quiz_result/24")
-        quiz.update_page()
-        expect(page).to have_content("justification")
-    end
-# Req 5. Returns a score upon submission
-    it "returns the sum total of given marks over total marks" do
-        # Might need to reset the quiz in the before each test clause
-        # Or else account for other tests changing the state
-        quiz.mark("expected_answer", "expected_answer")
-        quiz.mark("given_answer", "expected_answer")
-        expect(quiz.score()).to eq ("1/2")
-    end
-
-    it "updates the view to show the score" do
-        #visit("/quiz/result/24")
-        quiz.update_page()
-        expect(page).to have_content ("Marks")
+        post "/quizzes/24", params={:id=>"24", :post=>{"0"=>"B", "1"=>"A"}}
+        expect(last_response.ok?).to eq(true)
+        within("h2") do
+            expect(page).to have_content("Score: 1/2")
+        end
+        within("form") do
+            expect(page).to have_xpath '//span[@class="help_block"]'
+        end
     end
 
 # Req 4. Provide links to the previous/ next topic (quiz? FIXME)
