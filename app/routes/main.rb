@@ -118,7 +118,7 @@ class Flippd < Sinatra::Application
     erb :quiz
   end
 
-  post '/quiz_result/:id' do
+  post '/quizzes/:id' do
     @phase = @phases.first # FIXME
     @post  = params[:post]
     @quiz  = get_by_id(@phases, params["id"].to_i)
