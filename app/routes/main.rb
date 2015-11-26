@@ -122,12 +122,18 @@ class Flippd < Sinatra::Application
     @phase = @phases.first # FIXME
     @post  = params[:post]
     @quiz  = get_by_id(@phases, params["id"].to_i)
+
+    # Get the next and previous video/quiz to link to
+    @previous = get_by_id(@phases, params["id"].to_i - 1)
+    @next = get_by_id(@phases, params["id"].to_i + 1)
+
     @score = 0
     @post.each do |question_no, answer|
         if @quiz["questions"][question_no.to_i]["correct answer"] == answer
             @score += 1
         end
     end
+
     erb :quiz_result
   end
 end
