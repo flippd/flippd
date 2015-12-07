@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="col-xs-6 col-md-6">
+        <%if @previous %>
+            <h5>
+                <a href="/<%=@previous["type"]%>/<%=@previous["id"]%>">
+                    <span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>
+                    <%=@previous["title"]%>
+                </a>
+            </h5>
+        <% end %>
+    </div>
+    <div class="col-xs-6 col-md-6" style="text-align: right;">
+        <% if @next %>
+            <h5>
+                <a href="/<%=@next["type"]%>/<%=@next["id"]%>">
+                    <%=@next["title"]%>
+                    <span class="glyphicon glyphicon-step-forward" aria-hidden="true"</span>
+                </a>
+            </h5>
+        <% end %>
+    </div>
+</div>
+
+<h1 data-flippd-phase="<%= @phase["id"]%>"><%=@quiz["title"] %></h1>
+
+<form>
+  <div class="form-group">
+    <% @quiz["questions"].each_with_index do |question, question_num| %>
+        <div class="form-group">
+            <p><%=question["question"]%></p>
+            <% question["options"].each do |option| %>
+                <% describedby = nil %>
+                <% selected = false %>
+                
+                <% if @post[question_num.to_s] == option["letter"] %>
+                    <% selected = true %>
+                <% end %>
+                <% if (option["letter"] == question["correct answer"]) %>
+                    <div class="radio has-success">
+                    <% describedby = "correct_answer" %>
+                <% elsif selected %>
+                    <div class="radio has-error">
+                    <% describedby = "wrong_answer" %>
+                <% else %>
+                    <div class="radio">
+                <% end %>
+
+                     <label>
+                         <input type="radio" name="<%=question_num %>" disabled <%=selected ? "checked" : ""%>
+                             value="<%=option["letter"] %> aria-describedby="<%=question_num%>_answer">
+                         <%=option["text"]%>
+                     </label>
+                     <% if describedby == "correct_answer"%>
+                         <span class="glyphicon glyphicon-ok"></span>
+                            <span id="<%=question_num%>_<%=describedby%>" class="help-block">
+                                 <%=question["reason"]%>
+                            </span>
+                     <% elsif describedby == "wrong_answer"%>
+                        <span id="<%question_num%>_<%=describedby%>" class="glyphicon glyphicon-remove">
+                        </span>
+                     <% end %>
+                    </div>
+            <% end %>
+        </div>
+    <% end %>
+</form>
+
+<div>
+    <h2 class="pull-right"> Score: <%=@score%> / <%=@quiz["questions"].count%></h2>
+</div>
+

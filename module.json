@@ -511,6 +511,11 @@
                   "title" : "Practical",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/cohesion",
                   "icon" : "pencil"
+                },
+                {
+                  "title" : "Cohesion Formative",
+                  "url" : "../quizzes/24",
+                  "icon" : "pencil"
                 }
               ]
             },
@@ -528,13 +533,18 @@
                   "title" : "Practical",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/cohesion",
                   "icon" : "pencil"
+                },
+                {
+                  "title" : "Cohesion Formative",
+                  "url" : "../quizzes/24",
+                  "icon" : "pencil"
                 }
               ]
             },
             {
               "title" : "Getting cohesion",
               "description" : "Extacting classes, moving methods, and using wrappers.",
-              "youtube" : "BEm2ki8iZrA",
+              "youtube" : "MEgtLRLNp8w",
               "resources" : [
                 {
                   "title" : "Slides",
@@ -545,33 +555,56 @@
                   "title" : "Practical",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/cohesion",
                   "icon" : "pencil"
-                }
-              ],
-              "quizzes" : [
+                },
                 {
-                  "title" : "Cohesion Formative Quiz",
-                  "questions" : [
+                  "title" : "Cohesion Formative",
+                  "url" : "../quizzes/24",
+                  "icon" : "pencil"
+                }
+              ]
+            }
+          ],
+          "quizzes" : [
+            {
+              "title" : "Cohesion Formative Quiz",
+              "questions" : [
+                {
+                  "question" : "What is cohesion?",
+                  "options" : [
                     {
-                      "question" : "What is cohesion?",
-                      "answers" : [
-                        {"A" : "A measure of the degree to which the elements of a module belong together."},
-                        {"B" : "A measure of the strength of association established by a connection from one module to another."},
-                        {"C" : "A measure of the number of unique control flow paths through a part of the system."}
-                      ],
-                      "correct answer" : "A",
-                      "reason" : "Dictionary definitions of “cohesion” talks of unity, togetherness and bonds: cohesion is about things that belong together."
+                      "letter": "A",
+                      "text" : "A measure of the degree to which the elements of a module belong together."
                     },
                     {
-                      "question" : "What is the LCOM4 score for the following Ruby class?\nclass Person\n  attr_reader :forename, :surname, :dob\n\n  def name\n    forename + \" \" + surname\n  end\n\n  def age\n    now = Time.now.utc.to_date\n    now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)\n  end\nend\n",
-                      "answers" : [
-                        {"A" : "2"},
-                        {"B" : "3"},
-                        {"C" : "4"}
-                      ],
-                      "correct answer" : "A",
-                      "reason" : "Name depends on forename and surname, whilst age depends on dob. There are therefore two distinct dependency subgraphs and hence an LCOM4 score of 2."
+                      "letter" : "B",
+                      "text" : "A measure of the strength of association established by a connection from one module to another."
+                    },
+                    {
+                      "letter" : "C",
+                      "text" : "A measure of the number of unique control flow paths through a part of the system."
                     }
-                  ]
+                  ],
+                  "correct answer" : "A",
+                  "reason" : "Dictionary definitions of “cohesion” talks of unity, togetherness and bonds: cohesion is about things that belong together."
+                },
+                {
+                  "question" : "What is the LCOM4 score for the following Ruby class? <pre>\nclass Person\n  attr_reader :forename, :surname, :dob\n\n  def name\n    forename + \" \" + surname\n  end\n\n  def age\n    now = Time.now.utc.to_date\n    now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)\n  end\nend\n</pre>",
+                  "options" : [
+                    {
+                      "letter" : "A",
+                      "text" : "2"
+                    },
+                    {
+                      "letter" : "B",
+                      "text": "3"
+                    },
+                    {
+                      "letter" : "C",
+                      "text" : "4"
+                    }
+                  ],
+                  "correct answer" : "A",
+                  "reason" : "Name depends on forename and surname, whilst age depends on dob. There are therefore two distinct dependency subgraphs and hence an LCOM4 score of 2."
                 }
               ]
             }
@@ -690,7 +723,7 @@
             {
               "title" : "Observers",
               "description" : "Decoupling components by using observers to communicate events.",
-              "youtube" : "-sf2zPnHBOw",
+              "youtube" : "huY7ReO8HHs",
               "resources" : [
                 {
                   "title" : "Slides",
@@ -724,7 +757,7 @@
             {
               "title" : "Plug-ins",
               "description" : "How to implement a plug-in architecture with Ruby modules.",
-              "youtube" : "scuVGe48XXA",
+              "youtube" : "x5zwMxqLUx4",
               "resources" : [
                 {
                   "title" : "Slides",
@@ -749,4 +782,3 @@
     }
   ]
 }
-

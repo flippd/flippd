@@ -1,19 +1,19 @@
 <div class="row">
   <div class="col-xs-6 col-md-6">
-    <% if @previous_video %>
+    <% if @previous %>
       <h5>
-        <a href="/videos/<%=@previous_video["id"]%>">
+        <a href="/<%=@previous["type"]%>/<%=@previous["id"]%>">
           <span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>
-          <%=@previous_video["title"]%>
+          <%=@previous["title"]%>
         </a>
       </h5>
     <% end %>
   </div>
   <div class="col-xs-6 col-md-6" style="text-align: right;">
-    <% if @next_video %>
+    <% if @next %>
       <h5>
-        <a href="/videos/<%=@next_video["id"]%>">
-          <%=@next_video["title"]%>
+        <a href="/<%=@next["type"]%>/<%=@next["id"]%>">
+          <%=@next["title"]%>
           <span class="glyphicon glyphicon-step-forward" aria-hidden="true"></span>
         </a>
       </h5>
