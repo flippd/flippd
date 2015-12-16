@@ -13,4 +13,9 @@ model_files = Dir[models_directory + "*.rb"]
 model_files.each { |f| require f }
 
 DataMapper.finalize
-DataMapper.auto_upgrade!
+
+if ENV['RACK_ENV'] == 'test'
+  DataMapper.auto_migrate!
+else
+  DataMapper.auto_upgrade!
+end
