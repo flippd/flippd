@@ -12,7 +12,7 @@ end
 
 desc "Run the tests"
 task :test do
-  exec 'MODE=test bundle exec rspec'
+  exec 'RACK_ENV=test bundle exec rspec'
 end
 
 desc "Start an interactive session with the database"
