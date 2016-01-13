@@ -30,27 +30,23 @@ feature "A multiple choice test page" do
 		expect(page).to have_xpath '//button[@type="submit"]'
 	end
 
-# Req 2. Flippd self marks the quizzes by comparing
-# Selected answers to correct answers
-# Req 5. Flippd returns the sum total of correct answers over total questions
+    # Req 2. Flippd self marks the quizzes by comparing
+
+    # Selected answers to correct answers
+    # Req 5. Flippd returns the sum total of correct answers over total questions
     it "rewards marks a correct answer" do
-        post "/quizzes/24", params={:id=>"24", :post=>{"0"=>"C", "1"=>"A"}}
+        post "/quizzes/24", params={:id=>"24", :post=>{"0"=>"A", "1"=>"A"}}
         expect(last_response.ok?).to eq(true)
-        within("h2") do
-            expect(page).to have_content("Score: 2/2")
-        end
+        print last_response.body
+        expect(last_response.body).to have_content("Score: 2 / 2")
     end
 
     # Req 3. Flippd provides justification when an answer is incorrect
     it "punishes and justifies an incorrect answer" do
         post "/quizzes/24", params={:id=>"24", :post=>{"0"=>"B", "1"=>"A"}}
         expect(last_response.ok?).to eq(true)
-        within("h2") do
-            expect(page).to have_content("Score: 1/2")
-        end
-        within("form") do
-            expect(page).to have_xpath '//span[@class="help_block"]'
-        end
+        expect(last_response.body).to have_content("Score: 1 / 2")
+        expect(last_response.body).to have_xpath '//span[@class="help_block"]'
     end
 
 # Req 4. Provide links to the previous/ next topic (quiz? FIXME)
