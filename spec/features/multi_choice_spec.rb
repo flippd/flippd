@@ -46,7 +46,7 @@ feature "A multiple choice test page" do
         post "/quizzes/24", params={:id=>"24", :post=>{"0"=>"B", "1"=>"A"}}
         expect(last_response.ok?).to eq(true)
         expect(last_response.body).to have_content("Score: 1 / 2")
-        expect(last_response.body).to have_xpath '//span[@class="help_block"]'
+        expect(last_response.body).to have_xpath '//span[@class="help-block" and @id="0_correct_answer"]'
     end
 
 # Req 4. Provide links to the previous/ next topic (quiz? FIXME)
