@@ -1,29 +1,20 @@
 <h1 data-flippd-phase="<%= @phase["id"]%>"><%= @phase["title"] %></h1>
 <p class="lead"><%= @phase["summary"] %></p>
 
-<div id="topics">
+<div id="topics" class="row">
   <% @phase["topics"].each_with_index do |topic, index| %>
-    <% if index.even? %>
-    <div class="row">
-    <% end %>
-      <div class="col-md-6" style="padding-top: 15px;">
-        <h4><%=index+1%>. <%=topic["title"]%></h4>
+  <div class="col-md-6" style="padding-top: 15px;">
+    <h4><%=index+1%>. <%=topic["title"]%></h4>
 
-        <p>
-          <%= topic["summary"] %>
-        </p>
+    <p>
+      <%= topic["summary"] %>
+    </p>
 
-        <ul>
-        <% topic["videos"].each do |video| %>
-            <li>
-              <a href="/videos/<%=video["id"]%>"><%=video["title"]%></a>
-            </li>
-        <% end %>
-        </ul>
-      </div>
-
-    <% if index.odd? || index == (@phase["topics"].size - 1) %>
-    </div>
+    <ul>
+    <% topic["videos"].each do |video| %>
+        <li>
+          <a href="/videos/<%=video["id"]%>"><%=video["title"]%></a>
+        </li>
     <% end %>
     <% topic["quizzes"].each do |quiz| %>
         <li>
