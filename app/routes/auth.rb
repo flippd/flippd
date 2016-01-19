@@ -11,12 +11,14 @@ class Flippd < Sinatra::Application
   end
 
   before do
-    @user = session[:user]
+    @user = nil
+    @user = User.get(session[:user_id]) if session.key?(:user_id)
   end
 
   route :get, :post, '/auth/:provider/callback' do
     auth_hash = env['omniauth.auth']
-    session[:user] = { name: auth_hash.info.name, id: auth_hash.uid}
+    user = User.first_or_create({ email: auth_hash.info.email }, { name: auth_hash.info.name} )
+    session[:user_id] = user.id
 
     origin = env['omniauth.origin'] || '/'
     redirect to(origin)
@@ -29,7 +31,7 @@ class Flippd < Sinatra::Application
   end
 
   get '/auth/destroy' do
-    session[:user] = nil
+    session.delete(:user_id)
     origin = env["HTTP_REFERER"] || '/'
     redirect to(origin)
   end

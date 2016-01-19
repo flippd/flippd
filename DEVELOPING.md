@@ -35,6 +35,13 @@ Let's try making a really simple change to Flippd, so that we can see what the p
 3. Reload the webpage at [http://localhost:4567](http://localhost:4567). You should see the new version number in the footer of the page.
 
 
+## Working with a different configuration
+
+Flippd displays information about a specific module (e.g., DAMS), and this information is taken from the Github repository at location specified by CONFIG_URL in your `.env` file. If you've followed the instructions above, your `.env` file will use a Github repository that contains information about DAMS. You can also change Flippd to use your own Github repository (perhaps a clone of the [DAMS repository](https://github.com/york-cs-dams/flippd-dams), for example).
+
+You can also change Flippd to use local files, by setting `CONFIG_URL` equal to some path relative to the base directory of the application. So for example, you could create a directory `module` (in the same directory as `app`, `config`, etc) and set `CONFIG_URL=module/` in your `.env` file. Do make sure that `module` contains both a `template.json` file and an `index.erb` file.
+
+
 ## Running the integration tests
 
 Flippd has a small number of high-level (integration) tests that check its basic functionality. You can run these with `vado rake test`. It's helpful to run these often to increase confidence that any changes that have been made have not introduced a bug.
@@ -96,21 +103,37 @@ Note that the sections of the text that are enclosed in `<%` and `%>` are Ruby c
 
 For more information, see the [Sinatra README](http://www.sinatrarb.com/intro.html) and [this ERB tutorial](http://www.stuartellis.eu/articles/erb).
 
+## Database
+
+Since Flippd v0.0.4, a database is used to store information about logged-in users. The data is stored in a [MySQL 5](https://www.mysql.com) database. Flippd uses the [DataMapper](http://datamapper.org) gem to interact with the database. To become familiar with how Flippd reads and writes data to the database, I strongly recommend that you:
+
+1. Take a look at `app/models/user.rb` to understand how Ruby classes can be used to define and access database tables. You might like to refer to DataMapper's [Properties Guide](http://datamapper.org/docs/properties.html).
+2. Take a look at `app/routes/auth.rb` to understand how objects can be retrieved from the database (e.g., via `User#get`) and saved to the database (e.g., via `User#first_or_create`). You might like to refer to DataMapper's [Create, Save, Update and Destroy](http://datamapper.org/docs/create_and_destroy.html) and [Finding and Counting Records](http://datamapper.org/docs/find.html) guides.
+3. Read through the notes below which detail how your development workflow should change when working with the database.
+
+Adding a database to the mix has several ramifications on how we develop Flippd. The most important of these are:
+
+* **Don't edit the database by hand.** Any new database tables should be defined by creating a new file in `app/models`. Every file in this directory should define classes that `include DataMapper::Resource`. Any changes to database tables should be made to the corresponding file in `app/models`. Most changes will be automatically propagated to the database, when you next make a request to the web application. Changes that would invalidate existing records in the database will not be automatically propagated, so you will need to run `vado rake db:schema:load`. *This will delete all of the data in the database!*
+
+* **Quering the database can be useful for debugging.** The `vado rake db` command can be used to start an interactive session with the MySQL database. You can enter SQL commands here to see whether the database has the contents that you expect (e.g., `SELECT * from users;`) and you can check the structure of tables (`DESCRIBE users;`).
+
+* **The test suite uses a separate MySQL database.** So that you can run the test suite locally without destroying the state of your development database, the test suite uses its own MySQL database, named `flippd_test`. (By default, the database named `flippd` is used). The `flippd_test` database is automatically cleared out between each test case so that test cases do not interfere with each other.
+
 
 ## Project layout
 
 Flippd is roughly split into five pieces:
 
 1. `spec` - Test suite
-2. `app/routes` - Ruby code that drives the application via Sinatra
-3. `app/views`- ERB templates that render HTML
-4. `app/public` - Javascript and CSS files
-5. `config` - Vagrant provisioning scripts
+2. `app/db` - Ruby code that setups up the database connection
+3. `app/models` - Ruby code for CRUD operations on the database
+4. `app/routes` - Ruby code that drives the application via Sinatra
+5. `app/views`- ERB templates that render HTML
+6. `app/public` - Javascript and CSS files
+7. `config` - Vagrant provisioning scripts
 
-Most of the changes made for your assessment should be to Ruby server code (2 in the list above). You may also need to change the ERB templates (3), but any changes to the HTML should be discussed with me first.
+Most of the changes made for your assessment should be to Ruby server code (3 and 4 in the list above). You may also need to change the ERB templates (5), but any changes to the HTML should be discussed with me first.
 
 You will want to change the test suite (1) as you add new features and make changes to existing features. However, testing is not something I am assessing in DAMS, so I can give you lots of help and advice.
 
-You should not change the Javascript and CSS (4) or the Vagrant setup (5), but can discuss desirable changes with me first. (Where feasible, I will do this work for you, so that you can focus on the more important parts of your assessment).
-
-Flippd does not currently use a database, and the Vagrant setup does not currently install one.
+You should not change the Javascript and CSS (6) or the Vagrant setup (7), but can discuss desirable changes with me first. (Where feasible, I will do this work for you, so that you can focus on the more important parts of your assessment).
