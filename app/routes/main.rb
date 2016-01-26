@@ -27,6 +27,7 @@ class Flippd < Sinatra::Application
   end
 
   before do
+    @session = session
     # Load in the configuration (at the URL in the project's .env file)
     @module = JSON.load(open(ENV['CONFIG_URL'] + "module.json"))
     @phases = @module['phases']
@@ -132,6 +133,10 @@ class Flippd < Sinatra::Application
         if @quiz["questions"][question_no.to_i]["correct answer"] == answer
             @score += 1
         end
+    end
+    
+    if session.has_key?("user_id")    
+        result = QuizResult.create(:json_id => 1, :date => Time.now, :mark => @score, :user => User.get(session['user_id']))
     end
 
     erb :quiz_result

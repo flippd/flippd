@@ -780,5 +780,21 @@
       "summary" : "This is the bonus material for the module: it covers some recent trends in software engineering that can be applied to increase habitability. This phase isn't finished yet, and I'll be adding the videos, additional material, and practicals by Fri/10 (4th December).",
       "topics" : []
     }
+  ],
+
+  "badges": [
+    {
+        "id": 1,
+        "title": "Watched Video: Ruby",
+        "description": "Watched the Ruby introduction",
+        "img": "/images/no_icon.jpg",
+        "also_require":{}
+    },
+    {
+        "id": 2,
+        "title": "Completed Quiz: Cohesion",
+        "img": "/images/no_icon.jpg",
+        "also_require":{"mark": 2, "videos_watched":[1,2,3]}
+    }
   ]
 }
