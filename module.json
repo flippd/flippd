@@ -597,6 +597,7 @@
           "quizzes" : [
             {
               "title" : "Cohesion Formative Quiz",
+              "id" : "habitable-programs-cohesion-formative",
               "questions" : [
                 {
                   "question" : "What is cohesion?",
@@ -826,5 +827,19 @@
       "summary" : "This is the bonus material for the module: it covers some recent trends in software engineering that can be applied to increase habitability. This phase isn't finished yet, and I'll be adding the videos, additional material, and practicals by Fri/10 (4th December).",
       "topics" : []
     }
-  ]
+  ],
+  "badges": [
+        {
+            "title": "Kaiser Chief",
+            "description": "Watched the Ruby Tutorial",
+            "requires": {"videos_watched":[{"id":"fundamentals-ruby-ruby"}]},
+            "img": "/images/no_image.jpg"
+        },
+        {
+            "title": "Cohesion is key",
+            "description": "Passed the cohesion formative",
+            "requires": {"quiz_result":[{"id":"habitable-programs-cohesion-formative", "mark":2}]},
+            "img": "/images/no_image.jpg"
+        }
+    ]
 }
