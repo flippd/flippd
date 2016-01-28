@@ -11,6 +11,7 @@
           "videos" : [
             {
               "title" : "Ruby",
+              "id" : "fundamentals-ruby-ruby",
               "description" : "Briefly introduces Ruby, comparing it to Java and Python.",
               "youtube" : "NTGSi6kBrlU",
               "resources" : [
@@ -21,6 +22,7 @@
                 },
                 {
                   "title" : "A Ruby Tutorial",
+                  "id" : "fundamentals-ruby-tutorial",
                   "url" : "https://github.com/york-cs-dams/practicals/blob/master/fundamentals/ruby/1_introduction.md",
                   "icon" : "pencil"
                 },
@@ -38,6 +40,7 @@
             },
             {
               "title" : "Ruby Gems",
+              "id" : "fundamentals-ruby-ruby-gems",
               "description" : "Introduces RubyGems and Bundler for managing Ruby dependencies.",
               "youtube" : "bn6ZIdJxysg",
               "resources" : [
@@ -71,6 +74,7 @@
           "videos" : [
             {
               "title" : "Planning vs. reacting",
+              "id" : "fundamentals-approach-planning-reacting",
               "description" : "An argument for combining plan-driven and reactionary software engineering.",
               "youtube" : "ciU9en3yHpo",
               "resources" : [
@@ -81,6 +85,7 @@
                 },
                 {
                   "title" : "Design tutorial",
+                  "id" : "fundamentals-design-tutorial",
                   "url" : "https://github.com/york-cs-dams/practicals/blob/master/fundamentals/approach/planning_vs_reacting.md",
                   "icon" : "pencil"
                 },
@@ -93,6 +98,7 @@
             },
             {
               "title" : "TDD and RSpec",
+              "id" : "fundamentals-approach-tdd-rspec",
               "description" : "A recap of TDD and an overview of the RSpec testing framework.",
               "youtube" : "iRan2IniRmU",
               "resources" : [
@@ -103,6 +109,7 @@
                 },
                 {
                   "title" : "RSpec tutorial",
+                  "id" : "fundamentals-rspec-tutorial",
                   "url" : "https://github.com/york-cs-dams/practicals/blob/master/fundamentals/rspec/1_basics.md",
                   "icon" : "pencil"
                 },
@@ -125,6 +132,7 @@
             },
             {
               "title" : "Test doubles",
+              "id" : "fundamentals-approach-test-doubles",
               "description" : "A set of techniques that can be used bring almost any code under test.",
               "youtube" : "nduUjMbJ5to",
               "resources" : [
@@ -135,11 +143,13 @@
                 },
                 {
                   "title" : "RSpec test doubles tutorial",
+                  "id" : "fundamentals-rspec-test-doubles-tutorial",
                   "url" : "https://github.com/york-cs-dams/practicals/blob/master/fundamentals/rspec/2_doubles.md",
                   "icon" : "pencil"
                 },
                 {
                   "title" : "RSpec integration testing tutorial",
+                  "id" : "fundamentals-rspec-integration-testing-tutorial",
                   "url" : "https://github.com/york-cs-dams/practicals/blob/master/fundamentals/rspec/3_integration.md",
                   "icon" : "pencil"
                 },
@@ -163,6 +173,7 @@
           "videos" : [
             {
               "title" : "Ruby Parser",
+              "id" : "fundamentals-tools-ruby-parser",
               "description" : "An overview of the fundamentals of program analysis in Ruby.",
               "youtube" : "OWGYj_KEhvY",
               "resources" : [
@@ -173,6 +184,7 @@
                 },
                 {
                   "title" : "Ruby Parser tutorial",
+                  "id" : "fundamentals-ruby-parser-tutorial",
                   "url" : "https://github.com/york-cs-dams/practicals/blob/master/fundamentals/tools/ruby_parser.md",
                   "icon" : "pencil"
                 },
@@ -185,6 +197,7 @@
             },
             {
               "title" : "Vagrant",
+              "id" : "fundamentals-tools-vagrant",
               "description" : "A solution to the \"It works on my machine\" problem.",
               "youtube" : "UzYyPG6LuKc",
               "resources" : [
@@ -195,6 +208,7 @@
                 },
                 {
                   "title" : "Vagrant tutorial",
+                  "id" : "fundamentals-vagrant-tutorial",
                   "url" : "https://github.com/york-cs-dams/practicals/blob/master/fundamentals/tools/vagrant.md",
                   "icon" : "pencil"
                 },
@@ -207,6 +221,7 @@
             },
             {
               "title" : "Git",
+              "id" : "fundamentals-tools-git",
               "description" : "A recap of version control, and a brief introduction to Git.",
               "youtube" : "MmpbE9B6F8Q",
               "resources" : [
@@ -236,6 +251,7 @@
           "videos" : [
             {
               "title" : "Why lean?",
+              "id" : "habitable-programs-leaner-why-lean",
               "description" : "Lean software solves a single problem well.",
               "youtube" : "szYPXN7lLe4",
               "resources" : [
@@ -246,6 +262,7 @@
                 },
                 {
                   "title" : "Practical",
+                  "id" : "habitable-programs-size-tutorial",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/size",
                   "icon" : "pencil"
                 }
@@ -253,6 +270,7 @@
             },
             {
               "title" : "Size metrics",
+              "id" : "habitable-programs-leaner-size-metrics",
               "description" : "The Lines of Code metric, and alternatives to it.",
               "youtube" : "es6vLYKLvbs",
               "resources" : [
@@ -263,6 +281,7 @@
                 },
                 {
                   "title" : "Practical",
+                  "id" : "habitable-programs-size-tutorial",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/size",
                   "icon" : "pencil"
                 }
@@ -270,6 +289,7 @@
             },
             {
               "title" : "Getting lean",
+              "id" : "habitable-programs-leaner-getting-lean",
               "description" : "The Extract Method and Extract Class refactorings.",
               "youtube" : "IWOY1diAGlE",
               "resources" : [
@@ -280,6 +300,7 @@
                 },
                 {
                   "title" : "Practical",
+                  "id" : "habitable-programs-size-tutorial",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/size",
                   "icon" : "pencil"
                 },
@@ -303,6 +324,7 @@
           "videos" : [
             {
               "title" : "Why simplicity?",
+              "id" : "habitable-programs-less-complex-why-simplicity",
               "description" : "An exploration of complexity in software, and how simplicity can win.",
               "youtube" : "XmCiCjwoLy0",
               "resources" : [
@@ -313,6 +335,7 @@
                 },
                 {
                   "title" : "Practical",
+                  "id" : "habitable-programs-complexity-tutorial",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/complexity",
                   "icon" : "pencil"
                 }
@@ -320,6 +343,7 @@
             },
             {
               "title" : "Complexity metrics",
+              "id" : "habitable-programs-less-complex-complexity-metrics",
               "description" : "The McCabe Cyclomatic and ABC metrics for quantifying complexity.",
               "youtube" : "tTMFpKpjM1k",
               "resources" : [
@@ -330,6 +354,7 @@
                 },
                 {
                   "title" : "Practical",
+                  "id" : "habitable-programs-complexity-tutorial",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/complexity",
                   "icon" : "pencil"
                 }
@@ -337,6 +362,7 @@
             },
             {
               "title" : "Getting simple",
+              "id" : "habitable-programs-less-complex-getting-simple",
               "description" : "Tactics for avoiding loops and conditionals.",
               "youtube" : "gZuNXq0Ty-c",
               "resources" : [
@@ -347,6 +373,7 @@
                 },
                 {
                   "title" : "Practical",
+                  "id" : "habitable-programs-complexity-tutorial",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/complexity",
                   "icon" : "pencil"
                 },
@@ -375,6 +402,7 @@
           "videos" : [
             {
               "title" : "Why not duplicate?",
+              "id" : "habitable-programs-avoiding-duplication-why-not-duplicate",
               "description" : "Avoiding duplication of knowledge is key to habitable software.",
               "youtube" : "EQDTkZwSHz0",
               "resources" : [
@@ -385,6 +413,7 @@
                 },
                 {
                   "title" : "Practical",
+                  "id" : "habitable-programs-clones-tutorial",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/clones",
                   "icon" : "pencil"
                 }
@@ -392,6 +421,7 @@
             },
             {
               "title" : "Clone detection",
+              "id" : "habitable-programs-avoiding-duplication-clone-detection",
               "description" : "Baker's algorithm for detecting similar fragments of code.",
               "youtube" : "Up6qznduO6o",
               "resources" : [
@@ -402,6 +432,7 @@
                 },
                 {
                   "title" : "Practical",
+                  "id" : "habitable-programs-clones-tutorial",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/clones",
                   "icon" : "pencil"
                 }
@@ -409,6 +440,7 @@
             },
             {
               "title" : "Reducing duplication",
+              "id" : "habitable-programs-avoiding-duplication-reducing-duplication",
               "description" : "Making clones more alike, template methods, and strategies.",
               "youtube" : "-sf2zPnHBOw",
               "resources" : [
@@ -419,6 +451,7 @@
                 },
                 {
                   "title" : "Practical",
+                  "id" : "habitable-programs-clones-tutorial",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/clones",
                   "icon" : "pencil"
                 },
@@ -442,6 +475,7 @@
           "videos" : [
             {
               "title" : "Why loose coupling?",
+              "id" : "habitable-programs-loose-coupling-why-loose-coupling",
               "description" : "Explains how dependencies are powerful yet perilious.",
               "youtube" : "hWyeKs0LZGA",
               "resources" : [
@@ -452,6 +486,7 @@
                 },
                 {
                   "title" : "Practical",
+                  "id" : "habitable-programs-coupling-tutorial",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/coupling",
                   "icon" : "pencil"
                 }
@@ -459,6 +494,7 @@
             },
             {
               "title" : "Coupling metrics",
+              "id" : "habitable-programs-loose-coupling-coupling-metrics",
               "description" : "The MPC and CBO metrics for quantifying coupling.",
               "youtube" : "xuGxHsvDwpw",
               "resources" : [
@@ -469,6 +505,7 @@
                 },
                 {
                   "title" : "Practical",
+                  "id" : "habitable-programs-coupling-tutorial",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/coupling",
                   "icon" : "pencil"
                 }
@@ -476,6 +513,7 @@
             },
             {
               "title" : "Getting loose coupling",
+              "id" : "habitable-programs-loose-coupling-getting-loose-coupling",
               "description" : "Dependency injection, inversion of control, tell don't ask and gateways.",
               "youtube" : "XlQfMGsVr_0",
               "resources" : [
@@ -486,6 +524,7 @@
                 },
                 {
                   "title" : "Practical",
+                  "id" : "habitable-programs-coupling-tutorial",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/coupling",
                   "icon" : "pencil"
                 }
@@ -499,6 +538,7 @@
           "videos" : [
             {
               "title" : "Why cohesion?",
+              "id" : "habitable-programs-more-cohesive-why-cohesion",
               "description" : "Some parts of our software simply belong together.",
               "youtube" : "BEm2ki8iZrA",
               "resources" : [
@@ -509,18 +549,15 @@
                 },
                 {
                   "title" : "Practical",
+                  "id" : "habitable-programs-cohesion-tutorial",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/cohesion",
-                  "icon" : "pencil"
-                },
-                {
-                  "title" : "Cohesion Formative",
-                  "url" : "../quizzes/24",
                   "icon" : "pencil"
                 }
               ]
             },
             {
               "title" : "Cohesion metrics",
+              "id" : "habitable-programs-more-cohesive-cohesion-metrics",
               "description" : "The LCOM4 cohesion metric for identifying classes with many responsibilities.",
               "youtube" : "hL_TpzwCjiE",
               "resources" : [
@@ -531,20 +568,17 @@
                 },
                 {
                   "title" : "Practical",
+                  "id" : "habitable-programs-cohesion-tutorial",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/cohesion",
-                  "icon" : "pencil"
-                },
-                {
-                  "title" : "Cohesion Formative",
-                  "url" : "../quizzes/24",
                   "icon" : "pencil"
                 }
               ]
             },
             {
               "title" : "Getting cohesion",
+              "id" : "habitable-programs-more-cohesive-getting-cohesion",
               "description" : "Extacting classes, moving methods, and using wrappers.",
-              "youtube" : "MEgtLRLNp8w",
+              "youtube" : "BEm2ki8iZrA",
               "resources" : [
                 {
                   "title" : "Slides",
@@ -553,12 +587,8 @@
                 },
                 {
                   "title" : "Practical",
+                  "id" : "habitable-programs-cohesion-tutorial",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/cohesion",
-                  "icon" : "pencil"
-                },
-                {
-                  "title" : "Cohesion Formative",
-                  "url" : "../quizzes/24",
                   "icon" : "pencil"
                 }
               ]
@@ -616,6 +646,7 @@
           "videos" : [
             {
               "title" : "Why clarity?",
+              "id" : "habitable-programs-clarity-why-clarity",
               "description" : "Clarity is crucial because code is read more often than it is written.",
               "youtube" : "Qsx8U9aCISI",
               "resources" : [
@@ -626,6 +657,7 @@
                 },
                 {
                   "title" : "Practical",
+                  "id" : "habitable-programs-clarity-tutorial",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/clarity",
                   "icon" : "pencil"
                 },
@@ -638,6 +670,7 @@
             },
             {
               "title" : "Clear names",
+              "id" : "habitable-programs-clarity-clear-names",
               "description" : "Naming is one of the hardest problems in computer science.",
               "youtube" : "F728xwWZVZ4",
               "resources" : [
@@ -648,6 +681,7 @@
                 },
                 {
                   "title" : "Practical",
+                  "id" : "habitable-programs-clarity-tutorial",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/clarity",
                   "icon" : "pencil"
                 },
@@ -660,6 +694,7 @@
             },
             {
               "title" : "Clear documentation",
+              "id" : "habitable-programs-clarity-clear-documentation",
               "description" : "Bad documentation can seed doubt, confusion and despair!",
               "youtube" : "VzDHGD7486o",
               "resources" : [
@@ -670,6 +705,7 @@
                 },
                 {
                   "title" : "Practical",
+                  "id" : "habitable-programs-clarity-tutorial",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/clarity",
                   "icon" : "pencil"
                 }
@@ -677,6 +713,7 @@
             },
             {
               "title" : "Clear narratives",
+              "id" : "habitable-programs-clarity-clear-narratives",
               "description" : "Habitable software reads like a good story well told.",
               "youtube" : "OhDFCYNbGMY",
               "resources" : [
@@ -687,6 +724,7 @@
                 },
                 {
                   "title" : "Practical",
+                  "id" : "habitable-programs-clarity-tutorial",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/clarity",
                   "icon" : "pencil"
                 },
@@ -705,6 +743,7 @@
           "videos" : [
             {
               "title" : "Why extensibility?",
+              "id" : "habitable-programs-extensibility-why-extensibility",
               "description" : "Enhancing a system's functionality without re-opening components.",
               "youtube" : "3EhDVsH0KkE",
               "resources" : [
@@ -715,6 +754,7 @@
                 },
                 {
                   "title" : "Practical",
+                  "id" : "habitable-programs-extensibility-tutorial",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/extensibility",
                   "icon" : "pencil"
                 }
@@ -722,8 +762,9 @@
             },
             {
               "title" : "Observers",
+              "id" : "habitable-programs-extensibility-observers",
               "description" : "Decoupling components by using observers to communicate events.",
-              "youtube" : "huY7ReO8HHs",
+              "youtube" : "-sf2zPnHBOw",
               "resources" : [
                 {
                   "title" : "Slides",
@@ -732,6 +773,7 @@
                 },
                 {
                   "title" : "Practical",
+                  "id" : "habitable-programs-extensibility-tutorial",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/extensibility",
                   "icon" : "pencil"
                 }
@@ -739,6 +781,7 @@
             },
             {
               "title" : "Middleware",
+              "id" : "habitable-programs-extensibility-middleware",
               "description" : "Decomposing message-processing applications with middleware.",
               "youtube" : "sY-e6DCf55Q",
               "resources" : [
@@ -749,6 +792,7 @@
                 },
                 {
                   "title" : "Practical",
+                  "id" : "habitable-programs-extensibility-tutorial",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/extensibility",
                   "icon" : "pencil"
                 }
@@ -756,8 +800,9 @@
             },
             {
               "title" : "Plug-ins",
+              "id" : "habitable-programs-extensibility-plugins",
               "description" : "How to implement a plug-in architecture with Ruby modules.",
-              "youtube" : "x5zwMxqLUx4",
+              "youtube" : "scuVGe48XXA",
               "resources" : [
                 {
                   "title" : "Slides",
@@ -766,6 +811,7 @@
                 },
                 {
                   "title" : "Practical",
+                  "id" : "habitable-programs-extensibility-tutorial",
                   "url" : "https://github.com/york-cs-dams/practicals/tree/master/habitable_programs/exercises/extensibility",
                   "icon" : "pencil"
                 }
@@ -779,22 +825,6 @@
       "title" : "Habitable Systems",
       "summary" : "This is the bonus material for the module: it covers some recent trends in software engineering that can be applied to increase habitability. This phase isn't finished yet, and I'll be adding the videos, additional material, and practicals by Fri/10 (4th December).",
       "topics" : []
-    }
-  ],
-
-  "badges": [
-    {
-        "id": 1,
-        "title": "Watched Video: Ruby",
-        "description": "Watched the Ruby introduction",
-        "img": "/images/no_icon.jpg",
-        "also_require":{}
-    },
-    {
-        "id": 2,
-        "title": "Completed Quiz: Cohesion",
-        "img": "/images/no_icon.jpg",
-        "also_require":{"mark": 2, "videos_watched":[1,2,3]}
     }
   ]
 }
