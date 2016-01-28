@@ -1,7 +1,11 @@
 require 'open-uri'
 require 'json'
+require 'sinatra/base'
+require './app/helpers/badge_utils'
 
 class Flippd < Sinatra::Application
+  helpers BadgeUtils
+
   def get_by_id(phases, id)
     phases.each do |phase|
       phase['topics'].each do |topic|
@@ -29,8 +33,12 @@ class Flippd < Sinatra::Application
   before do
     @session = session
     # Load in the configuration (at the URL in the project's .env file)
-    @module = JSON.load(open(ENV['CONFIG_URL'] + "module.json"))
+    @json_loc = ENV['CONFIG_URL'] + "module.json"
+    @module = JSON.load(open(@json_loc))
     @phases = @module['phases']
+
+    # From helpers/badge_utils
+    @badges = load_badges(@module)
 
     # The configuration doesn't have to include identifiers, so we
     # add an identifier to each phase, video and quiz
