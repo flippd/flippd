@@ -95,8 +95,15 @@ class Flippd < Sinatra::Application
     end
     
     if session.has_key?("user_id")    
-        #FIXME use proper json_id
-        result = QuizResult.create(:json_id => "1", :date => Time.now, :mark => @score, :user => User.get(session['user_id']))
+        user_id = session['user_id']
+        user = User.get(session['user_id'])
+        result = QuizResult.create(:json_id => @quiz["id"], :date => Time.now, :mark => @score, :user => user)
+        rewards = BadgeUtils.get_triggered_badges(@quiz["id"], @badges)
+        rewards.each do |badge|
+            if BadgeUtils.check_requirements(user_id, badge)
+                BadgeUtils.award_badge(badge, user)
+            end
+        end
     end
 
     erb :quiz_result

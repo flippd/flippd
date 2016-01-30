@@ -3,10 +3,7 @@ require 'json'
 module BadgeUtils
      def self.load_badges(json)
         badges = json['badges']
-        badge_id = 1
         badges.each do |badge|
-            badge["id"] = 1
-            badge_id += 1
             # IDs of pages that could trigger an object are below requires
             # Here we pull them out and put them in a new field
             # So that searching for potential rewards is easier
@@ -63,7 +60,8 @@ module BadgeUtils
 
     def self.has_badge(user_id, badge)
         #User already has badge
-        if Badges.get(:user_id => user_id, :json_id => badge["id"])
+        match = Badge.first(:user_id => user_id, :json_id => badge["id"])
+        if match != nil
             return true
         end
         return false
@@ -76,7 +74,8 @@ module BadgeUtils
         end
         badge["requires"]["videos_watched"].each do |video|
             #User has any videowatched matching this video_id
-            if VideosWatched.get(:user_id => user_id, :json_id => video["id"]).empty?
+            matches = VideosWatched.first(:user_id => user_id, :json_id => video["id"])
+            if matches == nil
                 return false
             end
         end
@@ -92,15 +91,16 @@ module BadgeUtils
             id = result["id"]
             mark = result["mark"]
             #Any matching result for this quiz for this user is > mark
-            if QuizResult.get(:user_id => user_id, :json_id => id, :mark.gt => mark).empty?
+            matches = QuizResult.first(:user_id => user_id, :json_id => id, :mark.gte => mark)
+            if matches == nil
                 return false
             end
         end
         return true
     end
 
-    def self.award_badge(badge, user_id)
-        Badges.create(:json_id => badge["id"], :date => Time.now, :user => user_id)
+    def self.award_badge(badge, user)
+        Badge.create(:json_id => badge["id"], :date => Time.now, :user => user)
     end
 
 end
