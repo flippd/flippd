@@ -70,6 +70,10 @@ module BadgeUtils
     end
 
     def self.check_watched_videos_req(user_id, badge)
+        #this badge has no videos_watched reqs
+        if badge["requires"]["videos_watched"] == nil
+            return true
+        end
         badge["requires"]["videos_watched"].each do |video|
             #User has any videowatched matching this video_id
             if VideosWatched.get(:user_id => user_id, :json_id => video["id"]).empty?
@@ -80,6 +84,10 @@ module BadgeUtils
     end
 
     def self.check_quiz_result_req(user_id, badge)
+        #badge has no quiz_result reqs
+        if badge["requires"]["quiz_result"] == nil
+            return true
+        end
         badge["requires"]["quiz_result"].each do |result|
             id = result["id"]
             mark = result["mark"]
@@ -91,8 +99,8 @@ module BadgeUtils
         return true
     end
 
-    def self.create_badge(badge_json_id, date, user_id)
-        Badges.create(:json_id => badge_json_id, :date => date, :user => user_id)
+    def self.award_badge(badge, user_id)
+        Badges.create(:json_id => badge["id"], :date => Time.now, :user => user_id)
     end
 
 end
