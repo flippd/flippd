@@ -2,7 +2,7 @@
     <div class="col-xs-6 col-md-6">
         <%if @previous %>
             <h5>
-                <a href="/<%=@previous["type"]%>/<%=@previous["id"]%>">
+                <a href="/<%=@previous["type"]%>/<%=@previous["pos"]%>">
                     <span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>
                     <%=@previous["title"]%>
                 </a>
@@ -12,7 +12,7 @@
     <div class="col-xs-6 col-md-6" style="text-align: right;">
         <% if @next %>
             <h5>
-                <a href="/<%=@next["type"]%>/<%=@next["id"]%>">
+                <a href="/<%=@next["type"]%>/<%=@next["pos"]%>">
                     <%=@next["title"]%>
                     <span class="glyphicon glyphicon-step-forward" aria-hidden="true"</span>
                 </a>
@@ -21,7 +21,7 @@
     </div>
 </div>
 <h1 data-flippd-phase="<%= @phase["id"]%>"><%= @quiz["title"] %></h1>
-<form action="/quizzes/<%= @quiz["id"] %>" method="post">
+<form action="/quizzes/<%= @quiz["pos"] %>" method="post">
   <% @quiz["questions"].each_with_index do |question, question_num| %>
     <div class="form-group">
       <p><%= question["question"] %></p>

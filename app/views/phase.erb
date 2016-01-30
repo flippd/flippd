@@ -1,4 +1,4 @@
-<h1 data-flippd-phase="<%= @phase["id"]%>"><%= @phase["title"] %></h1>
+<h1 data-flippd-phase="<%= @phase["pos"]%>"><%= @phase["title"] %></h1>
 <p class="lead"><%= @phase["summary"] %></p>
 
 <div id="topics" class="row">
@@ -13,12 +13,12 @@
     <ul>
     <% topic["videos"].each do |video| %>
         <li>
-          <a href="/videos/<%=video["id"]%>"><%=video["title"]%></a>
+          <a href="/videos/<%=video["pos"]%>"><%=video["title"]%></a>
         </li>
     <% end %>
     <% topic["quizzes"].each do |quiz| %>
         <li>
-          <a href="/quizzes/<%=quiz["id"]%>"><%=quiz["title"]%></a>
+          <a href="/quizzes/<%=quiz["pos"]%>"><%=quiz["title"]%></a>
         </li>
     <% end %>
     </ul>

@@ -32,12 +32,13 @@ class Flippd < Sinatra::Application
     erb :phase
   end
 
-  get '/videos/:id' do
+  get '/videos/:pos' do
+    pos = params["pos"].to_i
     @phases.each do |phase|
       phase['topics'].each do |topic|
         topic['videos'].each do |video|
           #Set the current video
-          if video["id"] == params['id'].to_i
+          if video["pos"] == pos
             @phase = phase
             @video = video
           end
@@ -46,19 +47,20 @@ class Flippd < Sinatra::Application
     end
 
     # Get the next and previous video/quiz to link to
-    @previous = get_by_id(@phases, params["id"].to_i - 1)
-    @next = get_by_id(@phases, params["id"].to_i + 1)
+    @previous = get_by_pos(@phases, pos-1)
+    @next = get_by_pos(@phases, pos+1)
 
     pass unless @video
     erb :video
   end
 
-  get '/quizzes/:id' do
+  get '/quizzes/:pos' do
+    pos = params["pos"].to_i
     @phases.each do |phase|
       phase['topics'].each do |topic|
         topic['quizzes'].each do |quiz|
           #Set the current quiz
-          if quiz["id"] == params['id'].to_i
+          if quiz["pos"] == pos
             @phase = phase
             @quiz = quiz
           end
@@ -68,21 +70,22 @@ class Flippd < Sinatra::Application
 
 
     # Get the next and previous video/quiz to link to
-    @previous = get_by_id(@phases, params["id"].to_i - 1)
-    @next = get_by_id(@phases, params["id"].to_i + 1)
+    @previous = get_by_pos(@phases, pos-1)
+    @next = get_by_pos(@phases, pos+1)
 
     pass unless @quiz
     erb :quiz
   end
 
-  post '/quizzes/:id' do
+  post '/quizzes/:pos' do
+    pos = params["pos"].to_i
     @phase = @phases.first # FIXME
     @post  = params[:post]
-    @quiz  = get_by_id(@phases, params["id"].to_i)
+    @quiz  = get_by_pos(@phases, pos)
 
     # Get the next and previous video/quiz to link to
-    @previous = get_by_id(@phases, params["id"].to_i - 1)
-    @next = get_by_id(@phases, params["id"].to_i + 1)
+    @previous = get_by_pos(@phases, pos-1)
+    @next = get_by_pos(@phases, pos+1)
 
     @score = 0
     @post.each do |question_no, answer|
@@ -92,7 +95,8 @@ class Flippd < Sinatra::Application
     end
     
     if session.has_key?("user_id")    
-        result = QuizResult.create(:json_id => 1, :date => Time.now, :mark => @score, :user => User.get(session['user_id']))
+        #FIXME use proper json_id
+        result = QuizResult.create(:json_id => "1", :date => Time.now, :mark => @score, :user => User.get(session['user_id']))
     end
 
     erb :quiz_result

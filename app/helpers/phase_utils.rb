@@ -2,12 +2,12 @@ module PhaseUtils
     def load_phases(json)
         # The configuration doesn't have to include identifiers, so we
         # add an identifier to each phase, video and quiz
-        phase_id = 1
-        video_quiz_id = 1
+        phase_pos = 1
+        video_quiz_pos = 1
         phases = json["phases"]
         phases.each do |phase|
-            phase["id"] = phase_id
-            phase_id += 1
+            phase["pos"] = phase_pos
+            phase_pos += 1
             
             phase["topics"].each do |topic|
             # The configuration doesn't have to include quizzes for every topic,
@@ -17,26 +17,34 @@ module PhaseUtils
                 end
 
                 topic['videos'].each do |video|
-                    video["id"] = video_quiz_id
+                    video["pos"] = video_quiz_pos
                     video["type"] = "videos"
-                    video_quiz_id += 1
+                    video_quiz_pos += 1
                 end
 
                 topic["quizzes"].each do |quiz|
-                    quiz['id'] = video_quiz_id
+                    quiz['pos'] = video_quiz_pos
                     quiz['type'] = "quizzes"
-                    video_quiz_id += 1
+                    video_quiz_pos += 1
                 end
             end
         end
         return phases
     end
 
+    def get_by_pos(phases, pos)
+        return get_by_key_val(phases, "pos", pos)
+    end
+
     def get_by_id(phases, id)
+        return get_by_key_val(phases, "id", id)
+    end
+
+    def get_by_key_val(phases, key, val)
         phases.each do |phase|
             phase['topics'].each do |topic|
                 topic['videos'].each do |video|
-                  if video["id"] == id
+                  if video[key] == val
                     return video
                   end
                 end
@@ -44,7 +52,7 @@ module PhaseUtils
                # If a video with the matching ID was not found,
                # the ID must correspond to a quiz
                topic['quizzes'].each do |quiz|
-                 if quiz["id"] == id
+                 if quiz[key] == val
                    return quiz
                  end
                end
