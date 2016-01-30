@@ -15,7 +15,7 @@ class Flippd < Sinatra::Application
     # From helpers/phase_utils
     @phases = load_phases(@module)
     # From helpers/badge_utils
-    @badges = load_badges(@module)
+    @badges = BadgeUtils.load_badges(@module)
   end
 
   get '/' do
