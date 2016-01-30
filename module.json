@@ -831,12 +831,14 @@
   "badges": [
         {
             "title": "Kaiser Chief",
+            "id": "badges-kaiser-chief",
             "description": "Watched the Ruby Tutorial",
             "requires": {"videos_watched":[{"id":"fundamentals-ruby-ruby"}]},
             "img": "/images/no_image.jpg"
         },
         {
             "title": "Cohesion is key",
+            "id": "badges-cohesion-is-key",
             "description": "Passed the cohesion formative",
             "requires": {"quiz_result":[{"id":"habitable-programs-cohesion-formative", "mark":2}]},
             "img": "/images/no_image.jpg"
