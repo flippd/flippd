@@ -16,6 +16,12 @@ module PhaseUtils
                     topic["quizzes"] = []
                 end
 
+                topic['videos'].each do |video|
+                    video["id"] = video_quiz_id
+                    video["type"] = "videos"
+                    video_quiz_id += 1
+                end
+
                 topic["quizzes"].each do |quiz|
                     quiz['id'] = video_quiz_id
                     quiz['type'] = "quizzes"
