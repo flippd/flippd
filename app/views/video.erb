@@ -39,8 +39,19 @@
         &nbsp; <a href="<%=resource["url"]%>"><%=resource["title"]%></a>
       </li>
     <% end %>
-    </ul>
+	</ul>
   </div>
+  <div class="col-xs-6 col-md-6">
+    <div class="checkbox" style="float: right;">
+      <label>
+        <input type="checkbox" id="watched_video" onchange="watchedVideo(this);"
+        <% if @video_watched %>
+        	checked disabled
+        <% end %>
+        > Watched video
+      </label>
+    </div>
+  </div> 
 </div>
 <% end %>
 
@@ -62,5 +73,22 @@
   }
   function stopVideo() {
     player.stopVideo();
+  }
+  
+  //Code to handle the 'watched video' checkbox
+  //This function is called on toggle of the checkbox
+  function watchedVideo(checkbox)
+  {
+    //AJAX request to mark the video as watched and check for badges
+    $.ajax({
+      type: 'POST',
+      url: '/videos/<%= @video["id"] %>',
+      success: function(data)
+      {
+      	//Set the checkbox as disabled so we can't change it
+      	$(checkbox).attr("disabled", true);
+      	alert(data);
+      }
+    })
   }
 </script>
