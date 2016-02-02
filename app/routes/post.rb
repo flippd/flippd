@@ -23,8 +23,8 @@ class Flippd < Sinatra::Application
             @score += 1
         end
     end
-    
-    if session.has_key?("user_id")    
+
+    if session.has_key?("user_id")
         user_id = session['user_id']
         user = User.get(session['user_id'])
         result = QuizResult.create(:json_id => @quiz["id"], :date => Time.now, :mark => @score, :user => user)
@@ -32,22 +32,25 @@ class Flippd < Sinatra::Application
         rewards.each do |badge|
             if BadgeUtils.check_requirements(user_id, badge)
                 BadgeUtils.award_badge(badge, user)
+
+                # Display a notification
+                flash[:notification]["#{badge["id"]}"] = {"title" => "You earned a new badge!", "text" => "Well done, you just earned the '#{badge["title"]}' badge"}
             end
         end
     end
 
     erb :quiz_result
   end
-  
+
   post '/videos/:id' do
   	video_id = params["id"]
   	badges_earnt = 0
-  	
+
   	# Check that the user is logged in
   	if session.has_key?("user_id")
   		user_id = session['user_id']
   		user = User.get(session['user_id'])
-  		
+
   		# Mark the video as watched in the database (if it isn't already)
   		matches = VideosWatched.first(:user_id => user_id, :json_id => video_id)
         if matches == nil
@@ -67,9 +70,9 @@ class Flippd < Sinatra::Application
             end
         end
   	end
-  	
+
   	# Return a count of how many badges we have awarded
   	badges_earnt.to_s
-  	
+
   end
 end
