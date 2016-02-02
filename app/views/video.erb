@@ -42,16 +42,18 @@
 	</ul>
   </div>
   <div class="col-xs-6 col-md-6">
-    <div class="checkbox" style="float: right;">
-      <label>
-        <input type="checkbox" id="watched_video" onchange="watchedVideo(this);"
-        <% if @video_watched %>
-        	checked disabled
-        <% end %>
-        > Watched video
-      </label>
-    </div>
-  </div> 
+    <% if @user_id != nil %>
+        <div class="checkbox" style="float: right;">
+          <label>
+            <input type="checkbox" id="watched_video" onchange="watchedVideo(this);"
+            <% if @video_watched %>
+            	checked disabled
+            <% end %>
+            > Watched video
+          </label>
+        </div>
+      </div>
+    <% end %>
 </div>
 <% end %>
 

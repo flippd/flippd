@@ -9,6 +9,11 @@ class Flippd < Sinatra::Application
 
   before do
     @session = session
+    if session.has_key?("user_id")
+        @user_id = session["user_id"]
+    else
+        @user_id = nil
+    end
     # Load in the configuration (at the URL in the project's .env file)
     @json_loc = ENV['CONFIG_URL'] + "module.json"
     @module = JSON.load(open(@json_loc))
@@ -109,8 +114,7 @@ class Flippd < Sinatra::Application
     end
     
     if session.has_key?("user_id")    
-        user_id = session['user_id']
-        user = User.get(session['user_id'])
+        user = User.get(@user_id)
         result = QuizResult.create(:json_id => @quiz["id"], :date => Time.now, :mark => @score, :user => user)
         rewards = BadgeUtils.get_triggered_badges(@quiz["id"], @badges)
         rewards.each do |badge|
