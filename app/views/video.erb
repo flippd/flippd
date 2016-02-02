@@ -78,6 +78,7 @@
   }
   
   //Code to handle the 'watched video' checkbox
+  //Code to handle the 'watched video' checkbox
   //This function is called on toggle of the checkbox
   function watchedVideo(checkbox)
   {
@@ -90,17 +91,17 @@
       	//Set the checkbox as disabled so we can't change it
       	$(checkbox).attr("disabled", true);
       	
-      	if (data == 1)
+      	//If we have notifications to display then do an AJAX call do get the HTML to display
+      	if (data > 0)
       	{
-      		alert("You have earned 1 new badge");
-      	}
-      	else if (data > 1)
-      	{
-      		alert("You have earned " + data + " new badges");
-      	}
-      	else
-      	{
-      		//Do nothing
+      		$.ajax({
+			  type: 'GET',
+			  url: '/notification_alert',
+			  success: function(data)
+			  {
+				$('#notification').html(data);
+			  }
+			})
       	}
       }
     })
