@@ -5,33 +5,38 @@ require './app/helpers/badge_utils'
 require './app/helpers/phase_utils'
 
 class Flippd < Sinatra::Application
-	helpers BadgeUtils, PhaseUtils
+  helpers BadgeUtils, PhaseUtils
 
-	before do
-	    @session = session
-	    # Load in the configuration (at the URL in the project's .env file)
-	    @json_loc = ENV['CONFIG_URL'] + "module.json"
-    	@module = JSON.load(open(@json_loc))
-	    # From helpers/phase_utils
-	    @phases = load_phases(@module)
-	    # From helpers/badge_utils
-	    @badges = BadgeUtils.load_badges(@module)
-	end
+  before do
+    @session = session
+    if session.has_key?("user_id")
+        @user_id = session["user_id"]
+    else
+        @user_id = nil
+    end
+    # Load in the configuration (at the URL in the project's .env file)
+    @json_loc = ENV['CONFIG_URL'] + "module.json"
+    @module = JSON.load(open(@json_loc))
+    # From helpers/phase_utils
+    @phases = load_phases(@module)
+    # From helpers/badge_utils
+    @badges = BadgeUtils.load_badges(@module)
+  end
 
-	get '/' do
-		erb open(ENV['CONFIG_URL'] + "index.erb").read
-	end
+  get '/' do
+    erb open(ENV['CONFIG_URL'] + "index.erb").read
+  end
 
-	get '/phases/:title' do
-    	@phase = nil
-    	@phases.each do |phase|
-    		@phase = phase if phase['title'].downcase.gsub(" ", "_") == params['title']
-    	end
+  get '/phases/:title' do
+    @phase = nil
+    @phases.each do |phase|
+      @phase = phase if phase['title'].downcase.gsub(" ", "_") == params['title']
+    end
 
-    	pass unless @phase
-    	erb :phase
-  	end
-
+    pass unless @phase
+    erb :phase
+  end
+	
 	get '/videos/:pos' do
 		pos = params["pos"].to_i
     	@phases.each do |phase|
