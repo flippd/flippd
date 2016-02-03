@@ -5,17 +5,6 @@ require 'time'
 class Flippd < Sinatra::Application
     helpers BadgeUtils
 
-    before do
-        @session = session
-        @user_id = nil
-        if session.has_key?("user_id")
-            @user_id = session["user_id"]
-        end
-        @json_loc = ENV['CONFIG_URL'] + "module.json"
-        @module = JSON.load(open(@json_loc))
-        @badges = BadgeUtils.load_badges(@module)
-    end
-
     #only accessible if logged in, as link is in user profile dropdown
     get '/badges/my_badges' do
         @earnt = []
