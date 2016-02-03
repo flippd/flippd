@@ -842,6 +842,20 @@
             "description": "Passed the cohesion formative",
             "requires": {"quiz_result":[{"id":"habitable-programs-cohesion-formative", "mark":2}]},
             "img": "/images/no_image.jpg"
+        },
+        {
+            "title":"Attack of the Clones",
+            "id": "badges-attack-of-the-clones",
+            "description": "Watched the 'Clone Detection' video",
+            "requires": {"videos_watched":[{"id":"habitable-programs-avoiding-duplication-clone-detection"}]},
+            "img":"/images/no_image.jpg"
+        },
+        {
+            "title":"Why Not Zoidberg?",
+            "id":"badges-why-not-zoidberg",
+            "description":"Watched the 'Why not duplicate?' video",
+            "requires": {"videos_watched":[{"id":"habitable-programs-avoiding-duplication-why-not-duplicate"}]},
+            "img":"/image/no_image.jpg"
         }
     ]
 }

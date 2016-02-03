@@ -67,6 +67,11 @@ module BadgeUtils
         return false
     end
 
+    def self.get_date_earned(user_id, badge)
+        match = Badge.first(:user_id =>user_id, :json_id => badge["id"])
+        return match.date
+    end
+
     def self.check_watched_videos_req(user_id, badge)
         #this badge has no videos_watched reqs
         if badge["requires"]["videos_watched"] == nil

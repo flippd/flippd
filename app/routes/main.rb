@@ -99,7 +99,7 @@ class Flippd < Sinatra::Application
 		pass unless @quiz
 		erb :quiz
 	end
-	
+  
   post '/videos/:id' do
   	video_id = params["id"]
   	badges_earnt = 0
@@ -126,7 +126,7 @@ class Flippd < Sinatra::Application
                 			badges_earnt += 1
                 	
                 			# Display a notification
-                			flash[:notification]["#{badge["id"]}"] = {"title" => "You earned a new badge!", "text" => "Well done, you just earned the '#{badge["title"]}' badge"}
+                            flash[:notification]["#{badge["id"]}"] = {"title" => "You earned a new badge!", "text" => "Well done, you just earned the '#{badge["title"]}' badge"}
             			end
             		end
        		end
