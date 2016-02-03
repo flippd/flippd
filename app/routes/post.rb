@@ -66,6 +66,9 @@ class Flippd < Sinatra::Application
             	if BadgeUtils.check_requirements(user_id, badge)
                 	BadgeUtils.award_badge(badge, user)
                 	badges_earnt += 1
+                    # Display a notification
+
+                    flash[:notification]["#{badge["id"]}"] = {"title" => "You earned a new badge!", "text" => "Well done, you just earned the '#{badge["title"]}' badge"}
             	end
             end
         end
