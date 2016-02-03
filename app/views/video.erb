@@ -38,7 +38,7 @@
       </div>
     </div>
 
-    <form method="post" action="/post_comment/<%=@video["title"]%>">
+    <form method="post" action="/post_comment/<%=@video["id"]%>">
       <div class="form-group">
         <label for="comment-textarea">Add a comment</label>
         <textarea class="form-control" name="body" rows="3"></textarea>
