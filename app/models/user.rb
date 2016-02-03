@@ -4,4 +4,6 @@ class User
   property :id, Serial
   property :name, String, required: true, length: 150
   property :email, String, required: true, length: 150
+
+  has n, :comments
 end
