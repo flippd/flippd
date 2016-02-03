@@ -23,7 +23,7 @@ class Flippd < Sinatra::Application
     @badges = BadgeUtils.load_badges(@module)
     
     if !(flash[:notification])
-    	flash[:notification] = {}
+        flash[:notification] = {}
     end
   end
 
@@ -40,76 +40,80 @@ class Flippd < Sinatra::Application
     pass unless @phase
     erb :phase
   end
-
-  get '/videos/:pos' do
-    pos = params["pos"].to_i
-    @phases.each do |phase|
-      phase['topics'].each do |topic|
-      topic['videos'].each do |video|
-      # Set the current video
-      if video["pos"] == pos
-        @phase = phase
-        @video = video
-      end
-    end
-
-    # Get the next and previous video/quiz to link to
-    @previous = get_by_pos(@phases, pos-1)
-    @next = get_by_pos(@phases, pos+1)
     
-    # Mark this video as unwatched - we will correct this if necessary
-    @video_watched = false
-    
-    # Check if a user is logged in
-    if session.has_key?("user_id")
-        user_id = session['user_id']
+    get '/videos/:pos' do
+        pos = params["pos"].to_i
+        @phases.each do |phase|
+            phase['topics'].each do |topic|
+                topic['videos'].each do |video|
+                    # Set the current video
+                    if video["pos"] == pos
+                        @phase = phase
+                        @video = video
+                    end
+                end
+            end
+        end
+
+        # Get the next and previous video/quiz to link to
+        @previous = get_by_pos(@phases, pos-1)
+        @next = get_by_pos(@phases, pos+1)
         
-        # If a user is logged in we will check if they have watched this video before
-        matches = VideosWatched.first(:user_id => user_id, :json_id => @video["id"])
-      if matches != nil
-        @video_watched = true
-      end
+        # Mark this video as unwatched - we will correct this if necessary
+        @video_watched = false
+        
+        # Check if a user is logged in
+        if session.has_key?("user_id")
+            user_id = session['user_id']
+            
+            # If a user is logged in we will check if they have watched this video before
+            matches = VideosWatched.first(:user_id => user_id, :json_id => @video["id"])
+            if matches != nil
+                @video_watched = true
+            end
+        end
+
+        pass unless @video
+        erb :video
     end
 
-    pass unless @video
-    erb :video
-  end
+    get '/quizzes/:pos' do
+        pos = params["pos"].to_i
+        @phases.each do |phase|
+            phase['topics'].each do |topic|
+                topic['quizzes'].each do |quiz|
+                    #Set the current quiz
+                    if quiz["pos"] == pos
+                        @phase = phase
+                        @quiz = quiz
+                    end
+                end
+            end
+        end
 
-  get '/quizzes/:pos' do
-    pos = params["pos"].to_i
-    @phases.each do |phase|
-      phase['topics'].each do |topic|
-      topic['quizzes'].each do |quiz|
-      #Set the current quiz
-      if quiz["pos"] == pos
-        @phase = phase
-        @quiz = quiz
-      end
+
+        # Get the next and previous video/quiz to link to
+        @previous = get_by_pos(@phases, pos-1)
+        @next = get_by_pos(@phases, pos+1)
+
+        pass unless @quiz
+        erb :quiz
     end
-
-    # Get the next and previous video/quiz to link to
-    @previous = get_by_pos(@phases, pos-1)
-    @next = get_by_pos(@phases, pos+1)
-
-	pass unless @quiz
-	erb :quiz
-  end
 
   get '/notification_alert' do
-  	erb :notification_alert, :layout => false
+    erb :notification_alert, :layout => false
   end
     
-  post '/post_comment/:id' do
-    video_id = params["id"]
-    body = params[:body]
+    post '/post_comment/:id' do
+        video_id = params["id"]
+        body = params[:body]
 
-    if session.has_key?("user_id")
-      user = User.get(session['user_id'])
-      Comment.create(:body => body, :json_id => video_id, :created => DateTime.now, :user => user)
-    else
-      status 500
-      return "Error: User not logged in."
+        if session.has_key?("user_id")
+            user = User.get(session['user_id'])
+            Comment.create(:body => body, :json_id => video_id, :created => DateTime.now, :user => user)
+        else
+            status 500
+            return "Error: User not logged in."
+        end
     end
-  end
-
 end
