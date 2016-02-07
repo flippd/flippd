@@ -105,17 +105,17 @@ class Flippd < Sinatra::Application
   get '/notification_alert' do
     erb :notification_alert, :layout => false
   end
-    
-    post '/post_comment/:id' do
-        video_id = params["id"]
-        body = params[:body]
 
-        if session.has_key?("user_id")
-            user = User.get(session['user_id'])
-            Comment.create(:body => body, :json_id => video_id, :created => DateTime.now, :user => user)
-        else
-            status 500
-            return "Error: User not logged in."
-        end
+  post '/post_comment/:id' do
+    video_id = params["id"]
+    body = params[:body]
+
+    if session.has_key?("user_id")
+      user = User.get(session['user_id'])
+      Comment.create(:body => body, :json_id => video_id, :created => DateTime.now, :user => user)
+    else
+      status 500
+      return "Error: User not logged in."
     end
+  end
 end
