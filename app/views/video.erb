@@ -32,11 +32,14 @@
   <div class="col-xs-12 col-md-12">
     <h4>Comments</h4>
 
-    <div class="panel panel-default">
-      <div class="panel-body">
-        Comments go here.
-      </div>
-    </div>
+    <ul class="list-group">
+      <% @comments.each do |comment|  %>
+        <li class="list-group-item">
+          <p class="list-group-item-text"><%=comment["body"]%></p>
+          <strong>Posted by <%=comment.user["name"]%> on <%=comment["created"]%>.</strong>
+        </li>
+      <% end %>
+    </ul>
 
     <form method="post" action="/post_comment/<%=@video["id"]%>">
       <div class="form-group">

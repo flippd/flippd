@@ -58,6 +58,9 @@ class Flippd < Sinatra::Application
     # Get the next and previous video/quiz to link to
     @previous = get_by_pos(@phases, pos-1)
     @next = get_by_pos(@phases, pos+1)
+
+    # Load the comments for this video
+    @comments = Comment.all(:json_id => @video["id"], :order => [ :created.desc ])
     
     # Mark this video as unwatched - we will correct this if necessary
     @video_watched = false
@@ -90,7 +93,6 @@ class Flippd < Sinatra::Application
         end
       end
     end
-
 
     # Get the next and previous video/quiz to link to
     @previous = get_by_pos(@phases, pos-1)
