@@ -36,7 +36,7 @@
       <% @comments.each do |comment|  %>
         <li data-comment-id="<%=comment["id"]%>" class="list-group-item">
           <p class="list-group-item-text"><%=comment["body"]%></p>
-          <strong>Posted by <%=comment.user["name"]%> on <%=comment["created"]%>.</strong>
+          <strong>Posted by <%=comment.user["name"]%> on <%=comment["created"]%>.</strong> <a href="#" class="comment-reply-link">Reply</a>
         </li>
       <% end %>
     </ul>
