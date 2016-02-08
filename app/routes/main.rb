@@ -113,6 +113,8 @@ class Flippd < Sinatra::Application
     if session.has_key?("user_id")
       user = User.get(session['user_id'])
       Comment.create(:body => body, :json_id => video_id, :created => DateTime.now, :user => user)
+      origin = env["HTTP_REFERER"] || '/'
+      redirect to(origin)
     else
       status 500
       return "Error: User not logged in."
