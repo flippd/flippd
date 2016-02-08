@@ -127,6 +127,15 @@
 			})
       	}
       }
-    })
+    });
+  }
+
+  function replyComment(clicked)
+  {
+    var form = $('#comments-section form');
+    var replyID = $(clicked).parent().attr('data-comment-id');
+    form.find('label').remove();
+    form.append('<input type="text" name="replyID" style="display: none;" value="' + replyID + '">');
+    $(clicked).parent().append(form);
   }
 </script>
