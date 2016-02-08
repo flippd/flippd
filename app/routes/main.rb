@@ -112,7 +112,13 @@ class Flippd < Sinatra::Application
 
     if session.has_key?("user_id")
       user = User.get(session['user_id'])
-      Comment.create(:body => body, :json_id => video_id, :created => DateTime.now, :user => user)
+
+      if params[:replyID]
+        Comment.create(:body => body, :json_id => video_id, :created => DateTime.now, :user => user, :reply_to => params[:replyID])
+      else
+        Comment.create(:body => body, :json_id => video_id, :created => DateTime.now, :user => user)
+      end
+
       origin = env["HTTP_REFERER"] || '/'
       redirect to(origin)
     else
