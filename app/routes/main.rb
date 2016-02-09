@@ -116,12 +116,12 @@ class Flippd < Sinatra::Application
     body = params[:body]
 
     if session.has_key?("user_id")
-      user = User.get(session['user_id'])
+      @user = User.get(session['user_id'])
 
       if params[:replyID]
-        Comment.create(:body => body, :json_id => video_id, :created => DateTime.now, :user => user, :reply_to => params[:replyID])
+        Comment.create(:body => body, :json_id => video_id, :created => DateTime.now, :user => @user, :reply_to => params[:replyID])
       else
-        Comment.create(:body => body, :json_id => video_id, :created => DateTime.now, :user => user)
+        Comment.create(:body => body, :json_id => video_id, :created => DateTime.now, :user => @user)
       end
 
       origin = env["HTTP_REFERER"] || '/'
@@ -137,7 +137,20 @@ class Flippd < Sinatra::Application
 
     if session.has_key?("user_id")
       user = User.get(session['user_id'])
-      Comment.get(:id => comment_id, :user => user).destroy
+      comment = Comment.first(:id => comment_id.to_i, :user => user)
+
+      if comment
+        comment.destroy
+        origin = env["HTTP_REFERER"] || '/'
+        redirect to(origin)
+      else
+        status 500
+        return "Error: You can only remove your own comments."
+      end
+
+    else
+      status 500
+      return "Error: User not logged in."
     end
   end
 end
