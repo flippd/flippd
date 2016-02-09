@@ -131,4 +131,13 @@ class Flippd < Sinatra::Application
       return "Error: User not logged in."
     end
   end
+
+  post '/remove_comment/:id' do
+    comment_id = params["id"]
+
+    if session.has_key?("user_id")
+      user = User.get(session['user_id'])
+      Comment.get(:id => comment_id, :user => user).destroy
+    end
+  end
 end
