@@ -60,7 +60,12 @@ class Flippd < Sinatra::Application
     @next = get_by_pos(@phases, pos+1)
 
     # Load the comments for this video
-    @comments = Comment.all(:json_id => @video["id"], :order => [ :created.desc ])
+    @comments = Comment.all(:json_id => @video["id"], :order => [ :created.desc ], :reply_to => -1)
+
+    @replies = Array.new
+    @comments.each do |comment|
+        @replies[comment["id"]] = Comment.all(:json_id => @video["id"], :order => [ :created.asc ], :reply_to => comment["id"])
+    end
     
     # Mark this video as unwatched - we will correct this if necessary
     @video_watched = false

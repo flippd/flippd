@@ -37,6 +37,14 @@
         <li data-comment-id="<%=comment["id"]%>" class="list-group-item">
           <p class="list-group-item-text"><%=comment["body"]%></p>
           <strong>Posted by <%=comment.user["name"]%> on <%=comment["created"]%>.</strong> <a onclick="replyComment(this);" class="comment-reply-link">Reply</a>
+          <ul class="list-group" style="margin: 10px 0 0 0;">
+            <% @replies[comment["id"]].each do |reply| %>
+              <li data-comment-id="<%=reply["id"]%>" class="list-group-item">
+                <p class="list-group-item-text"><%=reply["body"]%></p>
+                <strong>Posted by <%=reply.user["name"]%> on <%=reply["created"]%>.</strong>
+              </li>
+            <% end %>
+          </ul>
         </li>
       <% end %>
     </ul>
