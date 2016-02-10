@@ -9,5 +9,4 @@ class User
   has n, :videos_watched
   has n, :quiz_results
   has n, :comments
-  has n, :comments
 end
