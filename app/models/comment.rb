@@ -6,6 +6,7 @@ class Comment
     property :json_id, String, required: true
     property :created, DateTime, required: true
     property :reply_to, Integer, default: -1
+    property :points, Integer, default: 0
 
     belongs_to :user
 end
