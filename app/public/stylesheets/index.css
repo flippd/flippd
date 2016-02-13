@@ -28,3 +28,21 @@ body {
 .inner-notification {
   margin: 0 auto;
 }
+
+/* Comment styles */
+.glyphicon.glyphicon-arrow-up, .glyphicon.glyphicon-arrow-down {
+    color: #b4b0b9;
+}
+
+.glyphicon.glyphicon-arrow-up:hover, .glyphicon.glyphicon-arrow-down:hover {
+    color: black;
+}
+
+.comment-voting-container {
+    padding: 0;
+    width: 20px;
+}
+
+#comments-section form {
+    display: inline-block;
+}
