@@ -37,10 +37,14 @@
         <li data-comment-id="<%=comment["id"]%>" class="list-group-item">
           <div class="col-xs-1 col-md-1 comment-voting-container">
             <form class="comment-upvote-form" method="post" action="/upvote_comment/<%=comment["id"]%>">
-              <span onclick="submitParent(this);" class="glyphicon glyphicon-arrow-up"></span>
+              <span <% if @vote_states[comment["id"]] %>
+                style="color:green;"
+              <% end %> onclick="submitParent(this);" class="glyphicon glyphicon-arrow-up"></span>
             </form>
             <form class="comment-downvote-form" method="post" action="/downvote_comment/<%=comment["id"]%>">
-              <span onclick="submitParent(this);" class="glyphicon glyphicon-arrow-down"></span>
+              <span <% if @vote_states[comment["id"]] == false %>
+                style="color:red;"
+              <% end %> onclick="submitParent(this);" class="glyphicon glyphicon-arrow-down"></span>
             </form>
           </div>
           <p class="list-group-item-text"><%=comment["body"]%></p>

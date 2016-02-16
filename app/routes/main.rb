@@ -59,20 +59,10 @@ class Flippd < Sinatra::Application
     @previous = get_by_pos(@phases, pos-1)
     @next = get_by_pos(@phases, pos+1)
 
-    # Load the comments for this video
-    @comments = Comment.all(:json_id => @video["id"], :order => [ :created.desc ], :reply_to => -1)
-
-    @replies = Array.new
-    @comments.each do |comment|
-        @replies[comment["id"]] = Comment.all(:json_id => @video["id"], :order => [ :created.asc ], :reply_to => comment["id"])
-    end
-    
-    # Mark this video as unwatched - we will correct this if necessary
-    @video_watched = false
-    
     # Check if a user is logged in
     if session.has_key?("user_id")
       user_id = session['user_id']
+      @user = User.get(session['user_id'])
       
       # If a user is logged in we will check if they have watched this video before
       matches = VideosWatched.first(:user_id => user_id, :json_id => @video["id"])
@@ -80,6 +70,23 @@ class Flippd < Sinatra::Application
         @video_watched = true
       end
     end
+
+    # Load the comments for this video
+    @comments = Comment.all(:json_id => @video["id"], :order => [ :created.desc ], :reply_to => -1)
+
+    @replies = Array.new
+    @vote_states = Array.new
+    @comments.each do |comment|
+      vote = Vote.first(:comment_id => comment["id"], :user => @user)
+      if vote
+        @vote_states[comment["id"]] = vote.is_upvote
+      end
+
+      @replies[comment["id"]] = Comment.all(:json_id => @video["id"], :order => [ :created.asc ], :reply_to => comment["id"])
+    end
+
+    # Mark this video as unwatched - we will correct this if necessary
+    @video_watched = false
 
     pass unless @video
     erb :video
