@@ -40,10 +40,10 @@
             <span class="glyphicon glyphicon-arrow-down"></span>
           </div>
           <p class="list-group-item-text"><%=comment["body"]%></p>
-          <strong>Posted by <%=comment.user["name"]%> on <%=comment["created"]%>.</strong> <a onclick="replyComment(this);" class="comment-reply-link">Reply</a> - 
+          <strong>Posted by <%=comment.user["name"]%> on <%=comment["created"]%>.</strong> <a onclick="replyComment(this);" class="comment-reply-link">Reply</a>
           <% if @user == comment.user %>
             <form class="comment-remove-form" method="post" action="/remove_comment/<%=comment["id"]%>">
-              <a onclick="removeComment(this);" class="comment-remove-link">Remove</a>
+               - <a onclick="removeComment(this);" class="comment-remove-link">Remove</a>
             </form>
           <% end %>
           <ul class="list-group" style="margin: 10px 0 0 0;">
