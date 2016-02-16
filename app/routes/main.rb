@@ -163,7 +163,7 @@ class Flippd < Sinatra::Application
       comment.points += 1
       comment.save
 
-      Vote.create(:comment_id => comment_id.to_i, :is_upvote => true, :user => @user)
+      Vote.create(:comment_id => comment_id.to_i, :is_upvote => true, :user => user)
 
       origin = env["HTTP_REFERER"] || '/'
       redirect to(origin)
@@ -183,7 +183,7 @@ class Flippd < Sinatra::Application
       comment.points -= 1
       comment.save
 
-      Vote.create(:comment_id => comment_id.to_i, :is_upvote => false, :user => @user)
+      Vote.create(:comment_id => comment_id.to_i, :is_upvote => false, :user => user)
 
       origin = env["HTTP_REFERER"] || '/'
       redirect to(origin)
