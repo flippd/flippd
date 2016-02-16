@@ -54,8 +54,12 @@
             <% @replies[comment["id"]].each do |reply| %>
               <li data-comment-id="<%=reply["id"]%>" class="list-group-item">
                 <div class="col-xs-1 col-md-1 comment-voting-container">
-                  <span class="glyphicon glyphicon-arrow-up"></span>
-                  <span class="glyphicon glyphicon-arrow-down"></span>
+                  <form class="comment-upvote-form" method="post" action="/upvote_comment/<%=reply["id"]%>">
+                    <span onclick="submitParent(this);" class="glyphicon glyphicon-arrow-up"></span>
+                  </form>
+                  <form class="comment-downvote-form" method="post" action="/downvote_comment/<%=reply["id"]%>">
+                    <span onclick="submitParent(this);" class="glyphicon glyphicon-arrow-down"></span>
+                  </form>
                 </div>
                 <p class="list-group-item-text"><%=reply["body"]%></p>
                 <strong>Posted by <%=reply.user["name"]%> on <%=reply["created"]%>.</strong>
