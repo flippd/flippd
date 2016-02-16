@@ -153,4 +153,40 @@ class Flippd < Sinatra::Application
       return "Error: User not logged in."
     end
   end
+
+  post '/upvote_comment/:id' do
+    comment_id = params["id"]
+
+    if session.has_key?("user_id")
+      user = User.get(session['user_id'])
+      comment = Comment.first(:id => comment_id.to_i)
+      comment.points += 1
+      comment.save
+
+      origin = env["HTTP_REFERER"] || '/'
+      redirect to(origin)
+    else
+      status 500
+      return "Error: User not logged in."
+    end
+
+  end
+
+  post '/downvote_comment/:id' do
+    comment_id = params["id"]
+
+    if session.has_key?("user_id")
+      user = User.get(session['user_id'])
+      comment = Comment.first(:id => comment_id.to_i)
+      comment.points -= 1
+      comment.save
+
+      origin = env["HTTP_REFERER"] || '/'
+      redirect to(origin)
+    else
+      status 500
+      return "Error: User not logged in."
+    end
+
+  end
 end

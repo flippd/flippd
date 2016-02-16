@@ -36,8 +36,12 @@
       <% @comments.each do |comment|  %>
         <li data-comment-id="<%=comment["id"]%>" class="list-group-item">
           <div class="col-xs-1 col-md-1 comment-voting-container">
-            <span class="glyphicon glyphicon-arrow-up"></span>
-            <span class="glyphicon glyphicon-arrow-down"></span>
+            <form class="comment-upvote-form" method="post" action="/upvote_comment/<%=comment["id"]%>">
+              <span onclick="submitParent(this);" class="glyphicon glyphicon-arrow-up"></span>
+            </form>
+            <form class="comment-downvote-form" method="post" action="/downvote_comment/<%=comment["id"]%>">
+              <span onclick="submitParent(this);" class="glyphicon glyphicon-arrow-down"></span>
+            </form>
           </div>
           <p class="list-group-item-text"><%=comment["body"]%></p>
           <strong>Posted by <%=comment.user["name"]%> on <%=comment["created"]%>.</strong> <a onclick="replyComment(this);" class="comment-reply-link">Reply</a>
@@ -57,7 +61,7 @@
                 <strong>Posted by <%=reply.user["name"]%> on <%=reply["created"]%>.</strong>
                 <% if @user == reply.user %>
                   <form class="comment-remove-form" method="post" action="/remove_comment/<%=reply["id"]%>">
-                    <a onclick="removeComment(this);" class="comment-remove-link">Remove</a>
+                    <a onclick="submitParent(this);" class="comment-remove-link">Remove</a>
                   </form>
                 <% end %>
               </li>
@@ -165,7 +169,7 @@
     $(clicked).parent().append(form);
   }
 
-  function removeComment(clicked)
+  function submitParent(clicked)
   {
     $(clicked).parent().submit();
   }
