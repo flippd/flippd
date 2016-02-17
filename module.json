@@ -857,5 +857,9 @@
             "requires": {"videos_watched":[{"id":"habitable-programs-avoiding-duplication-why-not-duplicate"}]},
             "img":"/image/no_image.jpg"
         }
-    ]
+    ],
+  "settings": {
+    "replies_on": "true",
+    "voting_on": "true"
+  }
 }

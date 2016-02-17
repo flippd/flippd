@@ -21,6 +21,7 @@ class Flippd < Sinatra::Application
     @phases = load_phases(@module)
     # From helpers/badge_utils
     @badges = BadgeUtils.load_badges(@module)
+    @settings = @module['settings']
     
     if !(flash[:notification])
         flash[:notification] = {}

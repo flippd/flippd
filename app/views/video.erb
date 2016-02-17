@@ -48,12 +48,16 @@
             </form>
           </div>
           <p class="list-group-item-text"><%=comment["body"]%></p>
-          <strong>Posted by <%=comment.user["name"]%> on <%=comment["created"]%>.</strong> <a onclick="replyComment(this);" class="comment-reply-link">Reply</a>
+          <strong>Posted by <%=comment.user["name"]%> on <%=comment["created"]%>.</strong>
+          <% if @settings['replies_on'] == "true" %>
+            <a onclick="replyComment(this);" class="comment-reply-link">Reply</a>
+          <% end %>
           <% if @user == comment.user %>
             <form class="comment-remove-form" method="post" action="/remove_comment/<%=comment["id"]%>">
                - <a onclick="removeComment(this);" class="comment-remove-link">Remove</a>
             </form>
           <% end %>
+          <% if @settings['replies_on'] == "true" %>
           <ul class="list-group" style="margin: 10px 0 0 0;">
             <% @replies[comment["id"]].each do |reply| %>
               <li data-comment-id="<%=reply["id"]%>" class="list-group-item">
@@ -75,6 +79,7 @@
               </li>
             <% end %>
           </ul>
+          <% end %>
         </li>
       <% end %>
     </ul>
