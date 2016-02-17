@@ -167,10 +167,26 @@ class Flippd < Sinatra::Application
     if session.has_key?("user_id")
       user = User.get(session['user_id'])
       comment = Comment.first(:id => comment_id.to_i)
-      comment.points += 1
-      comment.save
 
-      Vote.create(:comment_id => comment_id.to_i, :is_upvote => true, :user => user)
+      existing_vote = Vote.first(:comment_id => comment_id.to_i, :user =>user)
+      if existing_vote
+
+        if existing_vote.is_upvote
+          # If the user has already upvoted, undo the vote
+          existing_vote.destroy
+          comment.points -= 1
+        else
+          # If the user has downvoted, change to an upvote
+          existing_vote.is_upvote = true
+          existing_vote.save
+          comment.points += 2
+        end
+
+      else
+        Vote.create(:comment_id => comment_id.to_i, :is_upvote => true, :user => user)
+        comment.points += 1
+      end
+      comment.save
 
       origin = env["HTTP_REFERER"] || '/'
       redirect to(origin)
@@ -178,7 +194,6 @@ class Flippd < Sinatra::Application
       status 500
       return "Error: User not logged in."
     end
-
   end
 
   post '/downvote_comment/:id' do
@@ -187,10 +202,26 @@ class Flippd < Sinatra::Application
     if session.has_key?("user_id")
       user = User.get(session['user_id'])
       comment = Comment.first(:id => comment_id.to_i)
-      comment.points -= 1
-      comment.save
 
-      Vote.create(:comment_id => comment_id.to_i, :is_upvote => false, :user => user)
+      existing_vote = Vote.first(:comment_id => comment_id.to_i, :user =>user)
+      if existing_vote
+
+        if not existing_vote.is_upvote
+          # If the user has already downvoted, undo the vote
+          existing_vote.destroy
+          comment.points += 1
+        else
+          # If the user has upvoted, change to a downvote
+          existing_vote.is_upvote = false
+          existing_vote.save
+          comment.points -= 2
+        end
+
+      else
+        Vote.create(:comment_id => comment_id.to_i, :is_upvote => false, :user => user)
+        comment.points -= 1
+      end
+      comment.save
 
       origin = env["HTTP_REFERER"] || '/'
       redirect to(origin)
@@ -198,6 +229,5 @@ class Flippd < Sinatra::Application
       status 500
       return "Error: User not logged in."
     end
-
   end
 end
