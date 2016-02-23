@@ -47,6 +47,6 @@ body {
     display: inline-block;
 }
 
-#comment-post-form form {
+#comment-post-form {
     width: 100%;
 }
