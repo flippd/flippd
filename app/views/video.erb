@@ -53,7 +53,7 @@
             <a onclick="replyComment(this);" class="comment-reply-link">Reply</a>
           <% end %>
           <% if @user == comment.user %>
-            <form class="comment-remove-form" method="post" action="/remove_comment/<%=comment["id"]%>">
+            <form id="comment-remove-form" method="post" action="/remove_comment/<%=comment["id"]%>">
                - <a onclick="submitParent(this);" class="comment-remove-link">Remove</a>
             </form>
           <% end %>
@@ -72,7 +72,7 @@
                 <p class="list-group-item-text"><%=reply["body"]%></p>
                 <strong>Posted by <%=reply.user["name"]%> on <%=reply["created"]%>.</strong>
                 <% if @user == reply.user %>
-                  <form class="comment-remove-form" method="post" action="/remove_comment/<%=reply["id"]%>">
+                  <form id="comment-remove-form" method="post" action="/remove_comment/<%=reply["id"]%>">
                     <a onclick="submitParent(this);" class="comment-remove-link">Remove</a>
                   </form>
                 <% end %>
@@ -175,7 +175,7 @@
 
   function replyComment(clicked)
   {
-    var form = $('#comments-section form');
+    var form = $('#comment-post-form');
     var replyID = $(clicked).parent().attr('data-comment-id');
     form.find('label').remove();
     form.append('<input type="text" name="replyID" style="display: none;" value="' + replyID + '">');
