@@ -70,7 +70,7 @@
                   </form>
                 </div>
                 <p class="list-group-item-text"><%=reply["body"]%></p>
-                <strong>Posted by <%=reply.user["name"]%> on <%=reply["created"]%>.</strong>
+                <strong>Posted by <%=reply.user["name"]%> on <%=reply["created"].strftime('%Y-%m-%d')%>.</strong>
                 <% if @user == reply.user %>
                   <form id="comment-remove-form" method="post" action="/remove_comment/<%=reply["id"]%>">
                     <a onclick="submitParent(this);" class="comment-remove-link">Remove</a>
