@@ -73,7 +73,11 @@ class Flippd < Sinatra::Application
     end
 
     # Load the comments for this video
-    @comments = Comment.all(:json_id => @video["id"], :order => [ :created.desc ], :reply_to => -1)
+    if @settings["voting_on"] == "true"
+      @comments = Comment.all(:json_id => @video["id"], :order => [ :points.desc ], :reply_to => -1)
+    else
+      @comments = Comment.all(:json_id => @video["id"], :order => [ :created.desc ], :reply_to => -1)
+    end
 
     @replies = Array.new
     @vote_states = Array.new
