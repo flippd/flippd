@@ -54,7 +54,7 @@
           <% end %>
           <% if @user == comment.user %>
             <form class="comment-remove-form" method="post" action="/remove_comment/<%=comment["id"]%>">
-               - <a onclick="removeComment(this);" class="comment-remove-link">Remove</a>
+               - <a onclick="submitParent(this);" class="comment-remove-link">Remove</a>
             </form>
           <% end %>
           <% if @settings['replies_on'] == "true" %>

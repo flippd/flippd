@@ -45,4 +45,5 @@ body {
 
 #comments-section form {
     display: inline-block;
+    width: 100%;
 }
