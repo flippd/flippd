@@ -48,7 +48,7 @@
             </form>
           </div>
           <p class="list-group-item-text"><%=comment["body"]%></p>
-          <strong>Posted by <%=comment.user["name"]%> on <%=comment["created"]%>.</strong>
+          <strong>Posted by <%=comment.user["name"]%> on <%=comment["created"].strftime('%Y-%m-%d')%>.</strong>
           <% if @settings['replies_on'] == "true" %>
             <a onclick="replyComment(this);" class="comment-reply-link">Reply</a>
           <% end %>
@@ -84,7 +84,7 @@
       <% end %>
     </ul>
 
-    <form method="post" action="/post_comment/<%=@video["id"]%>">
+    <form id="comment-post-form" method="post" action="/post_comment/<%=@video["id"]%>">
       <div class="form-group">
         <label for="comment-textarea">Add a comment</label>
         <textarea class="form-control" name="body" rows="3"></textarea>
