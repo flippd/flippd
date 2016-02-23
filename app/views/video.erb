@@ -35,6 +35,7 @@
     <ul class="list-group">
       <% @comments.each do |comment|  %>
         <li data-comment-id="<%=comment["id"]%>" class="list-group-item">
+          <% if @settings['voting_on'] == "true" %>
           <div class="col-xs-1 col-md-1 comment-voting-container">
             <form class="comment-upvote-form" method="post" action="/upvote_comment/<%=comment["id"]%>">
               <span <% if @vote_states[comment["id"]] %>
@@ -47,6 +48,7 @@
               <% end %> onclick="submitParent(this);" class="glyphicon glyphicon-arrow-down"></span>
             </form>
           </div>
+          <% end %>
           <p class="list-group-item-text"><%=comment["body"]%></p>
           <strong>Posted by <%=comment.user["name"]%> on <%=comment["created"].strftime('%Y-%m-%d')%>.</strong>
           <% if @settings['replies_on'] == "true" %>
@@ -61,6 +63,7 @@
           <ul class="list-group" style="margin: 10px 0 0 0;">
             <% @replies[comment["id"]].each do |reply| %>
               <li data-comment-id="<%=reply["id"]%>" class="list-group-item">
+                <% if @settings['voting_on'] == "true" %>
                 <div class="col-xs-1 col-md-1 comment-voting-container">
                   <form class="comment-upvote-form" method="post" action="/upvote_comment/<%=reply["id"]%>">
                     <span onclick="submitParent(this);" class="glyphicon glyphicon-arrow-up"></span>
@@ -69,6 +72,7 @@
                     <span onclick="submitParent(this);" class="glyphicon glyphicon-arrow-down"></span>
                   </form>
                 </div>
+                <% end %>
                 <p class="list-group-item-text"><%=reply["body"]%></p>
                 <strong>Posted by <%=reply.user["name"]%> on <%=reply["created"].strftime('%Y-%m-%d')%>.</strong>
                 <% if @user == reply.user %>
