@@ -59,17 +59,20 @@
                - <a onclick="submitParent(this);" class="comment-remove-link">Remove</a>
             </form>
           <% end %>
-          <% if @settings['replies_on'] == "true" %>
           <ul class="list-group" style="margin: 10px 0 0 0;">
             <% @replies[comment["id"]].each do |reply| %>
               <li data-comment-id="<%=reply["id"]%>" class="list-group-item">
                 <% if @settings['voting_on'] == "true" %>
                 <div class="col-xs-1 col-md-1 comment-voting-container">
                   <form class="comment-upvote-form" method="post" action="/upvote_comment/<%=reply["id"]%>">
-                    <span onclick="submitParent(this);" class="glyphicon glyphicon-arrow-up"></span>
+                    <span <% if @vote_states[reply["id"]] %>
+                      style="color:green;"
+                    <% end %> onclick="submitParent(this);" class="glyphicon glyphicon-arrow-up"></span>
                   </form>
                   <form class="comment-downvote-form" method="post" action="/downvote_comment/<%=reply["id"]%>">
-                    <span onclick="submitParent(this);" class="glyphicon glyphicon-arrow-down"></span>
+                    <span <% if @vote_states[reply["id"]] == false %>
+                      style="color:red;"
+                    <% end %> onclick="submitParent(this);" class="glyphicon glyphicon-arrow-down"></span>
                   </form>
                 </div>
                 <% end %>
@@ -83,7 +86,6 @@
               </li>
             <% end %>
           </ul>
-          <% end %>
         </li>
       <% end %>
     </ul>
