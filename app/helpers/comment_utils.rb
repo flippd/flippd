@@ -1,11 +1,11 @@
 
 module CommentUtils
 
-	def get_comments(video_id, voting_on):
+	def get_comments(video_id, voting_on)
 		get_replies(video_id, voting_on, -1)
 	end
 
-	def get_replies(video_id, voting_on, replying_to=-1):
+	def get_replies(video_id, voting_on, replying_to=-1)
 		if voting_on
 			order = [ :points.desc ]
 		else

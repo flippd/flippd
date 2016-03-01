@@ -74,16 +74,16 @@ class Flippd < Sinatra::Application
     end
 
     # Load the comments for this video
-	@voting_on = @settings["voting_on"] == "true")
+	@voting_on = @settings["voting_on"] == "true"
     @comments = CommentUtils.get_comments(@video["id"], @voting_on)
 
     @replies = Array.new
     @vote_states = Array.new
     @comments.each do |comment|
-      vote = Vote.first(:comment_id => comment["id"], :user => @user)
-      if vote
-        @vote_states[comment["id"]] = vote.is_upvote
-      end
+		current_vote = CommentUtils.get_current_vote(comment["id"], @user)
+		if current_vote != nil
+			@vote_states[comment["id"]] = current_vote
+		end
 
       @replies[comment["id"]] = []
       if @settings["replies_on"] == "true"
@@ -91,10 +91,10 @@ class Flippd < Sinatra::Application
         @replies[comment["id"]] = CommentUtils.get_replies(@video["id"], @voting_on, comment["id"])
 
         @replies[comment["id"]].each do |reply|
-          vote = Vote.first(:comment_id => reply["id"], :user => @user)
-          if vote
-            @vote_states[reply["id"]] = vote.is_upvote
-          end
+			current_vote = CommentUtils.get_current_vote(reply["id"], @user)
+			if current_vote != nil
+				@vote_states[reply["id"]] = current_vote
+			end
         end
       end
 
