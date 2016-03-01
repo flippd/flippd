@@ -42,6 +42,7 @@
                 style="color:green;"
               <% end %> onclick="submitParent(this);" class="glyphicon glyphicon-arrow-up"></span>
             </form>
+            <strong><% if comment["points"].between?(0, 9)%>&nbsp;<% end %><%=comment["points"].to_s%></strong>
             <form class="comment-downvote-form" method="post" action="/downvote_comment/<%=comment["id"]%>">
               <span <% if @vote_states[comment["id"]] == false %>
                 style="color:red;"
@@ -50,6 +51,7 @@
           </div>
           <% end %>
           <p class="list-group-item-text"><%=comment["body"]%></p>
+          </br>
           <strong>Posted by <%=comment.user["name"]%> on <%=comment["created"].strftime('%Y-%m-%d')%>.</strong>
           <% if @settings['replies_on'] == "true" %>
             <a onclick="replyComment(this);" class="comment-reply-link">Reply</a>
@@ -69,6 +71,7 @@
                       style="color:green;"
                     <% end %> onclick="submitParent(this);" class="glyphicon glyphicon-arrow-up"></span>
                   </form>
+                  <strong><% if reply["points"].between?(0, 9)%>&nbsp;<% end %><%=reply["points"].to_s%></strong>
                   <form class="comment-downvote-form" method="post" action="/downvote_comment/<%=reply["id"]%>">
                     <span <% if @vote_states[reply["id"]] == false %>
                       style="color:red;"
@@ -77,6 +80,7 @@
                 </div>
                 <% end %>
                 <p class="list-group-item-text"><%=reply["body"]%></p>
+                </br>
                 <strong>Posted by <%=reply.user["name"]%> on <%=reply["created"].strftime('%Y-%m-%d')%>.</strong>
                 <% if @user == reply.user %>
                   <form id="comment-remove-form" method="post" action="/remove_comment/<%=reply["id"]%>">
