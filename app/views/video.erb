@@ -89,7 +89,7 @@
         </li>
       <% end %>
     </ul>
-
+	<% if @user != nil %>
     <form id="comment-post-form" method="post" action="/post_comment/<%=@video["id"]%>">
       <div class="form-group">
         <label for="comment-textarea">Add a comment</label>
@@ -97,6 +97,7 @@
       </div>
       <button type="submit" class="btn btn-default">Submit</button>
     </form>
+	<% end %>
   </div>
 </div>
 

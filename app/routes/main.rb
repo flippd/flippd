@@ -3,9 +3,10 @@ require 'json'
 require 'sinatra/base'
 require './app/helpers/badge_utils'
 require './app/helpers/phase_utils'
+require './app/helpers/comment_utils'
 
 class Flippd < Sinatra::Application
-  helpers BadgeUtils, PhaseUtils
+  helpers BadgeUtils, PhaseUtils, CommentUtils
 
   before do
     @session = session
