@@ -80,23 +80,23 @@ class Flippd < Sinatra::Application
     @replies = Array.new
     @vote_states = Array.new
     @comments.each do |comment|
-		current_vote = CommentUtils.get_current_vote(comment["id"], @user)
-		if current_vote != nil
-			@vote_states[comment["id"]] = current_vote
+		existing_vote = CommentUtils.get_existing_vote(comment["id"], @user)
+		if existing_vote != nil
+			@vote_states[comment["id"]] = existing_vote
 		end
 
-      @replies[comment["id"]] = []
-      if @settings["replies_on"] == "true"
+    	if @settings["replies_on"] == "true"
+    		@replies[comment["id"]] = CommentUtils.get_replies(@video["id"], @voting_on, comment["id"])
 
-        @replies[comment["id"]] = CommentUtils.get_replies(@video["id"], @voting_on, comment["id"])
-
-        @replies[comment["id"]].each do |reply|
-			current_vote = CommentUtils.get_current_vote(reply["id"], @user)
-			if current_vote != nil
-				@vote_states[reply["id"]] = current_vote
-			end
-        end
-      end
+        	@replies[comment["id"]].each do |reply|
+				existing_vote = CommentUtils.get_existing_vote(reply["id"], @user)
+				if existing_vote != nil
+					@vote_states[reply["id"]] = existing_vote
+				end
+        	end
+	  	else
+			@replies[comment["id"]] = []
+     	end
 
     end
 
