@@ -28,6 +28,156 @@
   <div id="player"></div>
 </div>
 
+<div id="comments" class="row">
+
+  <div class="col-md-8 col-md-offset-2">
+
+    <p>&nbsp;</p>
+
+    <% if @user %>
+    <form action="/comment/new" method="POST">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <label for="add_text">Add a comment</label>
+          </h3>
+        </div>
+        <div class="panel-body">
+            <input type="hidden" name="videoId" value="<%= @video["id"] %>" />
+
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="fa fa-fw fa-clock-o"></i>
+                Video time
+                <span class="text-muted">(optional)</span>
+              </span>
+              <input type="number" min="0" max="59" value="0" required
+                name="videoTimeMinutes" class="form-control" />
+              <span class="input-group-addon">minutes</span>
+              <input type="number" min="0" max="59" value="0" required
+                name="videoTimeSeconds" class="form-control" />
+              <span class="input-group-addon">seconds</span>
+            </div>
+
+            <br />
+            <textarea id="add_text" name="text" rows="2"
+              placeholder="Write a comment"
+              class="form-control" required></textarea>
+
+            <br />
+
+            <button type="submit" class="btn btn-primary btn-sm btn-block">
+                <i class="fa fa-fw fa-send"></i>
+                Comment
+            </button>
+
+        </div>
+      </div>
+    </form>
+
+    <% else %>
+      <div class="alert alert-info">
+        <i class="fa fa-fw fa-info"></i>
+        Please log in to add a comment to this video.
+      </div>
+
+    <% end %>
+
+    <p>&nbsp;</p>
+
+    <% @comments.each do |comment| %>
+      <div id="comment-<%= comment.id %>"
+          class="row panel panel-default">
+
+        <div class="panel-heading">
+          <strong><%=h comment.user.name%></strong>
+
+          <span class="pull-right">
+
+            <% if @user and @user.can_edit_comment(comment) %>
+
+              <form action="/comment/delete/<%=comment.id%>" method="POST">
+
+                <div class="btn-group btn-group-xs">
+                  <button class="btn btn-warning"
+                          onclick="
+                              $('[data-comment=<%=comment.id%>]').hide();
+                              $('[data-comment-form=<%=comment.id%>]').removeClass('hidden');
+                              return false;
+                          "
+                  >
+                    <i class="fa fa-fw fa-pencil"></i>
+                    edit this comment
+                  </button>
+                  <button class="btn btn-danger" type="submit"
+                    name="delete" value="1">
+                    <i class="fa fa-fw fa-trash"></i>
+                    delete
+                  </button>
+                </div>
+
+              </form>
+
+            <% end %>
+
+
+            <% unless comment.videoTime == 0 %>
+              <i class="fa fa-fw fa-play"></i>
+              <%= comment.video_time_display%>
+            <% end %>
+
+          </span>
+
+        </div>
+        <div class="panel-body">
+
+
+          <div data-comment="<%=comment.id%>">
+            <p>
+              <% unless comment.text %>
+                <span class="text-muted" style="font-style: italic;">
+                  Comment deleted
+                </span>
+              <% end %>
+
+              <%=h comment.text%>
+            </p>
+
+            <% if comment.lastEditTime %>
+              <span class="text-muted">
+                <i class="fa fa-fw fa-pencil"></i>
+                Last edited on <%=comment.lastEditTime.strftime "%d-%m-%Y at %H:%M" %>
+                by <%=comment.lastEditUser.name%>
+              </span>
+            <% end %>
+
+          </div>
+
+          <form action="/comment/edit/<%=comment.id%>" method="POST"
+            class="hidden" data-comment-form="<%=comment.id%>">
+            <label for="new_text">Edit this comment</label>
+            <textarea id="new_text" name="new_text" required rows="2"
+              class="form-control" maxlength="1024"><%=comment.text%></textarea>
+            <button type="submit" class="btn btn-primary btn-block">
+              <i class="fa fa-fw fa-pencil"></i>
+              Save changes
+            </button>
+          </form>
+
+        </div>
+
+        <div class="panel-footer">
+            <i class="fa fa-fw fa-clock-o"></i>
+            Created <%= comment.commentTime.strftime "%d-%m-%Y at %H:%M"%>
+
+        </div>
+
+      </div>
+    <% end %>
+
+  </div>
+</div>
+
 <% if @video["resources"] %>
 <div id="resources" class="row" style="margin-top: 1.5em;">
   <div class="col-xs-6 col-md-6">

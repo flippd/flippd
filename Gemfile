@@ -14,10 +14,12 @@ gem "dotenv", "~> 2.0.2"
 group :development do
   gem "rake", "~> 10.4.2"
   gem "rerun", "~> 0.10.0"
+  gem 'quality'
 end
 
 group :test do
   gem "capybara", "~> 2.4.4"
   gem "rspec", "~> 3.3.0"
+  gem 'coveralls', require: false
   gem "database_cleaner", "~> 1.5.1"
 end

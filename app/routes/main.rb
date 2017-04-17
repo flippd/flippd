@@ -45,6 +45,7 @@ class Flippd < Sinatra::Application
           if video["id"] == params['id'].to_i
             @phase = phase
             @video = video
+            @comments = Comment.all(:videoId => @video["id"])
           end
         end
       end
